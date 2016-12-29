@@ -14,10 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.EntityFrameworkCore;
-using OcenaKlientow.Model;
 
-namespace OcenaKlientow
+namespace OcenaKlientowApp1
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -32,12 +30,6 @@ namespace OcenaKlientow
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-            using (var db = new Context())
-            {
-              //  db.Database.Migrate();
-            }
-
         }
 
         /// <summary>

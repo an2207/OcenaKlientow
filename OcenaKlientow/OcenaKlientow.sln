@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcenaKlientow", "OcenaKlientow\OcenaKlientow.csproj", "{39D64BDA-9D39-4D89-8FEE-80FC2AE53CC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcenaKlientowApp1", "OcenaKlientowApp1\OcenaKlientowApp1.csproj", "{5FF371EA-958C-4521-ADDA-29ACA7A52212}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,26 @@ Global
 		{39D64BDA-9D39-4D89-8FEE-80FC2AE53CC1}.Release|x86.ActiveCfg = Release|x86
 		{39D64BDA-9D39-4D89-8FEE-80FC2AE53CC1}.Release|x86.Build.0 = Release|x86
 		{39D64BDA-9D39-4D89-8FEE-80FC2AE53CC1}.Release|x86.Deploy.0 = Release|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|ARM.Build.0 = Debug|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|ARM.Deploy.0 = Debug|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x64.ActiveCfg = Debug|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x64.Build.0 = Debug|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x64.Deploy.0 = Debug|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x86.ActiveCfg = Debug|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x86.Build.0 = Debug|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Debug|x86.Deploy.0 = Debug|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|Any CPU.ActiveCfg = Release|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|ARM.ActiveCfg = Release|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|ARM.Build.0 = Release|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|ARM.Deploy.0 = Release|ARM
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x64.ActiveCfg = Release|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x64.Build.0 = Release|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x64.Deploy.0 = Release|x64
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x86.ActiveCfg = Release|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x86.Build.0 = Release|x86
+		{5FF371EA-958C-4521-ADDA-29ACA7A52212}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
