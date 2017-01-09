@@ -1,0 +1,32 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="OcenaKlientow.View.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OcenaKlientow"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+                        >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBox x:ConnectionId='2' Name="NewBlogUrl"></TextBox>
+            <Button x:ConnectionId='3'                  >Add</Button>
+            <Button x:ConnectionId='4'                   >Usun wszystko</Button>
+            <ListView x:ConnectionId='5' Name="Blogs">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DataWymag}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Height="200">
+                <Button x:ConnectionId='7' x:Name="pu1" Content="PU1"                     HorizontalAlignment="Left" Height="122" Margin="438,0,0,0" Width="404"/>
+            </Grid>
+            <Grid Height="200">
+                <Button x:ConnectionId='6' x:Name="pu2" Content="PU2"                     HorizontalAlignment="Left" Height="126" Margin="438,0,0,0" Width="404"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
+
