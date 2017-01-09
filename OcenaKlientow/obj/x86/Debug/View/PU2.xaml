@@ -1,0 +1,134 @@
+﻿<Page
+    x:Class="OcenaKlientow.View.PU2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OcenaKlientow.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1280" Background="LightBlue">
+            <RichTextBlock HorizontalAlignment="Left" Height="40" Margin="41,0,0,0" VerticalAlignment="Top"  FontSize="25" Width="405" >
+                <Paragraph>
+                    <Run Text="Przeglądaj benefity"/>
+                </Paragraph>
+            </RichTextBlock>
+        </Grid>
+        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="372" Margin="0,140,0,0" VerticalAlignment="Top" Width="636">
+            <Grid Background="LightSteelBlue" Height="92" VerticalAlignment="Top" Margin="0,-92,0,0" HorizontalAlignment="Left" Width="636">
+                <TextBox x:ConnectionId='10' x:Name="IdPrawna" PlaceholderText="Id" HorizontalAlignment="Left" Margin="46,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="109" RenderTransformOrigin="0.092,0.641"/>
+                <TextBox x:ConnectionId='11' x:Name="NazwaPrawna" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
+                <Button x:ConnectionId='12' x:Name="SearchPrawna"                              Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
+            </Grid>
+            <ListView x:ConnectionId='6' x:Name="OsobyPrawne" Background="LightSteelBlue" Margin="38,0,36,106"  IsItemClickEnabled="True" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.Header>
+                    <Style TargetType="ListViewHeaderItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListView.Header>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Height="30" Background="CornflowerBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Uid="tbRank" TextWrapping="Wrap" Text="Id" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbName" TextWrapping="Wrap" Text="Nazwa" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbTaxId" TextWrapping="Wrap" Text="NIP" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbCommand" TextWrapping="Wrap" Text="Status" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="30" Background="SkyBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock TextWrapping="NoWrap"  Text="{Binding KlientId}" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"  />
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding Nazwa}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding NIP}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding KwotaKredytu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <Grid Height="100" Width="100"/>
+                <Grid Height="100" Width="100"/>
+            </ListView>
+            <Grid Background="LightSteelBlue" Height="92" VerticalAlignment="Top" Margin="636,-92,-641,0" HorizontalAlignment="Left" Width="641">
+                <TextBox x:ConnectionId='7' x:Name="IdFizyczna" PlaceholderText="Id" HorizontalAlignment="Left" Margin="46,29,0,0"  TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="109" RenderTransformOrigin="0.092,0.641"/>
+                <TextBox x:ConnectionId='8' x:Name="NazwaFizyczna" PlaceholderText="Nazwisko" HorizontalAlignment="Left" Margin="185,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
+                <Button x:ConnectionId='9' x:Name="SearchFizyczna"                                Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
+            </Grid>
+        </Grid>
+        <Grid Background="SkyBlue" HorizontalAlignment="Left" Height="208" Margin="0,512,0,0" VerticalAlignment="Top" Width="1280">
+            <TextBlock x:ConnectionId='2' x:Name="textBlock" HorizontalAlignment="Left" Margin="61,0,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142"/>
+            <TextBlock x:ConnectionId='3' x:Name="textBlock1" HorizontalAlignment="Left" Margin="126,49,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:ConnectionId='4' x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="126,94,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:ConnectionId='5' x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="126,139,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="372" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
+
+            <ListView x:ConnectionId='1' x:Name="OsobyFizyczne" Background="LightSteelBlue" Margin="38,0,36,106" IsItemClickEnabled="True" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.Header>
+                    <Style TargetType="ListViewHeaderItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListView.Header>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Height="30" Background="CornflowerBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Uid="tbRank" TextWrapping="Wrap" Text="Id" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbName" TextWrapping="Wrap" Text="Imię" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbTaxId" TextWrapping="Wrap" Text="Nazwisko" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                            <TextBlock x:Uid="tbCommand" TextWrapping="Wrap" Text="Status" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0" FontWeight="ExtraBold" FontSize="18" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="30" Background="SkyBlue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock TextWrapping="NoWrap"  Text="{Binding KlientId}" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"  />
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding Imie}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding Nazwisko}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding KwotaKredytu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <Grid Height="100" Width="100"/>
+                <Grid Height="100" Width="100"/>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Page>
+
