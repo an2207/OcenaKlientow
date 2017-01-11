@@ -35,10 +35,24 @@ namespace OcenaKlientow
                 // InitData(db);
                 //var A = DateTime.Parse(db.Oceny.ToList().FirstOrDefault().DataCzas);
                 //var test = db.Platnosci.ToList();
-                //var innerJoinQuery =
-                //from klient in db.Klienci
-                //join zam in db.Zamowienia on klient.KlientId equals zam.KlientId
-                //select new { ProductName = klient.Imie, Category = zam.Kwota };
+
+
+                var innerJoinQuery =
+                from benefit in db.Benefity
+                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
+                select new BenefitListItem()
+                {
+                    RodzajId = benefit.RodzajId,
+                    BenefitId = benefit.BenefitId,
+                    DataUaktyw = benefit.DataUaktyw,
+                    DataZakon = benefit.DataZakon,
+                    WartoscProc = benefit.WartoscProc,
+                    LiczbaDni = benefit.LiczbaDni,
+                    NazwaBenefitu = benefit.Nazwa,
+                    NazwaRodzaju = rodzaj.Nazwa,
+                    Opis = benefit.Opis
+                        
+                };
 
                 //var temp = db.Zamowienia.Select(zamowienie => zamowienie.Klient.Imie).ToList();
 

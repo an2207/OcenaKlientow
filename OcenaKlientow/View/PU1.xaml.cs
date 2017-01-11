@@ -27,7 +27,7 @@ namespace OcenaKlientow.View
     /// </summary>
     public sealed partial class PU1 : Page
     {
-        private List<Benefit> _listaBenefitow;
+        private List<BenefitListItem> _listaBenefitow;
 
         private List<Status> _statuses;
 
@@ -40,15 +40,34 @@ namespace OcenaKlientow.View
             this.InitializeComponent();
             using (var db = new OcenaKlientowContext())
             {
-                ListaBenefitow = db.Benefity.ToList();
+                var innerJoinQuery =
+                from benefit in db.Benefity
+                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
+                select new BenefitListItem()
+                {
+                    RodzajId = benefit.RodzajId,
+                    BenefitId = benefit.BenefitId,
+                    DataUaktyw = benefit.DataUaktyw,
+                    DataZakon = benefit.DataZakon,
+                    WartoscProc = benefit.WartoscProc,
+                    LiczbaDni = benefit.LiczbaDni,
+                    NazwaBenefitu = benefit.Nazwa,
+                    NazwaRodzaju = rodzaj.Nazwa,
+                    Opis = benefit.Opis
+
+                };
+                ListaBenefitow = innerJoinQuery.ToList();
+                //ListaBenefitow = db.Benefity.ToList();
                 BenefitList.ItemsSource = ListaBenefitow;
                 Statuses = db.Statusy.ToList();
                 TypyBenfitowList = db.RodzajeBenefitow.ToList();
                 typ.ItemsSource = TypyBenfitowList;
+
+                
                 //PrzypisanyStatuses = db.PrzypisaneStatusy.ToList();
                 //ListaBenefitow = new List<Benefit>();
-               // Statuses = new List<Status>();
-               // PrzypisanyStatuses = new List<PrzypisanyStatus>();
+                // Statuses = new List<Status>();
+                // PrzypisanyStatuses = new List<PrzypisanyStatus>();
             }
                 
             //AddData();
@@ -56,7 +75,7 @@ namespace OcenaKlientow.View
            // AddPrzypisaneStatusy();
         }
 
-        public List<Benefit> ListaBenefitow
+        public List<BenefitListItem> ListaBenefitow
         {
             get
             {
@@ -92,153 +111,153 @@ namespace OcenaKlientow.View
             }
         }
 
-        void AddData()
-        {
+        //void AddData()
+        //{
            
-            Benefit b1 = new Benefit()
-            {
-                BenefitId = 1,
-                DataUaktyw = "22/10/2015",
-                DataZakon = "22/11/2016",
-                Nazwa = "Oferta letnia",
-                Opis = "Okej"
-            };
-            Benefit b2 = new Benefit()
-            {
-                BenefitId = 1,
-                DataUaktyw = "22/10/2015",
-                DataZakon = "22/11/2016",
-                Nazwa = "Oferta wiosna",
-                Opis = "Dziala"
-            };
-            Benefit b3 = new Benefit()
-            {
-                BenefitId = 1,
-                DataUaktyw = "22/10/2015",
-                DataZakon = "22/11/2016",
-                Nazwa = "Oferta zimowa",
-                Opis = "Dziala"
-            };
-             Benefit b4 = new Benefit()
-             {
-                 BenefitId = 1,
-                 DataUaktyw = "22/10/2015",
-                 DataZakon = "22/11/2016",
-                 Nazwa = "Oferta zimowa",
-                 Opis = "Dziala"
-             }; Benefit b5 = new Benefit()
-             {
-                 BenefitId = 1,
-                 DataUaktyw = "22/10/2015",
-                 DataZakon = "22/11/2016",
-                 Nazwa = "Oferta zimowa",
-                 Opis = "Dziala"
-             }; Benefit b6 = new Benefit()
-             {
-                 BenefitId = 1,
-                 DataUaktyw = "22/10/2015",
-                 DataZakon = "22/11/2016",
-                 Nazwa = "Oferta zimowa",
-                 Opis = "Dziala"
-             }; Benefit b7 = new Benefit()
-             {
-                 BenefitId = 2,
-                 DataUaktyw = "22/10/2015",
-                 DataZakon = "22/11/2016",
-                 Nazwa = "Oferta zimowaadsfasdfadfasdfasdfdas",
-                 Opis = "Dziala"
-             }; Benefit b8 = new Benefit()
-             {
-                 BenefitId = 2,
-                 DataUaktyw = "22/10/2015",
-                 DataZakon = "22/11/2016",
-                 Nazwa = "Oferta zimowa",
-                 Opis = "Dziala dasfasdfasdfasdfasdfadsf"
-             };
-            ListaBenefitow.Add(b1);
-            ListaBenefitow.Add(b2);
-            ListaBenefitow.Add(b3);
-            ListaBenefitow.Add(b4);
-            ListaBenefitow.Add(b5);
-            ListaBenefitow.Add(b6);
-            ListaBenefitow.Add(b7);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            ListaBenefitow.Add(b8);
-            BenefitList.ItemsSource = ListaBenefitow;
-        }
+        //    Benefit b1 = new Benefit()
+        //    {
+        //        BenefitId = 1,
+        //        DataUaktyw = "22/10/2015",
+        //        DataZakon = "22/11/2016",
+        //        Nazwa = "Oferta letnia",
+        //        Opis = "Okej"
+        //    };
+        //    Benefit b2 = new Benefit()
+        //    {
+        //        BenefitId = 1,
+        //        DataUaktyw = "22/10/2015",
+        //        DataZakon = "22/11/2016",
+        //        Nazwa = "Oferta wiosna",
+        //        Opis = "Dziala"
+        //    };
+        //    Benefit b3 = new Benefit()
+        //    {
+        //        BenefitId = 1,
+        //        DataUaktyw = "22/10/2015",
+        //        DataZakon = "22/11/2016",
+        //        Nazwa = "Oferta zimowa",
+        //        Opis = "Dziala"
+        //    };
+        //     Benefit b4 = new Benefit()
+        //     {
+        //         BenefitId = 1,
+        //         DataUaktyw = "22/10/2015",
+        //         DataZakon = "22/11/2016",
+        //         Nazwa = "Oferta zimowa",
+        //         Opis = "Dziala"
+        //     }; Benefit b5 = new Benefit()
+        //     {
+        //         BenefitId = 1,
+        //         DataUaktyw = "22/10/2015",
+        //         DataZakon = "22/11/2016",
+        //         Nazwa = "Oferta zimowa",
+        //         Opis = "Dziala"
+        //     }; Benefit b6 = new Benefit()
+        //     {
+        //         BenefitId = 1,
+        //         DataUaktyw = "22/10/2015",
+        //         DataZakon = "22/11/2016",
+        //         Nazwa = "Oferta zimowa",
+        //         Opis = "Dziala"
+        //     }; Benefit b7 = new Benefit()
+        //     {
+        //         BenefitId = 2,
+        //         DataUaktyw = "22/10/2015",
+        //         DataZakon = "22/11/2016",
+        //         Nazwa = "Oferta zimowaadsfasdfadfasdfasdfdas",
+        //         Opis = "Dziala"
+        //     }; Benefit b8 = new Benefit()
+        //     {
+        //         BenefitId = 2,
+        //         DataUaktyw = "22/10/2015",
+        //         DataZakon = "22/11/2016",
+        //         Nazwa = "Oferta zimowa",
+        //         Opis = "Dziala dasfasdfasdfasdfasdfadsf"
+        //     };
+        //    ListaBenefitow.Add(b1);
+        //    ListaBenefitow.Add(b2);
+        //    ListaBenefitow.Add(b3);
+        //    ListaBenefitow.Add(b4);
+        //    ListaBenefitow.Add(b5);
+        //    ListaBenefitow.Add(b6);
+        //    ListaBenefitow.Add(b7);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    ListaBenefitow.Add(b8);
+        //    BenefitList.ItemsSource = ListaBenefitow;
+        //}
 
-        void AddStatuses()
-        {
-            Status zloty = new Status()
-            {
-                Nazwa = "złoty"
-            };
-            Status zie = new Status()
-            {
-                Nazwa = "zielony"
-            };
-            Status zolty = new Status()
-            {
-                Nazwa = "żółty"
-            };
-            Status pom = new Status()
-            {
-                Nazwa = "pomarańczowy"
-            };
-            Status czerw = new Status()
-            {
-                Nazwa = "czerwony"
-            };
-            Statuses.Add(zloty);
-            Statuses.Add(zie);
-            Statuses.Add(zolty);
-            Statuses.Add(pom);
-            Statuses.Add(czerw);
+        //void AddStatuses()
+        //{
+        //    Status zloty = new Status()
+        //    {
+        //        Nazwa = "złoty"
+        //    };
+        //    Status zie = new Status()
+        //    {
+        //        Nazwa = "zielony"
+        //    };
+        //    Status zolty = new Status()
+        //    {
+        //        Nazwa = "żółty"
+        //    };
+        //    Status pom = new Status()
+        //    {
+        //        Nazwa = "pomarańczowy"
+        //    };
+        //    Status czerw = new Status()
+        //    {
+        //        Nazwa = "czerwony"
+        //    };
+        //    Statuses.Add(zloty);
+        //    Statuses.Add(zie);
+        //    Statuses.Add(zolty);
+        //    Statuses.Add(pom);
+        //    Statuses.Add(czerw);
             
-        }
+        //}
 
-        void AddPrzypisaneStatusy()
-        {
-            var p1 = new PrzypisanyStatus()
-            {
-                BenefitId = 1,
-                StatusId = 1
-            };
-            var p2 = new PrzypisanyStatus()
-            {
-                BenefitId = 1,
-                StatusId = 1
-            }; var p3 = new PrzypisanyStatus()
-            {
-                BenefitId = 2,
-                StatusId = 1
-            }; var p4 = new PrzypisanyStatus()
-            {
-                BenefitId = 2,
-                StatusId = 2
-            };
+        //void AddPrzypisaneStatusy()
+        //{
+        //    var p1 = new PrzypisanyStatus()
+        //    {
+        //        BenefitId = 1,
+        //        StatusId = 1
+        //    };
+        //    var p2 = new PrzypisanyStatus()
+        //    {
+        //        BenefitId = 1,
+        //        StatusId = 1
+        //    }; var p3 = new PrzypisanyStatus()
+        //    {
+        //        BenefitId = 2,
+        //        StatusId = 1
+        //    }; var p4 = new PrzypisanyStatus()
+        //    {
+        //        BenefitId = 2,
+        //        StatusId = 2
+        //    };
 
-            PrzypisanyStatuses.Add(p1);
-            PrzypisanyStatuses.Add(p2);
-            PrzypisanyStatuses.Add(p3);
-            PrzypisanyStatuses.Add(p4);
+        //    PrzypisanyStatuses.Add(p1);
+        //    PrzypisanyStatuses.Add(p2);
+        //    PrzypisanyStatuses.Add(p3);
+        //    PrzypisanyStatuses.Add(p4);
 
-        }
+        //}
 
     private void Edit_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected =(Benefit) BenefitList.SelectedItem;
+            var selected =(BenefitListItem) BenefitList.SelectedItem;
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e)
@@ -258,7 +277,7 @@ namespace OcenaKlientow.View
             }
             if (String.IsNullOrEmpty(IdBenefitu.Text))
             {
-                var listTmp = ListaBenefitow.Where(benefit => benefit.Nazwa.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
+                var listTmp = ListaBenefitow.Where(benefit => benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
                 BenefitList.ItemsSource = listTmp;
                 return;
             }
@@ -268,14 +287,14 @@ namespace OcenaKlientow.View
                 BenefitList.ItemsSource = listTmp;
                 return;
             }
-            var listTmpF = ListaBenefitow.Where(benefit => benefit.BenefitId.ToString() == IdBenefitu.Text && benefit.Nazwa.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
+            var listTmpF = ListaBenefitow.Where(benefit => benefit.BenefitId.ToString() == IdBenefitu.Text && benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
             BenefitList.ItemsSource = listTmpF;
         }
 
         
         private void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var benefit = (Benefit)BenefitList.SelectedItem;
+            var benefit = (BenefitListItem)BenefitList.SelectedItem;
             if (benefit == null) return;
             if (benefit.RodzajId == 2)
             {
@@ -290,7 +309,7 @@ namespace OcenaKlientow.View
                 procent.Visibility=Visibility.Collapsed;
             }
             
-            selName.Text = benefit.Nazwa;
+            selName.Text = benefit.NazwaBenefitu;
             selWartProc.Text = benefit.RodzajId == 2? benefit.WartoscProc.ToString() : benefit.LiczbaDni.ToString();
             selDataUaktyw.Text = benefit.DataUaktyw;
             selDataZakon.Text = benefit.DataZakon;
@@ -345,7 +364,7 @@ namespace OcenaKlientow.View
 
         private void Save_OnClick(object sender, RoutedEventArgs e)
         {
-            var curr =(Benefit) BenefitList.SelectedItem;
+            var curr =(BenefitListItem) BenefitList.SelectedItem;
             Benefit benefit;
             using (var db = new OcenaKlientowContext())
             {

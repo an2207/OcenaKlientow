@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Migrations\OcenaKlientowContextModelSnapshot.cs" />
     <Compile Include="ViewModel\Pu1ViewModel.cs" />
+    <Compile Include="View\BenefitListItem.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

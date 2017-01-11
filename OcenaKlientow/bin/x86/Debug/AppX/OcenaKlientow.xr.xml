@@ -3,9 +3,10 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="DataWymag" />
     <RootPropertyPathName Name="Nazwa" />
-    <RootPropertyPathName Name="Opis" />
+    <RootPropertyPathName Name="NazwaRodzaju" />
     <RootPropertyPathName Name="DataZakon" />
     <RootPropertyPathName Name="DataUaktyw" />
+    <RootPropertyPathName Name="NazwaBenefitu" />
     <RootPropertyPathName Name="BenefitId" />
     <RootPropertyPathName Name="NameBenefit" />
     <RootPropertyPathName Name="IdBenefit" />

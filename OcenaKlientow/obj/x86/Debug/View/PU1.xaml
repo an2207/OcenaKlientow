@@ -61,10 +61,10 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <TextBlock TextWrapping="NoWrap"  Text="{Binding BenefitId}" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"  />
-                            <TextBlock TextWrapping="NoWrap" Text="{Binding Nazwa}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding NazwaBenefitu}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
                             <TextBlock TextWrapping="NoWrap" Text="{Binding DataUaktyw}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
                             <TextBlock TextWrapping="NoWrap" Text="{Binding DataZakon}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
-                            <TextBlock TextWrapping="NoWrap" Text="{Binding Opis}" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding NazwaRodzaju}" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
