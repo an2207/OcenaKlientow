@@ -137,9 +137,9 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "OcenaKlientow.View.PU1";
-            _typeNameTable[4] = "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.BenefitListItem>";
+            _typeNameTable[4] = "System.Collections.Generic.List`1<OcenaKlientow.View.BenefitListItem>";
             _typeNameTable[5] = "Object";
-            _typeNameTable[6] = "OcenaKlientow.View.ListItems.BenefitListItem";
+            _typeNameTable[6] = "OcenaKlientow.View.BenefitListItem";
             _typeNameTable[7] = "Int32";
             _typeNameTable[8] = "String";
             _typeNameTable[9] = "Double";
@@ -157,9 +157,9 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::OcenaKlientow.View.PU1);
-            _typeTable[4] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.BenefitListItem>);
+            _typeTable[4] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.BenefitListItem>);
             _typeTable[5] = typeof(global::System.Object);
-            _typeTable[6] = typeof(global::OcenaKlientow.View.ListItems.BenefitListItem);
+            _typeTable[6] = typeof(global::OcenaKlientow.View.BenefitListItem);
             _typeTable[7] = typeof(global::System.Int32);
             _typeTable[8] = typeof(global::System.String);
             _typeTable[9] = typeof(global::System.Double);
@@ -207,8 +207,8 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
 
         private object Activate_0_MainPage() { return new global::OcenaKlientow.View.MainPage(); }
         private object Activate_3_PU1() { return new global::OcenaKlientow.View.PU1(); }
-        private object Activate_4_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.BenefitListItem>(); }
-        private object Activate_6_BenefitListItem() { return new global::OcenaKlientow.View.ListItems.BenefitListItem(); }
+        private object Activate_4_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.BenefitListItem>(); }
+        private object Activate_6_BenefitListItem() { return new global::OcenaKlientow.View.BenefitListItem(); }
         private object Activate_10_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>(); }
         private object Activate_11_Status() { return new global::OcenaKlientow.Model.Models.Status(); }
         private object Activate_12_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>(); }
@@ -218,8 +218,8 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private object Activate_16_Klient() { return new global::OcenaKlientow.Model.Models.Klient(); }
         private void VectorAdd_4_List(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.ListItems.BenefitListItem>)instance;
-            var newItem = (global::OcenaKlientow.View.ListItems.BenefitListItem)item;
+            var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.BenefitListItem>)instance;
+            var newItem = (global::OcenaKlientow.View.BenefitListItem)item;
             collection.Add(newItem);
         }
         private void VectorAdd_10_List(object instance, object item)
@@ -276,7 +276,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 4:   //  System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.BenefitListItem>
+            case 4:   //  System.Collections.Generic.List`1<OcenaKlientow.View.BenefitListItem>
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.CollectionAdd = VectorAdd_4_List;
                 userType.SetIsReturnTypeStub();
@@ -287,7 +287,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  OcenaKlientow.View.ListItems.BenefitListItem
+            case 6:   //  OcenaKlientow.View.BenefitListItem
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_6_BenefitListItem;
                 userType.AddMemberName("BenefitId");
@@ -397,96 +397,96 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private void set_0_PU1_ListaBenefitow(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU1)instance;
-            that.ListaBenefitow = (global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.BenefitListItem>)Value;
+            that.ListaBenefitow = (global::System.Collections.Generic.List<global::OcenaKlientow.View.BenefitListItem>)Value;
         }
         private object get_1_BenefitListItem_BenefitId(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.BenefitId;
         }
         private void set_1_BenefitListItem_BenefitId(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.BenefitId = (global::System.Int32)Value;
         }
         private object get_2_BenefitListItem_DataUaktyw(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.DataUaktyw;
         }
         private void set_2_BenefitListItem_DataUaktyw(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.DataUaktyw = (global::System.String)Value;
         }
         private object get_3_BenefitListItem_DataZakon(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.DataZakon;
         }
         private void set_3_BenefitListItem_DataZakon(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.DataZakon = (global::System.String)Value;
         }
         private object get_4_BenefitListItem_LiczbaDni(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.LiczbaDni;
         }
         private void set_4_BenefitListItem_LiczbaDni(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.LiczbaDni = (global::System.Int32)Value;
         }
         private object get_5_BenefitListItem_NazwaBenefitu(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.NazwaBenefitu;
         }
         private void set_5_BenefitListItem_NazwaBenefitu(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.NazwaBenefitu = (global::System.String)Value;
         }
         private object get_6_BenefitListItem_Opis(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.Opis;
         }
         private void set_6_BenefitListItem_Opis(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.Opis = (global::System.String)Value;
         }
         private object get_7_BenefitListItem_RodzajId(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.RodzajId;
         }
         private void set_7_BenefitListItem_RodzajId(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.RodzajId = (global::System.Int32)Value;
         }
         private object get_8_BenefitListItem_WartoscProc(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.WartoscProc;
         }
         private void set_8_BenefitListItem_WartoscProc(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.WartoscProc = (global::System.Double)Value;
         }
         private object get_9_BenefitListItem_NazwaRodzaju(object instance)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             return that.NazwaRodzaju;
         }
         private void set_9_BenefitListItem_NazwaRodzaju(object instance, object Value)
         {
-            var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
+            var that = (global::OcenaKlientow.View.BenefitListItem)instance;
             that.NazwaRodzaju = (global::System.String)Value;
         }
         private object get_10_PU1_Statuses(object instance)
@@ -689,60 +689,60 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             {
             case "OcenaKlientow.View.PU1.ListaBenefitow":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ListaBenefitow", "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.BenefitListItem>");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ListaBenefitow", "System.Collections.Generic.List`1<OcenaKlientow.View.BenefitListItem>");
                 xamlMember.Getter = get_0_PU1_ListaBenefitow;
                 xamlMember.Setter = set_0_PU1_ListaBenefitow;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.BenefitId":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.BenefitId":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "BenefitId", "Int32");
                 xamlMember.Getter = get_1_BenefitListItem_BenefitId;
                 xamlMember.Setter = set_1_BenefitListItem_BenefitId;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.DataUaktyw":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.DataUaktyw":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "DataUaktyw", "String");
                 xamlMember.Getter = get_2_BenefitListItem_DataUaktyw;
                 xamlMember.Setter = set_2_BenefitListItem_DataUaktyw;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.DataZakon":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.DataZakon":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "DataZakon", "String");
                 xamlMember.Getter = get_3_BenefitListItem_DataZakon;
                 xamlMember.Setter = set_3_BenefitListItem_DataZakon;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.LiczbaDni":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.LiczbaDni":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "LiczbaDni", "Int32");
                 xamlMember.Getter = get_4_BenefitListItem_LiczbaDni;
                 xamlMember.Setter = set_4_BenefitListItem_LiczbaDni;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.NazwaBenefitu":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.NazwaBenefitu":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "NazwaBenefitu", "String");
                 xamlMember.Getter = get_5_BenefitListItem_NazwaBenefitu;
                 xamlMember.Setter = set_5_BenefitListItem_NazwaBenefitu;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.Opis":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.Opis":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Opis", "String");
                 xamlMember.Getter = get_6_BenefitListItem_Opis;
                 xamlMember.Setter = set_6_BenefitListItem_Opis;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.RodzajId":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.RodzajId":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "RodzajId", "Int32");
                 xamlMember.Getter = get_7_BenefitListItem_RodzajId;
                 xamlMember.Setter = set_7_BenefitListItem_RodzajId;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.WartoscProc":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.WartoscProc":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "WartoscProc", "Double");
                 xamlMember.Getter = get_8_BenefitListItem_WartoscProc;
                 xamlMember.Setter = set_8_BenefitListItem_WartoscProc;
                 break;
-            case "OcenaKlientow.View.ListItems.BenefitListItem.NazwaRodzaju":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.BenefitListItem");
+            case "OcenaKlientow.View.BenefitListItem.NazwaRodzaju":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.BenefitListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "NazwaRodzaju", "String");
                 xamlMember.Getter = get_9_BenefitListItem_NazwaRodzaju;
                 xamlMember.Setter = set_9_BenefitListItem_NazwaRodzaju;

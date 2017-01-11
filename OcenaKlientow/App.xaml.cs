@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
 using OcenaKlientow.View;
+using OcenaKlientow.View.ListItems;
 
 namespace OcenaKlientow
 {

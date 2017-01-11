@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.EntityFrameworkCore.Extensions.Internal;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
+using OcenaKlientow.View.ListItems;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -369,69 +370,73 @@ namespace OcenaKlientow.View
             using (var db = new OcenaKlientowContext())
             {
                 benefit = db.Benefity.Where(benefit1 => benefit1.BenefitId == curr.BenefitId).FirstOrDefault();
-            }
-            if (benefit != null)
-            {
-                benefit.Nazwa = selName.Text;
-                benefit.Opis = opis.Text;
-                var selectedRodzaj = (RodzajBenefitu)typ.SelectedItem;
-                if (selectedRodzaj.RodzajId == 2)
+
+                if (benefit != null)
                 {
-                    benefit.LiczbaDni = Int32.Parse(selWartProc.Text);
-                    benefit.WartoscProc = 0;
-                    benefit.RodzajId = selectedRodzaj.RodzajId;
-                }
-                else
-                {
-                    benefit.WartoscProc = Double.Parse(selWartProc.Text);
-                    benefit.LiczbaDni = 0;
-                    benefit.RodzajId = selectedRodzaj.RodzajId;
-                }
-                benefit.DataUaktyw = selDataUaktyw.Text;
-                benefit.DataZakon = selDataZakon.Text;
-                if ((bool)zloty.IsChecked)
-                {
-                    AddStatusToBenefit(benefit, "ZŁOTY");
-                }
-                else
-                {
-                    DeleteStatusFromBenefit(benefit, "ZŁOTY");
+                    benefit.Nazwa = selName.Text;
+                    benefit.Opis = opis.Text;
+                    var selectedRodzaj = (RodzajBenefitu)typ.SelectedItem;
+                    if (selectedRodzaj.RodzajId == 2)
+                    {
+                        benefit.LiczbaDni = Int32.Parse(selWartProc.Text);
+                        benefit.WartoscProc = 0;
+                        benefit.RodzajId = selectedRodzaj.RodzajId;
+                    }
+                    else
+                    {
+                        benefit.WartoscProc = Double.Parse(selWartProc.Text);
+                        benefit.LiczbaDni = 0;
+                        benefit.RodzajId = selectedRodzaj.RodzajId;
+                    }
+                    benefit.DataUaktyw = selDataUaktyw.Text;
+                    benefit.DataZakon = selDataZakon.Text;
+                    if ((bool)zloty.IsChecked)
+                    {
+                        AddStatusToBenefit(benefit, "ZŁOTY");
+                    }
+                    else
+                    {
+                        DeleteStatusFromBenefit(benefit, "ZŁOTY");
+                    }
+
+                    if ((bool)zolty.IsChecked)
+                    {
+                        AddStatusToBenefit(benefit, "ŻÓŁTY");
+                    }
+                    else
+                    {
+                        DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
+                    }
+
+                    if ((bool)zielony.IsChecked)
+                    {
+                        AddStatusToBenefit(benefit, "ZIELONY");
+                    }
+                    else
+                    {
+                        DeleteStatusFromBenefit(benefit, "ZIELONY");
+                    }
+
+                    if ((bool)pomaran.IsChecked)
+                    {
+                        AddStatusToBenefit(benefit, "POMARAŃCZOWY");
+                    }
+                    else
+                    {
+                        DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
+                    }
+                    if ((bool)czerw.IsChecked)
+                    {
+                        AddStatusToBenefit(benefit, "CZERWONY");
+                    }
+                    else
+                    {
+                        DeleteStatusFromBenefit(benefit, "CZERWONY");
+                    }
+
+                    db.SaveChanges();
                 }
 
-                if ((bool)zolty.IsChecked)
-                {
-                    AddStatusToBenefit(benefit, "ŻÓŁTY");
-                }
-                else
-                {
-                    DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
-                }
-
-                if ((bool)zielony.IsChecked)
-                {
-                    AddStatusToBenefit(benefit, "ZIELONY");
-                }
-                else
-                {
-                    DeleteStatusFromBenefit(benefit, "ZIELONY");
-                }
-
-                if ((bool)pomaran.IsChecked)
-                {
-                    AddStatusToBenefit(benefit, "POMARAŃCZOWY");
-                }
-                else
-                {
-                    DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
-                }
-                if ((bool)czerw.IsChecked)
-                {
-                    AddStatusToBenefit(benefit, "CZERWONY");
-                }
-                else
-                {
-                    DeleteStatusFromBenefit(benefit, "CZERWONY");
-                }
                 //this.Frame.Navigate(typeof(PU1));
             }
         }
