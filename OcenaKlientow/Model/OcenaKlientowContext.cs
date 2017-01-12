@@ -25,7 +25,7 @@ namespace OcenaKlientow.Model
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.1.REF1.0.0.db");
-            optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.TESTAD.db");
+            optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.TESTADColumns.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,11 +45,8 @@ namespace OcenaKlientow.Model
                 benefitu.RodzajId,
                 benefitu.Nazwa
             });
-            var klient = modelBuilder.Entity<Klient>();
 
-            //modelBuilder.Entity<Benefit>().Property(benefit => DateTime.Parse(benefit.DataUaktyw)< DateTime.Parse(benefit.DataZakon));
-
-            //modelBuilder.Entity<Status>().Property(status => status.ProgDolny < status.ProgGorny);
+           
             
 
         }

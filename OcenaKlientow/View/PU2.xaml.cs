@@ -43,7 +43,9 @@ namespace OcenaKlientow.View
             OsobyFizyczne.ItemsSource = ListaKlients.Where(klient => klient.CzyFizyczna);
 
             var currKlient = ListaKlients.Where(klient => klient.KlientId == 14).FirstOrDefault();
-            _viewModel.CountStatus(currKlient);
+            //_viewModel.CountStatus(currKlient);
+            _viewModel.CoundAllGrades(ListaKlients);
+            
         }
 
         public List<Klient> ListaKlients

@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-12T21:38:53.051</Modified>
+      <Modified>2017-01-12T23:03:38.963</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\OcenaKlientow.exe">
       <PackagePath>entrypoint\OcenaKlientow.exe</PackagePath>
-      <Modified>2017-01-12T21:38:52.464</Modified>
+      <Modified>2017-01-12T23:03:38.599</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\OcenaKlientow.exe.config">
       <PackagePath>OcenaKlientow.exe.config</PackagePath>
@@ -657,11 +657,11 @@
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-12T17:52:28.105</Modified>
+      <Modified>2017-01-12T22:35:45.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\Core\OcenaKlientow.exe">
       <PackagePath>OcenaKlientow.exe</PackagePath>
-      <Modified>2017-01-12T21:38:53.028</Modified>
+      <Modified>2017-01-12T23:03:38.959</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -85,6 +85,8 @@ namespace OcenaKlientow.ViewModel
                 var wart = db.Parametry.Where(parametr => parametr.Nazwa == "REGUL_ZAM").Select(parametr => parametr.Wartosc).FirstOrDefault();
                 var zam = db.Zamowienia.Where(zamowienie => zamowienie.KlientId == klient.KlientId).ToList();
                 zam.Sort(Comparison);
+                if (zam.Count == 0)
+                    return 0;
                 var firstOrder = zam[0];
                 foreach (Zamowienie zamowienie in zam)
                 {
@@ -187,6 +189,7 @@ namespace OcenaKlientow.ViewModel
         {
             Dictionary<int, int> parameters = new Dictionary<int, int>();
             int sum = 0;
+            Ocena lastOcena;
             using (var db = new OcenaKlientowContext())
             {
 
@@ -223,28 +226,34 @@ namespace OcenaKlientow.ViewModel
                         statusId = statuse.StatusId;
                     }
                 }
-                //db.Oceny.Add(new Ocena()
-                //{
-                //    DataCzas = DateTime.Now.ToString("d", culture),
-                //    KlientId = klient.KlientId,
-                //    StatusId = statusId, //zrobic!
-                //    SumaPkt = sum
-                //});
-                db.SaveChanges();
-                var currKlientOcenyList = db.Oceny.Where(ocena => ocena.KlientId.Equals(klient.KlientId)).OrderByDescending(ocena => ocena.OcenaId).ToList();
-                var lastOcena = currKlientOcenyList[0];
-                foreach (KeyValuePair<int, int> keyValuePair in parameters)
+                db.Oceny.Add(new Ocena()
                 {
-                    db.Wyliczono.Add(new Wyliczenie()
-                                     {
-                                        OcenaId = lastOcena.OcenaId,
-                                        ParametrId = keyValuePair.Key,
-                                        WartoscWyliczona = keyValuePair.Value
-                                     });
-                    db.SaveChanges();
-
-                }
+                    DataCzas = DateTime.Now.ToString("d", culture),
+                    KlientId = klient.KlientId,
+                    StatusId = statusId, 
+                    SumaPkt = sum
+                });
                 db.SaveChanges();
+               // db.Wyliczono.
+                var currKlientOcenyList = db.Oceny.Where(ocena => ocena.KlientId.Equals(klient.KlientId)).OrderByDescending(ocena => ocena.OcenaId).ToList();
+                lastOcena = currKlientOcenyList[0];
+               
+
+            }
+            foreach (KeyValuePair<int, int> keyValuePair in parameters)
+            {
+                using (var db = new OcenaKlientowContext())
+                {
+                    var wyliczenie = new Wyliczenie()
+                    {
+                        OcenaId = lastOcena.OcenaId,
+                        ParametrId = keyValuePair.Key,
+                        WartoscWyliczona = keyValuePair.Value
+                    };
+                    db.Wyliczono.Add(wyliczenie);
+                    db.SaveChanges();
+                }
+                
 
             }
 
@@ -308,6 +317,14 @@ namespace OcenaKlientow.ViewModel
         {
             AssignGrade(klient);
             
+        }
+
+        public void CoundAllGrades(List<Klient> listaKlients)
+        {
+            foreach (Klient listaKlient in listaKlients)
+            {
+                CountStatus(listaKlient);
+            }
         }
     }
 

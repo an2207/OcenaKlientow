@@ -37,8 +37,12 @@ namespace OcenaKlientow
                 // InitData(db);
                 //var A = DateTime.Parse(db.Oceny.ToList().FirstOrDefault().DataCzas);
                 //var test = db.Platnosci.ToList();
-
-
+                //var wyl = db.Wyliczono;
+                //db.Wyliczono.RemoveRange(wyl);
+                //db.SaveChanges();
+                //var oc = db.Oceny;
+                //db.Oceny.RemoveRange(oc);
+                db.SaveChanges();
                 var innerJoinQuery =
                 from benefit in db.Benefity
                 join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
