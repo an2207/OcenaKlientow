@@ -624,6 +624,7 @@ namespace OcenaKlientow.View
 
                 BenefitList.ItemsSource = BenefitListQuery(db);
                 ChangeLabelsAndInputsOFF();
+                Add.Visibility = Visibility.Collapsed;
             }
         }
     }
