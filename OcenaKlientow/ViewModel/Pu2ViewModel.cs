@@ -11,6 +11,8 @@ namespace OcenaKlientow.ViewModel
 {
     public class Pu2ViewModel
     {
+        CultureInfo culture = new CultureInfo("pt-BR");
+
         int PartialPayment(Klient klient)
         {
 
@@ -24,7 +26,7 @@ namespace OcenaKlientow.ViewModel
                     var listaPlatnosci = db.Platnosci.Where(platnosc => platnosc.ZamowienieId == zamowienie.ZamowienieId);
                     foreach (Platnosc platnosc in listaPlatnosci)
                     {
-                        if (DateTime.Parse(platnosc?.DataZaplaty) < DateTime.Parse(platnosc?.DataWymag))
+                        if (DateTime.Parse(platnosc?.DataZaplaty, culture) < DateTime.Parse(platnosc?.DataWymag, culture))
                         {
                             sum += wart;
                             break;
@@ -75,12 +77,12 @@ namespace OcenaKlientow.ViewModel
                 var firstOrder = zam[0];
                 foreach (Zamowienie zamowienie in zam)
                 {
-                    var firstOrderDate = DateTime.Parse(firstOrder.DataZamowienia);
+                    var firstOrderDate = DateTime.Parse(firstOrder.DataZamowienia, culture);
                     if (firstOrder.ZamowienieId == zamowienie.ZamowienieId)
                     {
                         continue;
                     }
-                    DateTime currZamDateTime = DateTime.Parse(zamowienie.DataZamowienia);
+                    DateTime currZamDateTime = DateTime.Parse(zamowienie.DataZamowienia, culture);
                     if (!(currZamDateTime.Month == firstOrderDate.Month && currZamDateTime.Year == firstOrderDate.Year))
                     {
                         if (!(firstOrderDate.AddMonths(1).Month == currZamDateTime.Month))
@@ -110,7 +112,7 @@ namespace OcenaKlientow.ViewModel
                     var listaPlatnosci = db.Platnosci.Where(platnosc => platnosc.ZamowienieId == zamowienie.ZamowienieId);
                     foreach (Platnosc platnosc in listaPlatnosci)
                     {
-                        var dataWymag = DateTime.Parse(platnosc?.DataWymag);
+                        var dataWymag = DateTime.Parse(platnosc?.DataWymag, culture);
                         if (platnosc.DataZaplaty == null)
                         {
                             if (dataWymag < DateTime.Now)
@@ -121,8 +123,8 @@ namespace OcenaKlientow.ViewModel
                         }
                         else
                         {
-                            var dataZap = DateTime.Parse(platnosc.DataZaplaty);
-                            if (DateTime.Parse(platnosc?.DataZaplaty) > DateTime.Parse(platnosc?.DataWymag))
+                            var dataZap = DateTime.Parse(platnosc.DataZaplaty, culture);
+                            if (DateTime.Parse(platnosc?.DataZaplaty, culture) > DateTime.Parse(platnosc?.DataWymag, culture))
                             {
                                 var liczbaDni = (int)(dataZap - dataWymag).TotalDays;
                                 sum += wart * liczbaDni;
@@ -224,7 +226,7 @@ namespace OcenaKlientow.ViewModel
                     var listaPlatnosci = db.Platnosci.Where(platnosc => platnosc.ZamowienieId == zamowienie.ZamowienieId);
                     foreach (Platnosc platnosc in listaPlatnosci)
                     {
-                        if (!(DateTime.Parse(platnosc?.DataZaplaty) < DateTime.Parse(platnosc?.DataWymag)))
+                        if (!(DateTime.Parse(platnosc?.DataZaplaty, culture) < DateTime.Parse(platnosc?.DataWymag, culture)))
                         {
                             sum -= wart;
                             break;
@@ -238,11 +240,11 @@ namespace OcenaKlientow.ViewModel
 
         private int Comparison(Zamowienie zamowienie, Zamowienie zamowienie1)
         {
-            if (DateTime.Parse(zamowienie.DataZamowienia) > DateTime.Parse(zamowienie1.DataZamowienia))
+            if (DateTime.Parse(zamowienie.DataZamowienia, culture) > DateTime.Parse(zamowienie1.DataZamowienia, culture))
             {
                 return 1;
             }
-            if (DateTime.Parse(zamowienie.DataZamowienia) < DateTime.Parse(zamowienie1.DataZamowienia))
+            if (DateTime.Parse(zamowienie.DataZamowienia, culture) < DateTime.Parse(zamowienie1.DataZamowienia, culture))
             {
                 return -1;
             }
