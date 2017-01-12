@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
+using OcenaKlientow.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,8 +27,12 @@ namespace OcenaKlientow.View
     public sealed partial class PU2 : Page
     {
         private List<Klient> _listaKlients;
+
+        private Pu2ViewModel _viewModel;
         public PU2()
         {
+            _viewModel = new Pu2ViewModel();
+            _viewModel.OsobyPrawneListQuery();
             using (var db = new OcenaKlientowContext())
             {
                 ListaKlients = db.Klienci.ToList();
@@ -36,6 +41,9 @@ namespace OcenaKlientow.View
             this.InitializeComponent();
             OsobyPrawne.ItemsSource = ListaKlients.Where(klient => !klient.CzyFizyczna);
             OsobyFizyczne.ItemsSource = ListaKlients.Where(klient => klient.CzyFizyczna);
+
+            var currKlient = ListaKlients.Where(klient => klient.KlientId == 14).FirstOrDefault();
+            _viewModel.CountStatus(currKlient);
         }
 
         public List<Klient> ListaKlients

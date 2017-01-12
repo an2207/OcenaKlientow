@@ -13,6 +13,17 @@ namespace OcenaKlientow.ViewModel
     {
         CultureInfo culture = new CultureInfo("pt-BR");
 
+        private List<Klient> Klients;
+        
+
+        public Pu2ViewModel()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                Klients = db.Klienci.ToList();
+            }
+        }
+
         int PartialPayment(Klient klient)
         {
 
@@ -82,6 +93,7 @@ namespace OcenaKlientow.ViewModel
                     {
                         continue;
                     }
+                    sum += wart;
                     DateTime currZamDateTime = DateTime.Parse(zamowienie.DataZamowienia, culture);
                     if (!(currZamDateTime.Month == firstOrderDate.Month && currZamDateTime.Year == firstOrderDate.Year))
                     {
@@ -158,7 +170,11 @@ namespace OcenaKlientow.ViewModel
 
                     }
                 }
-                if (sumOfPayments >= klient?.KwotaKredytu)
+                if (klient.KwotaKredytu == 0)
+                {
+                    return 0;
+                }
+                if (sumOfPayments >= klient.KwotaKredytu)
                 {
                     return wart;
                 }
@@ -198,16 +214,38 @@ namespace OcenaKlientow.ViewModel
                 points = PaymentOnTime(klient);
                 parameters.Add(parId, points);
                 sum += points;
-                CultureInfo culture = new CultureInfo("pt-BR");
-                var a = DateTime.Now.ToString("d", culture);
-                db.Oceny.Add(new Ocena()
+                int statusId=-1;
+                var statusList = db.Statusy.ToList();
+                foreach (Status statuse in statusList)
                 {
-                    //formatkA!!!!
-                    DataCzas = DateTime.Now.ToString(),
-                    KlientId = klient.KlientId,
-                    StatusId = 1, //zrobic!
-                    SumaPkt = sum
-                });
+                    if (sum < statuse.ProgGorny && sum > statuse.ProgDolny)
+                    {
+                        statusId = statuse.StatusId;
+                    }
+                }
+                //db.Oceny.Add(new Ocena()
+                //{
+                //    DataCzas = DateTime.Now.ToString("d", culture),
+                //    KlientId = klient.KlientId,
+                //    StatusId = statusId, //zrobic!
+                //    SumaPkt = sum
+                //});
+                db.SaveChanges();
+                var currKlientOcenyList = db.Oceny.Where(ocena => ocena.KlientId.Equals(klient.KlientId)).OrderByDescending(ocena => ocena.OcenaId).ToList();
+                var lastOcena = currKlientOcenyList[0];
+                foreach (KeyValuePair<int, int> keyValuePair in parameters)
+                {
+                    db.Wyliczono.Add(new Wyliczenie()
+                                     {
+                                        OcenaId = lastOcena.OcenaId,
+                                        ParametrId = keyValuePair.Key,
+                                        WartoscWyliczona = keyValuePair.Value
+                                     });
+                    db.SaveChanges();
+
+                }
+                db.SaveChanges();
+
             }
 
 
@@ -249,6 +287,27 @@ namespace OcenaKlientow.ViewModel
                 return -1;
             }
             return 0;
+        }
+
+        public void OsobyPrawneListQuery()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var statusyQuery =
+                from klient in db.Klienci
+                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId 
+                join status in db.Statusy on  ocena.StatusId equals status.StatusId
+                select new { benefitNazwa = klient.Nazwa, NazwaStatusu = status.Nazwa };
+                var c = statusyQuery.ToList();
+                ;
+            }
+            
+        }
+
+        public void CountStatus(Klient klient)
+        {
+            AssignGrade(klient);
+            
         }
     }
 
