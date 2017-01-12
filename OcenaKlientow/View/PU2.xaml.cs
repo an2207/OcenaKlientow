@@ -36,7 +36,6 @@ namespace OcenaKlientow.View
             this.InitializeComponent();
             OsobyPrawne.ItemsSource = ListaKlients.Where(klient => !klient.CzyFizyczna);
             OsobyFizyczne.ItemsSource = ListaKlients.Where(klient => klient.CzyFizyczna);
-            //AddData();
         }
 
         public List<Klient> ListaKlients

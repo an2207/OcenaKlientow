@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Extensions.Internal;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
@@ -41,29 +42,13 @@ namespace OcenaKlientow.View
             this.InitializeComponent();
             using (var db = new OcenaKlientowContext())
             {
-                var innerJoinQuery =
-                from benefit in db.Benefity
-                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
-                select new BenefitListItem()
-                {
-                    RodzajId = benefit.RodzajId,
-                    BenefitId = benefit.BenefitId,
-                    DataUaktyw = benefit.DataUaktyw,
-                    DataZakon = benefit.DataZakon,
-                    WartoscProc = benefit.WartoscProc,
-                    LiczbaDni = benefit.LiczbaDni,
-                    NazwaBenefitu = benefit.Nazwa,
-                    NazwaRodzaju = rodzaj.Nazwa,
-                    Opis = benefit.Opis
 
-                };
-                ListaBenefitow = innerJoinQuery.ToList();
+                ListaBenefitow = BenefitListQuery(db);
                 //ListaBenefitow = db.Benefity.ToList();
                 BenefitList.ItemsSource = ListaBenefitow;
                 Statuses = db.Statusy.ToList();
                 TypyBenfitowList = db.RodzajeBenefitow.ToList();
                 typ.ItemsSource = TypyBenfitowList;
-
                 
                 //PrzypisanyStatuses = db.PrzypisaneStatusy.ToList();
                 //ListaBenefitow = new List<Benefit>();
@@ -256,17 +241,38 @@ namespace OcenaKlientow.View
 
         //}
 
-    private void Edit_OnClick(object sender, RoutedEventArgs e)
+        private void Edit_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected =(BenefitListItem) BenefitList.SelectedItem;
+            ChangeLabelsAndInputsON();
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e)
-        {
+        {//zrobić
+            using (var db = new OcenaKlientowContext())
+            {
+                var benToDel =(BenefitListItem) BenefitList.SelectedItem;
+                var przypStat = db.PrzypisaneStatusy.Where(ben => ben.BenefitId.Equals(benToDel.BenefitId)).ToList();
+                foreach (PrzypisanyStatus przypisanyStatuse in przypStat)
+                {
+                    db.Entry(przypisanyStatuse).State = EntityState.Deleted;
+
+                }
+                var currBen = db.Benefity.Where(benefit => benefit.BenefitId.Equals(benToDel.BenefitId)).FirstOrDefault();
+                db.Entry(currBen).State=EntityState.Deleted;
+                db.SaveChanges();
+               BenefitList.ItemsSource = BenefitListQuery(db);
+            }
         }
 
         private void AddNew_OnClick(object sender, RoutedEventArgs e)
         {
+            ClearLabels();
+            ChangeLabelsAndInputsON();
+            Save.Visibility = Visibility.Collapsed;
+            Add.Visibility = Visibility.Visible;
+          
+
+
         }
 
         private void Search_OnClick(object sender, RoutedEventArgs e)
@@ -314,6 +320,7 @@ namespace OcenaKlientow.View
             selWartProc.Text = benefit.RodzajId == 2? benefit.WartoscProc.ToString() : benefit.LiczbaDni.ToString();
             selDataUaktyw.Text = benefit.DataUaktyw;
             selDataZakon.Text = benefit.DataZakon;
+            opis.Text = benefit.Opis ?? "BRAK";
             List<int> currBenefitStatusy;
             using (var db = new OcenaKlientowContext())
             {
@@ -360,6 +367,7 @@ namespace OcenaKlientow.View
             {
                 czerw.IsChecked = false;
             }
+            ChangeLabelsAndInputsOFF();
             //opis.Text = benefit.Opis;
         }
 
@@ -436,8 +444,10 @@ namespace OcenaKlientow.View
 
                     db.SaveChanges();
                 }
-
+                BenefitList.ItemsSource = BenefitListQuery(db);
+                ChangeLabelsAndInputsOFF();
                 //this.Frame.Navigate(typeof(PU1));
+
             }
         }
 
@@ -454,7 +464,6 @@ namespace OcenaKlientow.View
                 }
                 db.PrzypisaneStatusy.Remove(przypisanyStatus);
                 db.SaveChanges();
-                ;
             }
         }
 
@@ -487,6 +496,135 @@ namespace OcenaKlientow.View
                 }
             }
 
+        }
+
+        List<BenefitListItem> BenefitListQuery( OcenaKlientowContext db)
+        {
+            var innerJoinQuery =
+                from benefit in db.Benefity
+                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
+                select new BenefitListItem()
+                {
+                    RodzajId = benefit.RodzajId,
+                    BenefitId = benefit.BenefitId,
+                    DataUaktyw = benefit.DataUaktyw,
+                    DataZakon = benefit.DataZakon,
+                    WartoscProc = benefit.WartoscProc,
+                    LiczbaDni = benefit.LiczbaDni,
+                    NazwaBenefitu = benefit.Nazwa,
+                    NazwaRodzaju = rodzaj.Nazwa,
+                    Opis = benefit.Opis
+
+                };
+            return innerJoinQuery.ToList();
+        }
+
+        void ChangeLabelsAndInputsON()
+        {
+            selWartProc.IsReadOnly = false;
+            selDataUaktyw.IsReadOnly = false;
+            selName.IsReadOnly = false;
+            selDataZakon.IsReadOnly = false;
+            opis.IsReadOnly = false;
+            zloty.IsEnabled = true;
+            Save.Visibility = Visibility.Visible;
+            Cancel.Visibility = Visibility.Visible;;
+        }
+
+        void ChangeLabelsAndInputsOFF()
+        {
+            selWartProc.IsReadOnly = true;
+            selDataUaktyw.IsReadOnly = true;
+            selName.IsReadOnly = true;
+            selDataZakon.IsReadOnly = true;
+            opis.IsReadOnly = true;
+            zloty.IsEnabled = false;
+            Save.Visibility = Visibility.Collapsed;
+            Cancel.Visibility = Visibility.Collapsed;
+        }
+
+        void ClearLabels()
+        {
+            selName.Text = "";
+            selWartProc.Text = "";
+            selDataZakon.Text = "";
+            selDataUaktyw.Text = "";
+            opis.Text = "";
+            zloty.IsChecked = false;
+            zielony.IsChecked = false;
+            zolty.IsChecked = false;
+            pomaran.IsChecked = false;
+            czerw.IsChecked = false;
+
+        }
+
+        private void Add_OnClick(object sender, RoutedEventArgs e)
+        {
+            var selRodzBen = (RodzajBenefitu)typ.SelectedItem;
+
+            using (var db = new OcenaKlientowContext())
+            {
+                var idRabat = db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Rabat")).FirstOrDefault();
+                var idTermin = db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Wydłużony termin")).FirstOrDefault();
+                var newBenefit = new Benefit()
+                {
+                    Nazwa = selName.Text,
+                    DataZakon = selDataZakon.Text,
+                    DataUaktyw = selDataUaktyw.Text,
+                    RodzajId = selRodzBen.Nazwa == "Rabat" ? idRabat.RodzajId : idTermin.RodzajId,
+                    WartoscProc = selRodzBen.Nazwa == "Rabat" ? Double.Parse(selWartProc.Text) : 0,
+                    LiczbaDni = selRodzBen.Nazwa == "Rabat" ? 0 : Int32.Parse(selWartProc.Text),
+                    Opis = opis.Text
+                };
+                db.Benefity.Add(newBenefit);
+                db.SaveChanges();
+                if ((bool)zloty.IsChecked)
+                {
+                    AddStatusToBenefit(newBenefit, "ZŁOTY");
+                }
+                else
+                {
+                    DeleteStatusFromBenefit(newBenefit, "ZŁOTY");
+                }
+
+                if ((bool)zolty.IsChecked)
+                {
+                    AddStatusToBenefit(newBenefit, "ŻÓŁTY");
+                }
+                else
+                {
+                    DeleteStatusFromBenefit(newBenefit, "ŻÓŁTY");
+                }
+
+                if ((bool)zielony.IsChecked)
+                {
+                    AddStatusToBenefit(newBenefit, "ZIELONY");
+                }
+                else
+                {
+                    DeleteStatusFromBenefit(newBenefit, "ZIELONY");
+                }
+
+                if ((bool)pomaran.IsChecked)
+                {
+                    AddStatusToBenefit(newBenefit, "POMARAŃCZOWY");
+                }
+                else
+                {
+                    DeleteStatusFromBenefit(newBenefit, "POMARAŃCZOWY");
+                }
+                if ((bool)czerw.IsChecked)
+                {
+                    AddStatusToBenefit(newBenefit, "CZERWONY");
+                }
+                else
+                {
+                    DeleteStatusFromBenefit(newBenefit, "CZERWONY");
+                }
+
+                BenefitList.ItemsSource = BenefitListQuery(db);
+                ChangeLabelsAndInputsOFF();
+            }
         }
     }
 }

@@ -42,6 +42,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Name" />
+      <RootProperty Name="IsReadOnly" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
@@ -58,6 +59,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
@@ -99,6 +101,7 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
       <RootProperty Name="HorizontalAlignment" />

@@ -89,28 +89,29 @@
                 <TextBlock x:Name="textBlock1_Copy5" HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" Text="Opis" VerticalAlignment="Top" Height="30" Width="155"/>
             </Grid>
             <Grid Background="LightBlue" HorizontalAlignment="Left" Height="459" Margin="228,87,0,0" VerticalAlignment="Top" Width="386">
-                <TextBox x:Name="selName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
-                <TextBox x:Name="opis" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="89"/>
-                <ComboBox x:Name="typ" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="366" SelectionChanged="Typ_OnSelectionChanged">
+                <TextBox x:Name="selName" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
+                <TextBox x:Name="opis" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="89"/>
+                <ComboBox x:Name="typ"  HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="366" SelectionChanged="Typ_OnSelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Nazwa}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBox x:Name="selWartProc" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="321"/>
+                <TextBox x:Name="selWartProc" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="321"/>
                 <TextBlock x:Name="procent" HorizontalAlignment="Left" Margin="336,84,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Width="36" FontSize="25" Height="28" RenderTransformOrigin="0.972,0.679"/>
-                <TextBox x:Name="selDataUaktyw" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
-                <TextBox x:Name="selDataZakon" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
-                <CheckBox x:Name="zloty" Content="złoty" Background="LightBlue"  HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="362" />
+                <TextBox x:Name="selDataUaktyw" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
+                <TextBox x:Name="selDataZakon" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"/>
+                <CheckBox x:Name="zloty" IsEnabled="False" Content="złoty" Background="LightBlue"  HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="362" />
                 <CheckBox x:Name="zielony" Content="zielony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,227,0,0" VerticalAlignment="Top" Width="362" />
                 <CheckBox x:Name="zolty" Content="żółty" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,259,0,0" VerticalAlignment="Top" Width="362" />
                 <CheckBox x:Name="pomaran" Content="pomarańczowy" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,291,0,0" VerticalAlignment="Top" Width="362" />
                 <CheckBox x:Name="czerw" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
 
             </Grid>
-            <Button x:Name="Save" Click="Save_OnClick" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
-            <Button x:Name="Cancel" Click="Cancel_OnClick"  Content="Odrzuć" HorizontalAlignment="Left" Margin="362,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
+            <Button x:Name="Save" Click="Save_OnClick" Visibility="Collapsed" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
+            <Button x:Name="Add" Click="Add_OnClick" Visibility="Collapsed"  Content="Dodaj" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
+            <Button x:Name="Cancel" Click="Cancel_OnClick" Visibility="Collapsed"  Content="Odrzuć" HorizontalAlignment="Left" Margin="362,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
 
         </Grid>
 
