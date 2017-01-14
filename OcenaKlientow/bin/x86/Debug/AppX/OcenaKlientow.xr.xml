@@ -10,7 +10,7 @@
     <RootPropertyPathName Name="BenefitId" />
     <RootPropertyPathName Name="NameBenefit" />
     <RootPropertyPathName Name="IdBenefit" />
-    <RootPropertyPathName Name="KwotaKredytu" />
+    <RootPropertyPathName Name="NazwaStatusu" />
     <RootPropertyPathName Name="Nazwisko" />
     <RootPropertyPathName Name="Imie" />
     <RootPropertyPathName Name="KlientId" />

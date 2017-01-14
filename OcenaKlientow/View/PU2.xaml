@@ -15,13 +15,13 @@
                 </Paragraph>
             </RichTextBlock>
         </Grid>
-        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="372" Margin="0,140,0,0" VerticalAlignment="Top" Width="636">
+        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="332" Margin="0,140,0,0" VerticalAlignment="Top" Width="636">
             <Grid Background="LightSteelBlue" Height="92" VerticalAlignment="Top" Margin="0,-92,0,0" HorizontalAlignment="Left" Width="636">
                 <TextBox x:Name="IdPrawna" PlaceholderText="Id" HorizontalAlignment="Left" Margin="46,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="109" RenderTransformOrigin="0.092,0.641"/>
                 <TextBox x:Name="NazwaPrawna" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
                 <Button x:Name="SearchPrawna" Click="SearchPrawna_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
-            <ListView x:Name="OsobyPrawne" Background="LightSteelBlue" Margin="38,0,36,106"  IsItemClickEnabled="True" >
+            <ListView x:Name="OsobyPrawne" Background="LightSteelBlue" Margin="38,0,36,57"  IsItemClickEnabled="True" SelectionChanged="OsobyPrawne_OnSelectionChanged" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -60,7 +60,7 @@
                             <TextBlock TextWrapping="NoWrap"  Text="{Binding KlientId}" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"  />
                             <TextBlock TextWrapping="NoWrap" Text="{Binding Nazwa}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
                             <TextBlock TextWrapping="NoWrap" Text="{Binding NIP}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
-                            <TextBlock TextWrapping="NoWrap" Text="{Binding KwotaKredytu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding NazwaStatusu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -73,15 +73,21 @@
                 <Button x:Name="SearchFizyczna" Click="SearchFizyczna_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
         </Grid>
-        <Grid Background="SkyBlue" HorizontalAlignment="Left" Height="208" Margin="0,512,0,0" VerticalAlignment="Top" Width="1280">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="61,0,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="126,49,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="126,94,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="126,139,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Grid Background="SkyBlue" HorizontalAlignment="Left" Height="248" Margin="0,472,0,0" VerticalAlignment="Top" Width="1280">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="61,0,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142" FontWeight="Bold"/>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="141,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="141,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="141,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
+            <TextBox x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="332,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="332,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="332,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <Button x:Name="CountStatus" Click="CountStatus_OnClick" Content="Przelicz status" HorizontalAlignment="Left" Margin="664,33,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:Name="GradeDetails" Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="664,121,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="433,193,0,0" VerticalAlignment="Top" Width="240"/>
         </Grid>
-        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="372" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
+        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="332" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
 
-            <ListView x:Name="OsobyFizyczne" Background="LightSteelBlue" Margin="38,0,36,106" IsItemClickEnabled="True" >
+            <ListView x:Name="OsobyFizyczne" Background="LightSteelBlue" Margin="38,0,36,57" IsItemClickEnabled="True" SelectionChanged="OsobyFizyczne_OnSelectionChanged" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -120,7 +126,7 @@
                             <TextBlock TextWrapping="NoWrap"  Text="{Binding KlientId}" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"  />
                             <TextBlock TextWrapping="NoWrap" Text="{Binding Imie}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"  FontSize="11"/>
                             <TextBlock TextWrapping="NoWrap" Text="{Binding Nazwisko}" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
-                            <TextBlock TextWrapping="NoWrap" Text="{Binding KwotaKredytu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
+                            <TextBlock TextWrapping="NoWrap" Text="{Binding NazwaStatusu}" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="7,2,0,0"   FontSize="11"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

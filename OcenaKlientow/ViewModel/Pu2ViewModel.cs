@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
+using OcenaKlientow.View.ListItems;
 
 namespace OcenaKlientow.ViewModel
 {
@@ -298,19 +299,73 @@ namespace OcenaKlientow.ViewModel
             return 0;
         }
 
-        public void OsobyPrawneListQuery()
+        public List<OsobyListItem> OsobyPrawneListQuery()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var statusyQuery =
+                from klient in db.Klienci where !klient.CzyFizyczna
+                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId 
+                join status in db.Statusy on  ocena.StatusId equals status.StatusId
+                select new OsobyListItem()
+                {
+                    
+                        Nazwa = klient.Nazwa,
+                        CzyFizyczna = klient.CzyFizyczna,
+                        KlientId = klient.KlientId,
+                        KwotaKredytu = klient.KwotaKredytu,
+                        NIP = klient.NIP,
+                    
+                        OcenaId = ocena.OcenaId,
+                        DataCzas = ocena.DataCzas,
+                        SumaPkt = ocena.SumaPkt,
+                    
+                        NazwaStatusu = status.Nazwa,
+                        StatusId = status.StatusId,
+                        ProgDolny = status.ProgDolny,
+                        ProgGorny = status.ProgGorny
+                    
+                    
+                };
+                return statusyQuery.ToList();
+            }
+            
+        }
+
+        public List<OsobyListItem> OsobyFizyczneListQuery()
         {
             using (var db = new OcenaKlientowContext())
             {
                 var statusyQuery =
                 from klient in db.Klienci
-                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId 
-                join status in db.Statusy on  ocena.StatusId equals status.StatusId
-                select new { benefitNazwa = klient.Nazwa, NazwaStatusu = status.Nazwa };
-                var c = statusyQuery.ToList();
-                ;
+                where klient.CzyFizyczna
+                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId
+                join status in db.Statusy on ocena.StatusId equals status.StatusId
+                select new OsobyListItem()
+                {
+                    
+                        Nazwisko = klient.Nazwisko,
+                        Imie = klient.Imie,
+                        DrugieNazwisko = klient.DrugieNazwisko,
+                        DrugieImie = klient.DrugieImie,
+                        CzyFizyczna = klient.CzyFizyczna,
+                        KlientId = klient.KlientId,
+                        KwotaKredytu = klient.KwotaKredytu,
+                        PESEL= klient.PESEL,
+                    
+                        OcenaId = ocena.OcenaId,
+                        DataCzas = ocena.DataCzas,
+                        SumaPkt = ocena.SumaPkt,
+                    
+                        ProgDolny = status.ProgDolny,
+                        ProgGorny = status.ProgGorny,
+                        NazwaStatusu = status.Nazwa
+                    
+
+                };
+                return statusyQuery.ToList();
             }
-            
+
         }
 
         public void CountStatus(Klient klient)

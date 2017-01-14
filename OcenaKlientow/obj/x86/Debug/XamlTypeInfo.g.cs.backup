@@ -132,7 +132,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[19];
+            _typeNameTable = new string[18];
             _typeNameTable[0] = "OcenaKlientow.View.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -151,9 +151,8 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeNameTable[15] = "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>";
             _typeNameTable[16] = "OcenaKlientow.View.ListItems.OsobyListItem";
             _typeNameTable[17] = "Boolean";
-            _typeNameTable[18] = "OcenaKlientow.ViewModel.Pu2ViewModel";
 
-            _typeTable = new global::System.Type[19];
+            _typeTable = new global::System.Type[18];
             _typeTable[0] = typeof(global::OcenaKlientow.View.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -172,7 +171,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeTable[15] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>);
             _typeTable[16] = typeof(global::OcenaKlientow.View.ListItems.OsobyListItem);
             _typeTable[17] = typeof(global::System.Boolean);
-            _typeTable[18] = typeof(global::OcenaKlientow.ViewModel.Pu2ViewModel);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -218,7 +216,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private object Activate_14_PU2() { return new global::OcenaKlientow.View.PU2(); }
         private object Activate_15_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>(); }
         private object Activate_16_OsobyListItem() { return new global::OcenaKlientow.View.ListItems.OsobyListItem(); }
-        private object Activate_18_Pu2ViewModel() { return new global::OcenaKlientow.ViewModel.Pu2ViewModel(); }
         private void VectorAdd_4_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.ListItems.BenefitListItem>)instance;
@@ -357,7 +354,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 userType.Activator = Activate_14_PU2;
                 userType.AddMemberName("PrawneList");
                 userType.AddMemberName("FizyczneList");
-                userType.AddMemberName("Pu2ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -395,13 +391,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
 
             case 17:   //  Boolean
                 xamlType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 18:   //  OcenaKlientow.ViewModel.Pu2ViewModel
-                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                userType.SetIsLocalType();
-                xamlType = userType;
                 break;
             }
             return xamlType;
@@ -778,16 +767,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             var that = (global::OcenaKlientow.View.PU2)instance;
             that.FizyczneList = (global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>)Value;
         }
-        private object get_37_PU2_Pu2ViewModel(object instance)
-        {
-            var that = (global::OcenaKlientow.View.PU2)instance;
-            return that.Pu2ViewModel;
-        }
-        private void set_37_PU2_Pu2ViewModel(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.View.PU2)instance;
-            that.Pu2ViewModel = (global::OcenaKlientow.ViewModel.Pu2ViewModel)Value;
-        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -1017,12 +996,6 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "FizyczneList", "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>");
                 xamlMember.Getter = get_36_PU2_FizyczneList;
                 xamlMember.Setter = set_36_PU2_FizyczneList;
-                break;
-            case "OcenaKlientow.View.PU2.Pu2ViewModel":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU2");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Pu2ViewModel", "OcenaKlientow.ViewModel.Pu2ViewModel");
-                xamlMember.Getter = get_37_PU2_Pu2ViewModel;
-                xamlMember.Setter = set_37_PU2_Pu2ViewModel;
                 break;
             }
             return xamlMember;
