@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -230,25 +231,60 @@ namespace OcenaKlientow.View
         private void OsobyPrawne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currPrawna = (OsobyListItem)OsobyPrawne.SelectedItem;
-            StatusNameBox.Text = currPrawna.NazwaStatusu;
-            StatusDateBox.Text = currPrawna.DataCzas;
-            StatusBoxPkt.Text = currPrawna.SumaPkt.ToString();
-            selectedFromBothListItem = currPrawna;
+            if (currPrawna != null)
+            {
+                StatusNameBox.Text = currPrawna.NazwaStatusu;
+                StatusDateBox.Text = currPrawna.DataCzas;
+                StatusBoxPkt.Text = currPrawna.SumaPkt.ToString();
+                selectedFromBothListItem = currPrawna;
+            }
+            
         }
 
         private void OsobyFizyczne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currPrawna = (OsobyListItem)OsobyFizyczne.SelectedItem;
-            StatusNameBox.Text = currPrawna.NazwaStatusu;
-            StatusDateBox.Text = currPrawna.DataCzas;
-            StatusBoxPkt.Text = currPrawna.SumaPkt.ToString();
-            selectedFromBothListItem = currPrawna;
+            if (currPrawna != null)
+            {
+                StatusNameBox.Text = currPrawna.NazwaStatusu;
+                StatusDateBox.Text = currPrawna.DataCzas;
+                StatusBoxPkt.Text = currPrawna.SumaPkt.ToString();
+                selectedFromBothListItem = currPrawna;
+            }
+           
         }
 
-        private void CountStatus_OnClick(object sender, RoutedEventArgs e)
+        private async void CountStatus_OnClick(object sender, RoutedEventArgs e)
         {
+            if (selectedFromBothListItem != null)
+            {
+                var klient = Pu2ViewModel.GetKlient(selectedFromBothListItem.KlientId);
+                Pu2ViewModel.CountStatus(klient);
+                var name = selectedFromBothListItem.CzyFizyczna ? selectedFromBothListItem.Nazwisko : selectedFromBothListItem.Nazwa;
+                var dialog = new ContentDialog()
+                {
+                    Title = "Przeliczono",
+                    MaxWidth = this.ActualWidth,
+                    Content = $"Klient {name} otrzymał nową ocene."
+                };
 
-            
+
+                dialog.PrimaryButtonText = "OK";
+                dialog.PrimaryButtonClick += delegate {
+                };
+
+                var result = await dialog.ShowAsync();
+            }
+           
+
+        }
+
+        private void GradeDetails_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (selectedFromBothListItem != null)
+            {
+                Pu2ViewModel.GetGradeDetails(selectedFromBothListItem.OcenaId);
+            }
         }
     }
 }

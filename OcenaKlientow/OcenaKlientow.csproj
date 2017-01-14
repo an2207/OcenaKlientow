@@ -99,6 +99,7 @@
     <Compile Include="ViewModel\Pu1ViewModel.cs" />
     <Compile Include="ViewModel\Pu2ViewModel.cs" />
     <Compile Include="View\ListItems\BenefitListItem.cs" />
+    <Compile Include="View\ListItems\GradeDetails.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

@@ -327,7 +327,9 @@ namespace OcenaKlientow.ViewModel
                     
                     
                 };
-                return statusyQuery.ToList();
+                var lista = statusyQuery.ToList();
+                var test =lista.GroupBy(item => item.KlientId);
+                return lista;
             }
             
         }
@@ -379,6 +381,23 @@ namespace OcenaKlientow.ViewModel
             foreach (Klient listaKlient in listaKlients)
             {
                 CountStatus(listaKlient);
+            }
+        }
+
+        public Klient GetKlient(int klientId)
+        {
+            using (var db =new OcenaKlientowContext())
+            {
+                return db.Klienci.Where(klient => klient.KlientId == klientId).FirstOrDefault();
+            }
+        }
+
+        public void GetGradeDetails(int ocenaId)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == ocenaId).ToList();
+                //joina ładnego z nazwami Parametrów i klientami
             }
         }
     }
