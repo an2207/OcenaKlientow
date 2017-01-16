@@ -73,17 +73,17 @@
                 <Button x:Name="SearchFizyczna" Click="SearchFizyczna_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
         </Grid>
-        <Grid Background="White" HorizontalAlignment="Left" Height="248" Margin="0,472,0,0" VerticalAlignment="Top" Width="1280">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="61,0,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142" FontWeight="Bold"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="141,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="141,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="141,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
-            <TextBox x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="332,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="332,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="332,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <Button x:Name="CountStatus" Click="CountStatus_OnClick" Content="Przelicz status" HorizontalAlignment="Left" Margin="664,33,0,0" VerticalAlignment="Top" Width="240"/>
-            <Button x:Name="GradeDetails"  Click="GradeDetails_OnClick" Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="664,121,0,0" VerticalAlignment="Top" Width="240"/>
-            <Button x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="433,193,0,0" VerticalAlignment="Top" Width="240"/>
+        <Grid Background="White" BorderThickness="3" BorderBrush="LightGray" HorizontalAlignment="Left" Height="238" Margin="46,472,0,0" VerticalAlignment="Top" Width="1174">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,14,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142" FontWeight="Medium" FontSize="17"/>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="289,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="289,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="289,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
+            <TextBox x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="455,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <Button x:Name="CountStatus" Click="CountStatus_OnClick" Content="Przelicz status" HorizontalAlignment="Left" Margin="674,43,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:Name="GradeDetails"  Click="GradeDetails_OnClick" Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="674,101,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>
         </Grid>
         <Grid Background="White" HorizontalAlignment="Left" Height="332" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
 

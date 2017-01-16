@@ -77,7 +77,7 @@
             <Button x:Name="Delete" Click="Delete_OnClick" Content="Usuń" HorizontalAlignment="Left" Margin="244,44,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
             <Button x:Name="AddNew" Click="AddNew_OnClick" Content="Utwórz nowy" HorizontalAlignment="Left" Margin="386,44,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
         </Grid>
-        <Grid  Background="White" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Left" Height="641" Margin="634,50,0,0" VerticalAlignment="Top" Width="624">
+        <Grid  Background="White" BorderThickness="2" BorderBrush="LightGray" HorizontalAlignment="Left" Height="641" Margin="634,50,0,0" VerticalAlignment="Top" Width="624">
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Szczegóły" VerticalAlignment="Top" Height="56" Width="202" Margin="26,10,0,0" FontSize="30"/>
             <Grid  Background="White" HorizontalAlignment="Left" Height="459" Margin="26,87,0,0" VerticalAlignment="Top" Width="202">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,14,0,0" TextWrapping="Wrap" Text="Nazwa*" VerticalAlignment="Top" Height="30" Width="155"/>
