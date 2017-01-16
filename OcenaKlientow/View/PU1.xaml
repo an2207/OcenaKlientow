@@ -22,7 +22,7 @@
                 <TextBox x:Name="NazwaBenefitu" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0" Text="{Binding NameBenefit}" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
                 <Button x:Name="Search" Click="Search_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
-            <ListView x:Name="BenefitList" Background="White" Margin="38,0,36,106" SelectionChanged="BenefitList_OnSelectionChanged" IsItemClickEnabled="True" >
+            <ListView x:Name="BenefitList" Background="White" Margin="42,0,32,106" SelectionChanged="BenefitList_OnSelectionChanged" IsItemClickEnabled="True" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -90,7 +90,7 @@
                 <TextBlock x:Name="textBlock1_Copy5" HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" Text="Opis" VerticalAlignment="Top" Height="30" Width="155"/>
             </Grid>
             <Grid Background="White" HorizontalAlignment="Left" Height="459" Margin="228,87,0,0" VerticalAlignment="Top" Width="386">
-                <TextBox x:Name="selName" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25" TextChanged="selName_TextChanged"/>
+                <TextBox x:Name="selName" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25" />
                 <TextBox x:Name="opis" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="89"/>
                 <ComboBox x:Name="typ" PlaceholderText="Wybierz typ"  HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="366" SelectionChanged="Typ_OnSelectionChanged">
                     <ComboBox.ItemTemplate>
@@ -99,7 +99,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBox x:Name="selWartProc" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209"/>
+                <TextBox x:Name="selWartProc" TextChanged="SelWartProc_OnTextChanged" InputScope="Number" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209"/>
                 <TextBlock x:Name="procent" HorizontalAlignment="Left" Margin="228,83,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Width="36" FontSize="25" Height="28" RenderTransformOrigin="0.972,0.679"/>
                 <TextBox x:Name="selDataUaktyw" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
                 <TextBox x:Name="selDataZakon" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>

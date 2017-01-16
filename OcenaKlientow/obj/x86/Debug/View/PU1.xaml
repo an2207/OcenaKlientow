@@ -22,7 +22,7 @@
                 <TextBox x:ConnectionId='29' x:Name="NazwaBenefitu" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0" Text="{Binding NameBenefit}" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
                 <Button x:ConnectionId='30' x:Name="Search"                        Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
-            <ListView x:ConnectionId='27' x:Name="BenefitList" Background="White" Margin="38,0,36,106"                                                   IsItemClickEnabled="True" >
+            <ListView x:ConnectionId='27' x:Name="BenefitList" Background="White" Margin="42,0,32,106"                                                   IsItemClickEnabled="True" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -90,7 +90,7 @@
                 <TextBlock x:ConnectionId='23' x:Name="textBlock1_Copy5" HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" Text="Opis" VerticalAlignment="Top" Height="30" Width="155"/>
             </Grid>
             <Grid Background="White" HorizontalAlignment="Left" Height="459" Margin="228,87,0,0" VerticalAlignment="Top" Width="386">
-                <TextBox x:ConnectionId='5' x:Name="selName" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25"                                  />
+                <TextBox x:ConnectionId='5' x:Name="selName" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="25" />
                 <TextBox x:ConnectionId='6' x:Name="opis" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="366" Height="89"/>
                 <ComboBox x:ConnectionId='7' x:Name="typ" PlaceholderText="Wybierz typ"  HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="366"                                          >
                     <ComboBox.ItemTemplate>
@@ -99,7 +99,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBox x:ConnectionId='8' x:Name="selWartProc" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209"/>
+                <TextBox x:ConnectionId='8' x:Name="selWartProc"                                         InputScope="Number" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209"/>
                 <TextBlock x:ConnectionId='9' x:Name="procent" HorizontalAlignment="Left" Margin="228,83,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Width="36" FontSize="25" Height="28" RenderTransformOrigin="0.972,0.679"/>
                 <TextBox x:ConnectionId='10' x:Name="selDataUaktyw" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
                 <TextBox x:ConnectionId='11' x:Name="selDataZakon" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>

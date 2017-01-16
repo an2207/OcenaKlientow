@@ -143,11 +143,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeNameTable[7] = "Int32";
             _typeNameTable[8] = "String";
             _typeNameTable[9] = "Double";
-            _typeNameTable[10] = "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>";
-            _typeNameTable[11] = "OcenaKlientow.Model.Models.Status";
-            _typeNameTable[12] = "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>";
-            _typeNameTable[13] = "OcenaKlientow.Model.Models.PrzypisanyStatus";
-            _typeNameTable[14] = "OcenaKlientow.ViewModel.Pu1ViewModel";
+            _typeNameTable[10] = "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>";
+            _typeNameTable[11] = "OcenaKlientow.Model.Models.PrzypisanyStatus";
+            _typeNameTable[12] = "OcenaKlientow.ViewModel.Pu1ViewModel";
+            _typeNameTable[13] = "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>";
+            _typeNameTable[14] = "OcenaKlientow.Model.Models.Status";
             _typeNameTable[15] = "OcenaKlientow.View.PU2";
             _typeNameTable[16] = "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>";
             _typeNameTable[17] = "OcenaKlientow.View.ListItems.OsobyListItem";
@@ -165,11 +165,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeTable[7] = typeof(global::System.Int32);
             _typeTable[8] = typeof(global::System.String);
             _typeTable[9] = typeof(global::System.Double);
-            _typeTable[10] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>);
-            _typeTable[11] = typeof(global::OcenaKlientow.Model.Models.Status);
-            _typeTable[12] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>);
-            _typeTable[13] = typeof(global::OcenaKlientow.Model.Models.PrzypisanyStatus);
-            _typeTable[14] = typeof(global::OcenaKlientow.ViewModel.Pu1ViewModel);
+            _typeTable[10] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>);
+            _typeTable[11] = typeof(global::OcenaKlientow.Model.Models.PrzypisanyStatus);
+            _typeTable[12] = typeof(global::OcenaKlientow.ViewModel.Pu1ViewModel);
+            _typeTable[13] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>);
+            _typeTable[14] = typeof(global::OcenaKlientow.Model.Models.Status);
             _typeTable[15] = typeof(global::OcenaKlientow.View.PU2);
             _typeTable[16] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>);
             _typeTable[17] = typeof(global::OcenaKlientow.View.ListItems.OsobyListItem);
@@ -213,11 +213,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private object Activate_3_PU1() { return new global::OcenaKlientow.View.PU1(); }
         private object Activate_4_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.BenefitListItem>(); }
         private object Activate_6_BenefitListItem() { return new global::OcenaKlientow.View.ListItems.BenefitListItem(); }
-        private object Activate_10_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>(); }
-        private object Activate_11_Status() { return new global::OcenaKlientow.Model.Models.Status(); }
-        private object Activate_12_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>(); }
-        private object Activate_13_PrzypisanyStatus() { return new global::OcenaKlientow.Model.Models.PrzypisanyStatus(); }
-        private object Activate_14_Pu1ViewModel() { return new global::OcenaKlientow.ViewModel.Pu1ViewModel(); }
+        private object Activate_10_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>(); }
+        private object Activate_11_PrzypisanyStatus() { return new global::OcenaKlientow.Model.Models.PrzypisanyStatus(); }
+        private object Activate_12_Pu1ViewModel() { return new global::OcenaKlientow.ViewModel.Pu1ViewModel(); }
+        private object Activate_13_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>(); }
+        private object Activate_14_Status() { return new global::OcenaKlientow.Model.Models.Status(); }
         private object Activate_15_PU2() { return new global::OcenaKlientow.View.PU2(); }
         private object Activate_16_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>(); }
         private object Activate_17_OsobyListItem() { return new global::OcenaKlientow.View.ListItems.OsobyListItem(); }
@@ -230,14 +230,14 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         }
         private void VectorAdd_10_List(object instance, object item)
         {
-            var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.Model.Models.Status>)instance;
-            var newItem = (global::OcenaKlientow.Model.Models.Status)item;
-            collection.Add(newItem);
-        }
-        private void VectorAdd_12_List(object instance, object item)
-        {
             var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.Model.Models.PrzypisanyStatus>)instance;
             var newItem = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_13_List(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.Model.Models.Status>)instance;
+            var newItem = (global::OcenaKlientow.Model.Models.Status)item;
             collection.Add(newItem);
         }
         private void VectorAdd_16_List(object instance, object item)
@@ -276,9 +276,9 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_PU1;
                 userType.AddMemberName("ListaBenefitow");
-                userType.AddMemberName("Statuses");
                 userType.AddMemberName("PrzypisanyStatuses");
                 userType.AddMemberName("Pu1ViewModel");
+                userType.AddMemberName("Statuses");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -322,43 +322,43 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>
+            case 10:   //  System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.CollectionAdd = VectorAdd_10_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 11:   //  OcenaKlientow.Model.Models.Status
+            case 11:   //  OcenaKlientow.Model.Models.PrzypisanyStatus
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_11_Status;
-                userType.AddMemberName("Nazwa");
-                userType.AddMemberName("ProgDolny");
-                userType.AddMemberName("ProgGorny");
-                userType.AddMemberName("StatusId");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 12:   //  System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>
-                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_12_List;
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 13:   //  OcenaKlientow.Model.Models.PrzypisanyStatus
-                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_13_PrzypisanyStatus;
+                userType.Activator = Activate_11_PrzypisanyStatus;
                 userType.AddMemberName("BenefitId");
                 userType.AddMemberName("StatusId");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 14:   //  OcenaKlientow.ViewModel.Pu1ViewModel
+            case 12:   //  OcenaKlientow.ViewModel.Pu1ViewModel
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>
+                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CollectionAdd = VectorAdd_13_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 14:   //  OcenaKlientow.Model.Models.Status
+                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_14_Status;
+                userType.AddMemberName("Nazwa");
+                userType.AddMemberName("ProgDolny");
+                userType.AddMemberName("ProgGorny");
+                userType.AddMemberName("StatusId");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -519,95 +519,95 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             var that = (global::OcenaKlientow.View.ListItems.BenefitListItem)instance;
             that.NazwaRodzaju = (global::System.String)Value;
         }
-        private object get_10_PU1_Statuses(object instance)
-        {
-            var that = (global::OcenaKlientow.View.PU1)instance;
-            return that.Statuses;
-        }
-        private void set_10_PU1_Statuses(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.View.PU1)instance;
-            that.Statuses = (global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>)Value;
-        }
-        private object get_11_Status_Nazwa(object instance)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            return that.Nazwa;
-        }
-        private void set_11_Status_Nazwa(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            that.Nazwa = (global::System.String)Value;
-        }
-        private object get_12_Status_ProgDolny(object instance)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            return that.ProgDolny;
-        }
-        private void set_12_Status_ProgDolny(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            that.ProgDolny = (global::System.Int32)Value;
-        }
-        private object get_13_Status_ProgGorny(object instance)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            return that.ProgGorny;
-        }
-        private void set_13_Status_ProgGorny(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            that.ProgGorny = (global::System.Int32)Value;
-        }
-        private object get_14_Status_StatusId(object instance)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            return that.StatusId;
-        }
-        private void set_14_Status_StatusId(object instance, object Value)
-        {
-            var that = (global::OcenaKlientow.Model.Models.Status)instance;
-            that.StatusId = (global::System.Int32)Value;
-        }
-        private object get_15_PU1_PrzypisanyStatuses(object instance)
+        private object get_10_PU1_PrzypisanyStatuses(object instance)
         {
             var that = (global::OcenaKlientow.View.PU1)instance;
             return that.PrzypisanyStatuses;
         }
-        private void set_15_PU1_PrzypisanyStatuses(object instance, object Value)
+        private void set_10_PU1_PrzypisanyStatuses(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU1)instance;
             that.PrzypisanyStatuses = (global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>)Value;
         }
-        private object get_16_PrzypisanyStatus_BenefitId(object instance)
+        private object get_11_PrzypisanyStatus_BenefitId(object instance)
         {
             var that = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)instance;
             return that.BenefitId;
         }
-        private void set_16_PrzypisanyStatus_BenefitId(object instance, object Value)
+        private void set_11_PrzypisanyStatus_BenefitId(object instance, object Value)
         {
             var that = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)instance;
             that.BenefitId = (global::System.Int32)Value;
         }
-        private object get_17_PrzypisanyStatus_StatusId(object instance)
+        private object get_12_PrzypisanyStatus_StatusId(object instance)
         {
             var that = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)instance;
             return that.StatusId;
         }
-        private void set_17_PrzypisanyStatus_StatusId(object instance, object Value)
+        private void set_12_PrzypisanyStatus_StatusId(object instance, object Value)
         {
             var that = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)instance;
             that.StatusId = (global::System.Int32)Value;
         }
-        private object get_18_PU1_Pu1ViewModel(object instance)
+        private object get_13_PU1_Pu1ViewModel(object instance)
         {
             var that = (global::OcenaKlientow.View.PU1)instance;
             return that.Pu1ViewModel;
         }
-        private void set_18_PU1_Pu1ViewModel(object instance, object Value)
+        private void set_13_PU1_Pu1ViewModel(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU1)instance;
             that.Pu1ViewModel = (global::OcenaKlientow.ViewModel.Pu1ViewModel)Value;
+        }
+        private object get_14_PU1_Statuses(object instance)
+        {
+            var that = (global::OcenaKlientow.View.PU1)instance;
+            return that.Statuses;
+        }
+        private void set_14_PU1_Statuses(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.View.PU1)instance;
+            that.Statuses = (global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>)Value;
+        }
+        private object get_15_Status_Nazwa(object instance)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            return that.Nazwa;
+        }
+        private void set_15_Status_Nazwa(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            that.Nazwa = (global::System.String)Value;
+        }
+        private object get_16_Status_ProgDolny(object instance)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            return that.ProgDolny;
+        }
+        private void set_16_Status_ProgDolny(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            that.ProgDolny = (global::System.Int32)Value;
+        }
+        private object get_17_Status_ProgGorny(object instance)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            return that.ProgGorny;
+        }
+        private void set_17_Status_ProgGorny(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            that.ProgGorny = (global::System.Int32)Value;
+        }
+        private object get_18_Status_StatusId(object instance)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            return that.StatusId;
+        }
+        private void set_18_Status_StatusId(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.Model.Models.Status)instance;
+            that.StatusId = (global::System.Int32)Value;
         }
         private object get_19_PU2_PrawneList(object instance)
         {
@@ -877,59 +877,59 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlMember.Getter = get_9_BenefitListItem_NazwaRodzaju;
                 xamlMember.Setter = set_9_BenefitListItem_NazwaRodzaju;
                 break;
-            case "OcenaKlientow.View.PU1.Statuses":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Statuses", "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>");
-                xamlMember.Getter = get_10_PU1_Statuses;
-                xamlMember.Setter = set_10_PU1_Statuses;
-                break;
-            case "OcenaKlientow.Model.Models.Status.Nazwa":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Nazwa", "String");
-                xamlMember.Getter = get_11_Status_Nazwa;
-                xamlMember.Setter = set_11_Status_Nazwa;
-                break;
-            case "OcenaKlientow.Model.Models.Status.ProgDolny":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgDolny", "Int32");
-                xamlMember.Getter = get_12_Status_ProgDolny;
-                xamlMember.Setter = set_12_Status_ProgDolny;
-                break;
-            case "OcenaKlientow.Model.Models.Status.ProgGorny":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgGorny", "Int32");
-                xamlMember.Getter = get_13_Status_ProgGorny;
-                xamlMember.Setter = set_13_Status_ProgGorny;
-                break;
-            case "OcenaKlientow.Model.Models.Status.StatusId":
-                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
-                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "StatusId", "Int32");
-                xamlMember.Getter = get_14_Status_StatusId;
-                xamlMember.Setter = set_14_Status_StatusId;
-                break;
             case "OcenaKlientow.View.PU1.PrzypisanyStatuses":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "PrzypisanyStatuses", "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>");
-                xamlMember.Getter = get_15_PU1_PrzypisanyStatuses;
-                xamlMember.Setter = set_15_PU1_PrzypisanyStatuses;
+                xamlMember.Getter = get_10_PU1_PrzypisanyStatuses;
+                xamlMember.Setter = set_10_PU1_PrzypisanyStatuses;
                 break;
             case "OcenaKlientow.Model.Models.PrzypisanyStatus.BenefitId":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.PrzypisanyStatus");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "BenefitId", "Int32");
-                xamlMember.Getter = get_16_PrzypisanyStatus_BenefitId;
-                xamlMember.Setter = set_16_PrzypisanyStatus_BenefitId;
+                xamlMember.Getter = get_11_PrzypisanyStatus_BenefitId;
+                xamlMember.Setter = set_11_PrzypisanyStatus_BenefitId;
                 break;
             case "OcenaKlientow.Model.Models.PrzypisanyStatus.StatusId":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.PrzypisanyStatus");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "StatusId", "Int32");
-                xamlMember.Getter = get_17_PrzypisanyStatus_StatusId;
-                xamlMember.Setter = set_17_PrzypisanyStatus_StatusId;
+                xamlMember.Getter = get_12_PrzypisanyStatus_StatusId;
+                xamlMember.Setter = set_12_PrzypisanyStatus_StatusId;
                 break;
             case "OcenaKlientow.View.PU1.Pu1ViewModel":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Pu1ViewModel", "OcenaKlientow.ViewModel.Pu1ViewModel");
-                xamlMember.Getter = get_18_PU1_Pu1ViewModel;
-                xamlMember.Setter = set_18_PU1_Pu1ViewModel;
+                xamlMember.Getter = get_13_PU1_Pu1ViewModel;
+                xamlMember.Setter = set_13_PU1_Pu1ViewModel;
+                break;
+            case "OcenaKlientow.View.PU1.Statuses":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Statuses", "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.Status>");
+                xamlMember.Getter = get_14_PU1_Statuses;
+                xamlMember.Setter = set_14_PU1_Statuses;
+                break;
+            case "OcenaKlientow.Model.Models.Status.Nazwa":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Nazwa", "String");
+                xamlMember.Getter = get_15_Status_Nazwa;
+                xamlMember.Setter = set_15_Status_Nazwa;
+                break;
+            case "OcenaKlientow.Model.Models.Status.ProgDolny":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgDolny", "Int32");
+                xamlMember.Getter = get_16_Status_ProgDolny;
+                xamlMember.Setter = set_16_Status_ProgDolny;
+                break;
+            case "OcenaKlientow.Model.Models.Status.ProgGorny":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgGorny", "Int32");
+                xamlMember.Getter = get_17_Status_ProgGorny;
+                xamlMember.Setter = set_17_Status_ProgGorny;
+                break;
+            case "OcenaKlientow.Model.Models.Status.StatusId":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.Model.Models.Status");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "StatusId", "Int32");
+                xamlMember.Getter = get_18_Status_StatusId;
+                xamlMember.Setter = set_18_Status_StatusId;
                 break;
             case "OcenaKlientow.View.PU2.PrawneList":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU2");
