@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
 using OcenaKlientow.View.ListItems;
+using Remotion.Linq.Clauses;
 
 namespace OcenaKlientow.ViewModel
 {
@@ -15,7 +16,7 @@ namespace OcenaKlientow.ViewModel
         CultureInfo culture = new CultureInfo("pt-BR");
 
         private List<Klient> Klients;
-        
+
 
         public Pu2ViewModel()
         {

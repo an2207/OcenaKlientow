@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,6 +23,9 @@ namespace OcenaKlientow.View
         #region Private fields
 
         private readonly List<RodzajBenefitu> TypyBenfitowList;
+        private BenefitListItem currentBenefitListItem;
+
+        private Brush LabelColor;
 
         #endregion
         #region Properties
@@ -41,8 +46,8 @@ namespace OcenaKlientow.View
             InitializeComponent();
 
             Pu1ViewModel = new Pu1ViewModel();
-
             ListaBenefitow = Pu1ViewModel.BenefitListQuery();
+            LabelColor = Search.BorderBrush;
             //ListaBenefitow = db.Benefity.ToList();
             BenefitList.ItemsSource = ListaBenefitow;
             Statuses = Pu1ViewModel.GetStatuses();
@@ -61,7 +66,7 @@ namespace OcenaKlientow.View
         #endregion
         #region Event handlers
 
-        private void Add_OnClick(object sender, RoutedEventArgs e)
+        private async void Add_OnClick(object sender, RoutedEventArgs e)
         {
             var selRodzBen = (RodzajBenefitu)typ.SelectedItem;
             if (CheckValues())
@@ -109,6 +114,19 @@ namespace OcenaKlientow.View
             ChangeLabelsAndInputsOFF();
             Add.Visibility = Visibility.Collapsed;
             ResetLabels();
+            var dialog = new ContentDialog()
+            {
+                Title = "Dodano",
+                MaxWidth = this.ActualWidth,
+                Content = $"Benefit {newBenefit.Nazwa} został dodany."
+            };
+
+
+            dialog.PrimaryButtonText = "OK";
+            dialog.PrimaryButtonClick += delegate {
+            };
+
+            var result = await dialog.ShowAsync();
         }
 
         private void AddNew_OnClick(object sender, RoutedEventArgs e)
@@ -123,6 +141,7 @@ namespace OcenaKlientow.View
         {
             var benefit = (BenefitListItem)BenefitList.SelectedItem;
             if (benefit == null) return;
+            currentBenefitListItem = benefit;
             if (benefit.RodzajId == 2)
             {
                 typValueLabel.Text = "Wartość rabatu*";
@@ -164,6 +183,7 @@ namespace OcenaKlientow.View
             else
                 czerw.IsChecked = false;
             ChangeLabelsAndInputsOFF();
+
         }
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
@@ -171,8 +191,22 @@ namespace OcenaKlientow.View
             Frame.Navigate(typeof(MainPage));
         }
 
-        private void Cancel_OnClick(object sender, RoutedEventArgs e)
+        private async void Cancel_OnClick(object sender, RoutedEventArgs e)
         {
+            var dialog = new ContentDialog()
+            {
+                Title = "Alert",
+                MaxWidth = this.ActualWidth,
+                Content = $"Czy na pewno chcesz odrzucić zmiany?"
+            };
+
+
+            dialog.PrimaryButtonText = "Tak";
+            dialog.SecondaryButtonText = "Nie";
+            dialog.PrimaryButtonClick += delegate {
+            };
+
+            var result = await dialog.ShowAsync();
             Frame.Navigate(typeof(PU1));
         }
 
@@ -332,7 +366,7 @@ namespace OcenaKlientow.View
             ChangeLabelsAndInputsON();
         }
 
-        private void Save_OnClick(object sender, RoutedEventArgs e)
+        private async void Save_OnClick(object sender, RoutedEventArgs e)
         {
             if (CheckValues())
                 return;
@@ -388,6 +422,19 @@ namespace OcenaKlientow.View
                 ChangeLabelsAndInputsOFF();
                 //this.Frame.Navigate(typeof(PU1));
                 ResetLabels();
+                var dialog = new ContentDialog()
+                {
+                    Title = "Zmodyfikowano",
+                    MaxWidth = this.ActualWidth,
+                    Content = $"Benefit {benefit.Nazwa} został edytowany."
+                };
+
+
+                dialog.PrimaryButtonText = "OK";
+                dialog.PrimaryButtonClick += delegate {
+                };
+
+                var result = await dialog.ShowAsync();
             }
         }
 
@@ -476,19 +523,19 @@ namespace OcenaKlientow.View
 
         public void ResetLabels()
         {
-            selName.BorderBrush = new SolidColorBrush(Colors.Black);
+            selName.BorderBrush = LabelColor;
 
-            typ.BorderBrush = new SolidColorBrush(Colors.Black);
+            typ.BorderBrush = LabelColor;
 
-            selWartProc.BorderBrush = new SolidColorBrush(Colors.Black);
+            selWartProc.BorderBrush = LabelColor;
 
-            selDataUaktyw.BorderBrush = new SolidColorBrush(Colors.Black);
+            selDataUaktyw.BorderBrush = LabelColor;
 
-            zloty.BorderBrush = new SolidColorBrush(Colors.Black);
-            zolty.BorderBrush = new SolidColorBrush(Colors.Black);
-            zielony.BorderBrush = new SolidColorBrush(Colors.Black);
-            czerw.BorderBrush = new SolidColorBrush(Colors.Black);
-            pomaran.BorderBrush = new SolidColorBrush(Colors.Black);
+            zloty.BorderBrush = LabelColor;
+            zolty.BorderBrush = LabelColor;
+            zielony.BorderBrush = LabelColor;
+            czerw.BorderBrush = LabelColor;
+            pomaran.BorderBrush = LabelColor;
         }
 
         #endregion
@@ -551,7 +598,7 @@ namespace OcenaKlientow.View
             }
             else
             { 
-                selWartProc.BorderBrush = new SolidColorBrush(Colors.Black);
+                selWartProc.BorderBrush = LabelColor;
             }
         }
     }
