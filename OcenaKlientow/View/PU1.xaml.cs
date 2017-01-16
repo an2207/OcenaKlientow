@@ -23,18 +23,17 @@ namespace OcenaKlientow.View
         #region Private fields
 
         private readonly List<RodzajBenefitu> TypyBenfitowList;
-        private BenefitListItem currentBenefitListItem;
-
-        private Brush LabelColor;
+        private BenefitView _currentBenefitView;
+        
 
         #endregion
         #region Properties
 
-        public List<BenefitListItem> ListaBenefitow { get; set; }
+        public List<BenefitView> ListaBenefitow { get; set; }
 
         public List<PrzypisanyStatus> PrzypisanyStatuses { get; set; }
 
-        public Pu1ViewModel Pu1ViewModel { get; set; }
+        public BenefitViewModel Pu1ViewModel { get; set; }
 
         public List<Status> Statuses { get; set; }
 
@@ -45,9 +44,8 @@ namespace OcenaKlientow.View
         {
             InitializeComponent();
 
-            Pu1ViewModel = new Pu1ViewModel();
+            Pu1ViewModel = new BenefitViewModel();
             ListaBenefitow = Pu1ViewModel.BenefitListQuery();
-            LabelColor = Search.BorderBrush;
             //ListaBenefitow = db.Benefity.ToList();
             BenefitList.ItemsSource = ListaBenefitow;
             Statuses = Pu1ViewModel.GetStatuses();
@@ -118,7 +116,7 @@ namespace OcenaKlientow.View
             {
                 Title = "Dodano",
                 MaxWidth = this.ActualWidth,
-                Content = $"Benefit {newBenefit.Nazwa} został dodany."
+                Content = "ASDASD"
             };
 
 
@@ -139,9 +137,9 @@ namespace OcenaKlientow.View
 
         private void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var benefit = (BenefitListItem)BenefitList.SelectedItem;
+            var benefit = (BenefitView)BenefitList.SelectedItem;
             if (benefit == null) return;
-            currentBenefitListItem = benefit;
+            _currentBenefitView = benefit;
             if (benefit.RodzajId == 2)
             {
                 typValueLabel.Text = "Wartość rabatu*";
@@ -195,26 +193,46 @@ namespace OcenaKlientow.View
         {
             var dialog = new ContentDialog()
             {
-                Title = "Alert",
                 MaxWidth = this.ActualWidth,
-                Content = $"Czy na pewno chcesz odrzucić zmiany?"
+                Content = $"Czy na pewno chcesz odrzucić wprowadzone zmiany?"
             };
 
 
             dialog.PrimaryButtonText = "Tak";
             dialog.SecondaryButtonText = "Nie";
             dialog.PrimaryButtonClick += delegate {
+                                                 if (Save.Visibility == Visibility.Collapsed)
+                                                 {
+                                                        Frame.Navigate(typeof(PU1));
+                                                 }
+                                                 BenefitList_OnSelectionChanged(null, null);
+                                                 
+            };
+            dialog.SecondaryButtonClick += delegate
+                                               {
+                                                   return;
+                                               };
+
+            var result = await dialog.ShowAsync();
+        }
+
+        private async void Delete_OnClick(object sender, RoutedEventArgs e)
+        {
+            var benToDel = (BenefitView)BenefitList.SelectedItem;
+            Pu1ViewModel.DeleteFromBenefitList(benToDel);
+            BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
+            var dialog = new ContentDialog()
+            {
+                MaxWidth = this.ActualWidth,
+                Content = $"Benefit {benToDel.NazwaBenefitu} został usunięty."
+            };
+
+
+            dialog.PrimaryButtonText = "OK";
+            dialog.PrimaryButtonClick += delegate {
             };
 
             var result = await dialog.ShowAsync();
-            Frame.Navigate(typeof(PU1));
-        }
-
-        private void Delete_OnClick(object sender, RoutedEventArgs e)
-        {
-            var benToDel = (BenefitListItem)BenefitList.SelectedItem;
-            Pu1ViewModel.DeleteFromBenefitList(benToDel);
-            BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
         }
 
         //void AddData()
@@ -370,7 +388,7 @@ namespace OcenaKlientow.View
         {
             if (CheckValues())
                 return;
-            var curr = (BenefitListItem)BenefitList.SelectedItem;
+            var curr = (BenefitView)BenefitList.SelectedItem;
             Benefit benefit;
             benefit = Pu1ViewModel.GetBenefit(curr);
 
@@ -447,17 +465,17 @@ namespace OcenaKlientow.View
             }
             if (string.IsNullOrEmpty(IdBenefitu.Text))
             {
-                IEnumerable<BenefitListItem> listTmp = ListaBenefitow.Where(benefit => benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
+                IEnumerable<BenefitView> listTmp = ListaBenefitow.Where(benefit => benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
                 BenefitList.ItemsSource = listTmp;
                 return;
             }
             if (string.IsNullOrEmpty(NazwaBenefitu.Text))
             {
-                IEnumerable<BenefitListItem> listTmp = ListaBenefitow.Where(benefit => benefit.BenefitId.ToString() == IdBenefitu.Text);
+                IEnumerable<BenefitView> listTmp = ListaBenefitow.Where(benefit => benefit.BenefitId.ToString() == IdBenefitu.Text);
                 BenefitList.ItemsSource = listTmp;
                 return;
             }
-            IEnumerable<BenefitListItem> listTmpF = ListaBenefitow.Where(benefit => (benefit.BenefitId.ToString() == IdBenefitu.Text) && benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
+            IEnumerable<BenefitView> listTmpF = ListaBenefitow.Where(benefit => (benefit.BenefitId.ToString() == IdBenefitu.Text) && benefit.NazwaBenefitu.ToLower().Contains(NazwaBenefitu.Text.ToLower()));
             BenefitList.ItemsSource = listTmpF;
         }
 
@@ -523,19 +541,21 @@ namespace OcenaKlientow.View
 
         public void ResetLabels()
         {
-            selName.BorderBrush = LabelColor;
+            var color = opis.BorderBrush;
 
-            typ.BorderBrush = LabelColor;
+            selName.BorderBrush = color;
 
-            selWartProc.BorderBrush = LabelColor;
+            typ.BorderBrush = color;
 
-            selDataUaktyw.BorderBrush = LabelColor;
+            selWartProc.BorderBrush = color;
 
-            zloty.BorderBrush = LabelColor;
-            zolty.BorderBrush = LabelColor;
-            zielony.BorderBrush = LabelColor;
-            czerw.BorderBrush = LabelColor;
-            pomaran.BorderBrush = LabelColor;
+            selDataUaktyw.BorderBrush = color;
+
+            zloty.BorderBrush = color;
+            zolty.BorderBrush = color;
+            zielony.BorderBrush = color;
+            czerw.BorderBrush = color;
+            pomaran.BorderBrush = color;
         }
 
         #endregion
@@ -598,8 +618,13 @@ namespace OcenaKlientow.View
             }
             else
             { 
-                selWartProc.BorderBrush = LabelColor;
+                selWartProc.BorderBrush = opis.BorderBrush;
             }
+        }
+
+        private void Button_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            button.Background = new SolidColorBrush(Colors.GhostWhite);
         }
     }
 }

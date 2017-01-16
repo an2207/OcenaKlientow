@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OcenaKlientow.View.ListItems
 {
-    public class GradeDetails
+    public class OcenaView
     {
 
     }

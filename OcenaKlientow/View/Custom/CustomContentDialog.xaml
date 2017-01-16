@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="OcenaKlientow.CustomContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OcenaKlientow"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="dialog"
+    mc:Ignorable="d">
+    
+
+    <Grid Width="600" Height="400" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="LightSteelBlue" HorizontalAlignment="Left" Height="318" VerticalAlignment="Top" Width="300" Margin="302,0,0,0"/>
+        <Grid Background="Aqua" HorizontalAlignment="Left" Height="318" VerticalAlignment="Top" Width="300">
+            <TextBox x:Name="textBox"  HorizontalAlignment="Left" Margin="33,78,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+            <TextBlock  x:Name="textBlock" HorizontalAlignment="Left" Margin="33,10,0,0" TextWrapping="Wrap" Text="Punkty dodatnie" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Background="NavajoWhite" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="600" Margin="0,318,0,-5"/>
+
+    </Grid>
+</Page>

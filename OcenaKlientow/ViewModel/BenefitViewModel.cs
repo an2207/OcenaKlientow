@@ -10,11 +10,11 @@ using OcenaKlientow.View.ListItems;
 
 namespace OcenaKlientow.ViewModel
 {
-    public class Pu1ViewModel
+    public class BenefitViewModel
     {
 
 
-        public List<BenefitListItem> BenefitListQuery()
+        public List<BenefitView> BenefitListQuery()
         {
 
             using (var db = new OcenaKlientowContext())
@@ -22,7 +22,7 @@ namespace OcenaKlientow.ViewModel
                 var innerJoinQuery =
                from benefit in db.Benefity
                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
-               select new BenefitListItem()
+               select new BenefitView()
                {
                    RodzajId = benefit.RodzajId,
                    BenefitId = benefit.BenefitId,
@@ -40,7 +40,15 @@ namespace OcenaKlientow.ViewModel
 
         }
 
-        public void DeleteFromBenefitList(BenefitListItem benToDel)
+        public Benefit ReadBenefit(int benefitId)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.Benefity.Where(benefit => benefit.BenefitId == benefitId).FirstOrDefault();
+            }
+        }
+
+        public void DeleteFromBenefitList(BenefitView benToDel)
         {
             using (var db = new OcenaKlientowContext())
             {
@@ -90,7 +98,7 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
-        public Benefit GetBenefit(BenefitListItem curr)
+        public Benefit GetBenefit(BenefitView curr)
         {
             using (var db = new OcenaKlientowContext())
             {
@@ -155,7 +163,7 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
-        public List<int> GetCurrentBenefitPrzypisaneStatuses(BenefitListItem benefit)
+        public List<int> GetCurrentBenefitPrzypisaneStatuses(BenefitView benefit)
         {
             using (var db = new OcenaKlientowContext())
             {

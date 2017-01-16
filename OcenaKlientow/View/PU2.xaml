@@ -84,7 +84,7 @@
             <TextBox x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="455,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
             <Button x:Name="CountStatus" Click="CountStatus_OnClick" Content="Przelicz status" HorizontalAlignment="Left" Margin="674,43,0,0" VerticalAlignment="Top" Width="240"/>
             <Button x:Name="GradeDetails"  Click="GradeDetails_OnClick" Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="674,101,0,0" VerticalAlignment="Top" Width="240"/>
-            <Button x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:Name="CountAllStatuses" Click="CountAllStatuses_OnClick" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>
         </Grid>
         <Grid Background="White" HorizontalAlignment="Left" Height="332" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
 

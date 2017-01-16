@@ -7,7 +7,7 @@ using OcenaKlientow.Model.Models;
 
 namespace OcenaKlientow.View.ListItems
 {
-    public class OsobyListItem
+    public class KlientView
     {
         public bool CzyFizyczna { get; set; }
 

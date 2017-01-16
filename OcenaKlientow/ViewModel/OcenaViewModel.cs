@@ -7,25 +7,37 @@ using System.Threading.Tasks;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
 using OcenaKlientow.View.ListItems;
-using Remotion.Linq.Clauses;
 
 namespace OcenaKlientow.ViewModel
 {
-    public class Pu2ViewModel
+    public class OcenaViewModel
     {
         CultureInfo culture = new CultureInfo("pt-BR");
 
-        private List<Klient> Klients;
 
-
-        public Pu2ViewModel()
+        public void GetGradeDetails(KlientView item)
         {
             using (var db = new OcenaKlientowContext())
             {
-                Klients = db.Klienci.ToList();
+                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
+                var detailsQuery =
+               from wyliczenie in db.Wyliczono
+               join ocena in db.Oceny on wyliczenie.OcenaId equals ocena.OcenaId
+               join klient in db.Klienci on ocena.KlientId equals item.KlientId
+               join par in db.Parametry on wyliczenie.ParametrId equals par.ParametrId
+               select new
+               {
+                   SumaPkt = wyliczenie.WartoscWyliczona,
+                   Kredyt = klient.KwotaKredytu,
+                   NazwaPar = par.Nazwa,
+                   WartoscPar = par.Wartosc,
+                   klient.KlientId,
+                   ocena.OcenaId
+               };
+                var lista = detailsQuery.ToList();
+                lista = lista.Where(arg => arg.KlientId == item.KlientId && arg.OcenaId == item.OcenaId).ToList();
             }
         }
-
         int PartialPayment(Klient klient)
         {
 
@@ -219,7 +231,7 @@ namespace OcenaKlientow.ViewModel
                 points = PaymentOnTime(klient);
                 parameters.Add(parId, points);
                 sum += points;
-                int statusId=-1;
+                int statusId = -1;
                 var statusList = db.Statusy.ToList();
                 foreach (Status statuse in statusList)
                 {
@@ -232,14 +244,13 @@ namespace OcenaKlientow.ViewModel
                 {
                     DataCzas = DateTime.Now.ToString("d", culture),
                     KlientId = klient.KlientId,
-                    StatusId = statusId, 
+                    StatusId = statusId,
                     SumaPkt = sum
                 });
                 db.SaveChanges();
-               // db.Wyliczono.
                 var currKlientOcenyList = db.Oceny.Where(ocena => ocena.KlientId.Equals(klient.KlientId)).OrderByDescending(ocena => ocena.OcenaId).ToList();
                 lastOcena = currKlientOcenyList[0];
-               
+
 
             }
             foreach (KeyValuePair<int, int> keyValuePair in parameters)
@@ -255,7 +266,7 @@ namespace OcenaKlientow.ViewModel
                     db.Wyliczono.Add(wyliczenie);
                     db.SaveChanges();
                 }
-                
+
 
             }
 
@@ -300,142 +311,25 @@ namespace OcenaKlientow.ViewModel
             return 0;
         }
 
-        public List<OsobyListItem> OsobyPrawneListQuery()
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var statusyQuery =
-                from klient in db.Klienci where !klient.CzyFizyczna
-                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId 
-                join status in db.Statusy on  ocena.StatusId equals status.StatusId
-                select new OsobyListItem()
-                {
-                    
-                        Nazwa = klient.Nazwa,
-                        CzyFizyczna = klient.CzyFizyczna,
-                        KlientId = klient.KlientId,
-                        KwotaKredytu = klient.KwotaKredytu,
-                        NIP = klient.NIP,
-                    
-                        OcenaId = ocena.OcenaId,
-                        DataCzas = ocena.DataCzas,
-                        SumaPkt = ocena.SumaPkt,
-                    
-                        NazwaStatusu = status.Nazwa,
-                        StatusId = status.StatusId,
-                        ProgDolny = status.ProgDolny,
-                        ProgGorny = status.ProgGorny
-                    
-                    
-                };
-                var lista = statusyQuery.ToList();
-                var secList = lista;
-                var filtered = statusyQuery.ToList();
-                foreach (OsobyListItem osobyListItem in filtered)
-                {
-                    foreach (OsobyListItem listItem in filtered)
-                    {
-                        if (listItem.KlientId == osobyListItem.KlientId && listItem.OcenaId < osobyListItem.OcenaId)
-                        {
-                            secList = secList.Where(item => item.OcenaId!=listItem.OcenaId).ToList();
-                        }
-                    }
-                }
-                return secList.OrderBy(item => item.KlientId).ToList();
-            }
-            
-        }
-
-        public List<OsobyListItem> OsobyFizyczneListQuery()
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var statusyQuery =
-                from klient in db.Klienci
-                where klient.CzyFizyczna 
-                join ocena in db.Oceny on klient.KlientId equals ocena.KlientId
-                join status in db.Statusy on ocena.StatusId equals status.StatusId
-                select new OsobyListItem()
-                {
-                    
-                        Nazwisko = klient.Nazwisko,
-                        Imie = klient.Imie,
-                        DrugieNazwisko = klient.DrugieNazwisko,
-                        DrugieImie = klient.DrugieImie,
-                        CzyFizyczna = klient.CzyFizyczna,
-                        KlientId = klient.KlientId,
-                        KwotaKredytu = klient.KwotaKredytu,
-                        PESEL= klient.PESEL,
-                    
-                        OcenaId = ocena.OcenaId,
-                        DataCzas = ocena.DataCzas,
-                        SumaPkt = ocena.SumaPkt,
-                    
-                        ProgDolny = status.ProgDolny,
-                        ProgGorny = status.ProgGorny,
-                        NazwaStatusu = status.Nazwa
-                    
-
-                };
-                var lista = statusyQuery.ToList();
-                var secList = lista;
-                var filtered = statusyQuery.ToList();
-                foreach (OsobyListItem osobyListItem in filtered)
-                {
-                    foreach (OsobyListItem listItem in filtered)
-                    {
-                        if (listItem.KlientId == osobyListItem.KlientId && listItem.OcenaId < osobyListItem.OcenaId)
-                        {
-                            secList = secList.Where(item => item.OcenaId != listItem.OcenaId).ToList();
-                        }
-                    }
-                }
-                return secList.OrderBy(item => item.KlientId).ToList();
-            }
-
-        }
-
         public void CountStatus(Klient klient)
         {
             AssignGrade(klient);
-            
+
         }
 
-        public void CoundAllGrades(List<Klient> listaKlients)
+        public void CoundAllGrades()
         {
+            List<Klient> listaKlients;
+
+            using (var db = new OcenaKlientowContext())
+            {
+                listaKlients = db.Klienci.ToList();
+            }
             foreach (Klient listaKlient in listaKlients)
             {
                 CountStatus(listaKlient);
             }
         }
 
-        public Klient GetKlient(int klientId)
-        {
-            using (var db =new OcenaKlientowContext())
-            {
-                return db.Klienci.Where(klient => klient.KlientId == klientId).FirstOrDefault();
-            }
-        }
-
-        public void GetGradeDetails(OsobyListItem item)
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
-                var detailsQuery =
-               from wyliczenie in db.Wyliczono
-               join ocena in db.Oceny on wyliczenie.OcenaId equals ocena.OcenaId
-               join klient in db.Klienci on ocena.KlientId equals item.KlientId
-               join par in db.Parametry on wyliczenie.ParametrId equals par.ParametrId
-               select new
-               {
-                   SumaPkt = wyliczenie.WartoscWyliczona, Kredyt = klient.KwotaKredytu,
-                   NazwaPar = par.Nazwa, WartoscPar= par.Wartosc, klient.KlientId, ocena.OcenaId
-               };
-                var lista = detailsQuery.ToList();
-                lista =lista.Where(arg => arg.KlientId == item.KlientId && arg.OcenaId == item.OcenaId).ToList();
-            }
-        }
     }
-
 }

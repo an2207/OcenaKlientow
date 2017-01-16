@@ -29,28 +29,31 @@ namespace OcenaKlientow.View
     public sealed partial class PU2 : Page
     {
 
-        private List<OsobyListItem> _prawneList;
+        private List<KlientView> _prawneList;
 
-        private List<OsobyListItem> _fizyczneList;
+        private List<KlientView> _fizyczneList;
 
-        private Pu2ViewModel _viewModel;
+        private KlientViewModel _viewModel;
 
-        private OsobyListItem selectedFromBothListItem;
+        private KlientView selectedFromBothListItem;
+
+        private OcenaViewModel _ocenaViewModel;
         public PU2()
         {
-            Pu2ViewModel = new Pu2ViewModel();
-            Pu2ViewModel.OsobyPrawneListQuery();
+            KlientViewModel = new KlientViewModel();
+            OcenaVM = new OcenaViewModel();
+            KlientViewModel.OsobyPrawneListQuery();
             
             this.InitializeComponent();
-            FizyczneList = Pu2ViewModel.OsobyFizyczneListQuery();
-            PrawneList = Pu2ViewModel.OsobyPrawneListQuery();
+            FizyczneList = KlientViewModel.OsobyFizyczneListQuery();
+            PrawneList = KlientViewModel.OsobyPrawneListQuery();
             OsobyPrawne.ItemsSource = PrawneList;
             OsobyFizyczne.ItemsSource = FizyczneList;
             
 
         }
 
-        public List<OsobyListItem> PrawneList
+        public List<KlientView> PrawneList
         {
             get
             {
@@ -62,7 +65,7 @@ namespace OcenaKlientow.View
             }
         }
 
-        public List<OsobyListItem> FizyczneList
+        public List<KlientView> FizyczneList
         {
             get
             {
@@ -74,7 +77,7 @@ namespace OcenaKlientow.View
             }
         }
 
-        public Pu2ViewModel Pu2ViewModel
+        public KlientViewModel KlientViewModel
         {
             get
             {
@@ -86,7 +89,18 @@ namespace OcenaKlientow.View
             }
         }
 
-      
+        public OcenaViewModel OcenaVM
+        {
+            get
+            {
+                return _ocenaViewModel;
+            }
+            set
+            {
+                _ocenaViewModel = value;
+            }
+        }
+
         private void SearchFizyczna_OnClick(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(IdFizyczna.Text) && string.IsNullOrEmpty(NazwaFizyczna.Text))
@@ -135,7 +149,7 @@ namespace OcenaKlientow.View
 
         private void OsobyPrawne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var currPrawna = (OsobyListItem)OsobyPrawne.SelectedItem;
+            var currPrawna = (KlientView)OsobyPrawne.SelectedItem;
             if (currPrawna != null)
             {
                 StatusNameBox.Text = currPrawna.NazwaStatusu;
@@ -148,7 +162,7 @@ namespace OcenaKlientow.View
 
         private void OsobyFizyczne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var currPrawna = (OsobyListItem)OsobyFizyczne.SelectedItem;
+            var currPrawna = (KlientView)OsobyFizyczne.SelectedItem;
             if (currPrawna != null)
             {
                 StatusNameBox.Text = currPrawna.NazwaStatusu;
@@ -163,8 +177,8 @@ namespace OcenaKlientow.View
         {
             if (selectedFromBothListItem != null)
             {
-                var klient = Pu2ViewModel.GetKlient(selectedFromBothListItem.KlientId);
-                Pu2ViewModel.CountStatus(klient);
+                var klient = KlientViewModel.ReadKlient(selectedFromBothListItem.KlientId);
+                OcenaVM.CountStatus(klient);
                 var name = selectedFromBothListItem.CzyFizyczna ? selectedFromBothListItem.Nazwisko : selectedFromBothListItem.Nazwa;
                 var dialog = new ContentDialog()
                 {
@@ -179,11 +193,11 @@ namespace OcenaKlientow.View
                 };
                 if (selectedFromBothListItem.CzyFizyczna)
                 {
-                    OsobyFizyczne.ItemsSource = Pu2ViewModel.OsobyFizyczneListQuery();
+                    OsobyFizyczne.ItemsSource = KlientViewModel.OsobyFizyczneListQuery();
                 }
                 else
                 {
-                    OsobyPrawne.ItemsSource = Pu2ViewModel.OsobyPrawneListQuery();
+                    OsobyPrawne.ItemsSource = KlientViewModel.OsobyPrawneListQuery();
                 }
                 var result = await dialog.ShowAsync();
             }
@@ -195,7 +209,7 @@ namespace OcenaKlientow.View
         {
             if (selectedFromBothListItem != null)
             {
-                Pu2ViewModel.GetGradeDetails(selectedFromBothListItem);
+                OcenaVM.GetGradeDetails(selectedFromBothListItem);
 
 
                 var dialog = new ContentDialog()
@@ -217,6 +231,26 @@ namespace OcenaKlientow.View
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private async void CountAllStatuses_OnClick(object sender, RoutedEventArgs e)
+        {
+            OcenaVM.CoundAllGrades();
+            OsobyFizyczne.ItemsSource = KlientViewModel.OsobyFizyczneListQuery();
+            OsobyPrawne.ItemsSource = KlientViewModel.OsobyPrawneListQuery();
+
+            var dialog = new ContentDialog()
+            {
+                MaxWidth = this.ActualWidth,
+                Content = $"Przeliczono wszystkie statusy!"
+            };
+
+
+            dialog.PrimaryButtonText = "OK";
+            dialog.PrimaryButtonClick += delegate {
+            };
+
+            var result = await dialog.ShowAsync();
         }
     }
 }

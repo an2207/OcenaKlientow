@@ -46,7 +46,7 @@ namespace OcenaKlientow
                 var innerJoinQuery =
                 from benefit in db.Benefity
                 join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
-                select new BenefitListItem()
+                select new BenefitView()
                 {
                     RodzajId = benefit.RodzajId,
                     BenefitId = benefit.BenefitId,

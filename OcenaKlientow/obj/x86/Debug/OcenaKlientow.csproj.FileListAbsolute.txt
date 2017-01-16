@@ -1542,3 +1542,8 @@ C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKli
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\View\Custom\CustomContentDialog.xbf
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.g.i.cs
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.g.cs
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.xaml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.xbf
