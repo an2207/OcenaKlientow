@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-16T15:48:14.787</Modified>
+      <Modified>2017-01-16T16:39:01.524</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\OcenaKlientow.exe">
       <PackagePath>entrypoint\OcenaKlientow.exe</PackagePath>
-      <Modified>2017-01-16T15:48:14.370</Modified>
+      <Modified>2017-01-16T16:38:58.816</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\OcenaKlientow.exe.config">
       <PackagePath>OcenaKlientow.exe.config</PackagePath>
@@ -661,7 +661,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\Core\OcenaKlientow.exe">
       <PackagePath>OcenaKlientow.exe</PackagePath>
-      <Modified>2017-01-16T15:48:14.782</Modified>
+      <Modified>2017-01-16T16:39:01.516</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
