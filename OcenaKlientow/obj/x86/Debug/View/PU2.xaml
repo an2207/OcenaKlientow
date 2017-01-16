@@ -17,11 +17,11 @@
         </Grid>
         <Grid Background="White" HorizontalAlignment="Left" Height="332" Margin="0,140,0,0" VerticalAlignment="Top" Width="636">
             <Grid Background="White" Height="92" VerticalAlignment="Top" Margin="0,-92,0,0" HorizontalAlignment="Left" Width="636">
-                <TextBox x:Name="IdPrawna" PlaceholderText="ID" HorizontalAlignment="Left" Margin="36,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="119" RenderTransformOrigin="0.092,0.641"/>
-                <TextBox x:Name="NazwaPrawna" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
-                <Button x:Name="SearchPrawna" Click="SearchPrawna_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
+                <TextBox x:ConnectionId='17' x:Name="IdPrawna" PlaceholderText="ID" HorizontalAlignment="Left" Margin="36,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="119" RenderTransformOrigin="0.092,0.641"/>
+                <TextBox x:ConnectionId='18' x:Name="NazwaPrawna" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
+                <Button x:ConnectionId='19' x:Name="SearchPrawna"                              Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
             </Grid>
-            <ListView x:Name="OsobyPrawne" Background="White" Margin="38,0,36,57"  IsItemClickEnabled="True" SelectionChanged="OsobyPrawne_OnSelectionChanged" >
+            <ListView x:ConnectionId='12' x:Name="OsobyPrawne" Background="White" Margin="38,0,36,57"  IsItemClickEnabled="True"                                                   >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -68,27 +68,27 @@
                 <Grid Height="100" Width="100"/>
             </ListView>
             <Grid Background="White" Height="92" VerticalAlignment="Top" Margin="636,-92,-641,0" HorizontalAlignment="Left" Width="641">
-                <TextBox x:Name="IdFizyczna" PlaceholderText="ID" HorizontalAlignment="Left" Margin="37,29,0,0"  TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="118" RenderTransformOrigin="0.092,0.641"/>
-                <TextBox x:Name="NazwaFizyczna" PlaceholderText="Nazwisko" HorizontalAlignment="Left" Margin="185,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
-                <Button x:Name="SearchFizyczna" Click="SearchFizyczna_OnClick" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
-                <Button x:Name="button" Content="x" Click="Button_OnClick" Background="GhostWhite"  HorizontalAlignment="Left" Margin="578,-47,0,0" VerticalAlignment="Top" Height="44" Width="58"  FontSize="28" RenderTransformOrigin="1.775,0.069" />
+                <TextBox x:ConnectionId='13' x:Name="IdFizyczna" PlaceholderText="ID" HorizontalAlignment="Left" Margin="37,29,0,0"  TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="118" RenderTransformOrigin="0.092,0.641"/>
+                <TextBox x:ConnectionId='14' x:Name="NazwaFizyczna" PlaceholderText="Nazwisko" HorizontalAlignment="Left" Margin="185,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
+                <Button x:ConnectionId='15' x:Name="SearchFizyczna"                                Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,29,0,0" Width="112"/>
+                <Button x:ConnectionId='16' x:Name="button" Content="x"                        Background="GhostWhite"  HorizontalAlignment="Left" Margin="578,-47,0,0" VerticalAlignment="Top" Height="44" Width="58"  FontSize="28" RenderTransformOrigin="1.775,0.069" />
             </Grid>
         </Grid>
         <Grid Background="White" BorderThickness="3" BorderBrush="LightGray" HorizontalAlignment="Left" Height="238" Margin="46,472,0,0" VerticalAlignment="Top" Width="1174">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="14,14,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142" FontWeight="Medium" FontSize="17"/>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="289,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="289,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
-            <TextBlock x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="289,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
-            <TextBox x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="455,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <Button x:Name="CountStatus" Click="CountStatus_OnClick" Content="Przelicz status" HorizontalAlignment="Left" Margin="674,43,0,0" VerticalAlignment="Top" Width="240"/>
-            <Button x:Name="GradeDetails"  Click="GradeDetails_OnClick" Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="674,101,0,0" VerticalAlignment="Top" Width="240"/>
-            <Button x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>
+            <TextBlock x:ConnectionId='2' x:Name="textBlock" HorizontalAlignment="Left" Margin="14,14,0,0" TextWrapping="Wrap" Text="Szczegóły oceny" VerticalAlignment="Top" Height="28" Width="142" FontWeight="Medium" FontSize="17"/>
+            <TextBlock x:ConnectionId='3' x:Name="textBlock1" HorizontalAlignment="Left" Margin="289,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
+            <TextBlock x:ConnectionId='4' x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="289,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
+            <TextBlock x:ConnectionId='5' x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="289,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
+            <TextBox x:ConnectionId='6' x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:ConnectionId='7' x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:ConnectionId='8' x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="455,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <Button x:ConnectionId='9' x:Name="CountStatus"                             Content="Przelicz status" HorizontalAlignment="Left" Margin="674,43,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:ConnectionId='10' x:Name="GradeDetails"                               Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="674,101,0,0" VerticalAlignment="Top" Width="240"/>
+            <Button x:ConnectionId='11' x:Name="CountAllStatuses" Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>
         </Grid>
         <Grid Background="White" HorizontalAlignment="Left" Height="332" Margin="636,140,0,0" VerticalAlignment="Top" Width="644">
 
-            <ListView x:Name="OsobyFizyczne" Background="White" Margin="38,0,36,57" IsItemClickEnabled="True" SelectionChanged="OsobyFizyczne_OnSelectionChanged" >
+            <ListView x:ConnectionId='1' x:Name="OsobyFizyczne" Background="White" Margin="38,0,36,57" IsItemClickEnabled="True"                                                     >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
@@ -138,3 +138,4 @@
 
     </Grid>
 </Page>
+

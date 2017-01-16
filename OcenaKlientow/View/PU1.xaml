@@ -14,6 +14,7 @@
                     <Run Text="Przeglądaj benefity"/>
                 </Paragraph>
             </RichTextBlock>
+            <Button x:Name="button"  Background="GhostWhite" Content="x" HorizontalAlignment="Left" Margin="1192,0,0,0" VerticalAlignment="Top" Height="50" Width="78" Click="Button_OnClick" FontSize="28"/>
         </Grid>
         <Grid Background="White" HorizontalAlignment="Left" Height="570" Margin="0,140,0,0" VerticalAlignment="Top" Width="614">
             <Grid Background="White" Height="92" VerticalAlignment="Top" Margin="0,-92,0,0" HorizontalAlignment="Left" Width="614">

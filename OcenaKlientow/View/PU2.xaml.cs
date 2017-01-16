@@ -308,5 +308,10 @@ namespace OcenaKlientow.View
                 var result = await dialog.ShowAsync();
             }
         }
+
+        private void Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }

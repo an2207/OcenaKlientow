@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +28,8 @@ namespace OcenaKlientow.View
         public MainPage()
         {
             this.InitializeComponent();
+            ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -35,29 +38,7 @@ namespace OcenaKlientow.View
                // Blogs.ItemsSource = db.Platnosci.ToList();
             }
         }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var blog = new Platnosc() { DataWymag = NewBlogUrl.Text };
-                db.Platnosci.Add(blog);
-                db.SaveChanges();
-
-                Blogs.ItemsSource = db.Platnosci.ToList();
-            }
-        }
-
-        private void Remove_All(object sender, RoutedEventArgs e)
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-               var lista = db.Platnosci.Where(platnosc => platnosc.DataWymag != "123");
-                db.Platnosci.RemoveRange(lista);
-                db.SaveChanges();
-                Blogs.ItemsSource = db.Platnosci.ToList();
-            }
-        }
+        
 
         private void Pu2_OnClick(object sender, RoutedEventArgs e)
         {

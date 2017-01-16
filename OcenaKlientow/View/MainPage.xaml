@@ -10,21 +10,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBox Name="NewBlogUrl"></TextBox>
-            <Button Click="Add_Click">Add</Button>
-            <Button Click="Remove_All">Usun wszystko</Button>
-            <ListView Name="Blogs">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding DataWymag}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+          
             <Grid Height="200">
-                <Button x:Name="pu1" Content="PU1" Click="Pu1_OnClick" HorizontalAlignment="Left" Height="122" Margin="438,0,0,0" Width="404"/>
+                <Button x:Name="pu1" Content="Przeglądaj benefity" Click="Pu1_OnClick" HorizontalAlignment="Left" Height="122" Margin="438,0,0,0" Width="404"/>
             </Grid>
             <Grid Height="200">
-                <Button x:Name="pu2" Content="PU2" Click="Pu2_OnClick" HorizontalAlignment="Left" Height="126" Margin="438,0,0,0" Width="404"/>
+                <Button x:Name="pu2" Content="Przeglądanie klientów" Click="Pu2_OnClick" HorizontalAlignment="Left" Height="126" Margin="438,0,0,0" Width="404"/>
             </Grid>
         </StackPanel>
     </Grid>

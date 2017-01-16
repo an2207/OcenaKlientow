@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -43,6 +44,7 @@ namespace OcenaKlientow.View
         public PU1()
         {
             this.InitializeComponent();
+          
             Pu1ViewModel = new Pu1ViewModel();
             using (var db = new OcenaKlientowContext())
             {
@@ -630,6 +632,11 @@ namespace OcenaKlientow.View
         private void selName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
