@@ -328,8 +328,19 @@ namespace OcenaKlientow.ViewModel
                     
                 };
                 var lista = statusyQuery.ToList();
-                var test =lista.GroupBy(item => item.KlientId);
-                return lista;
+                var secList = lista;
+                var filtered = statusyQuery.ToList();
+                foreach (OsobyListItem osobyListItem in filtered)
+                {
+                    foreach (OsobyListItem listItem in filtered)
+                    {
+                        if (listItem.KlientId == osobyListItem.KlientId && listItem.OcenaId < osobyListItem.OcenaId)
+                        {
+                            secList = secList.Where(item => item.OcenaId!=listItem.OcenaId).ToList();
+                        }
+                    }
+                }
+                return secList.OrderBy(item => item.KlientId).ToList();
             }
             
         }
@@ -340,7 +351,7 @@ namespace OcenaKlientow.ViewModel
             {
                 var statusyQuery =
                 from klient in db.Klienci
-                where klient.CzyFizyczna
+                where klient.CzyFizyczna 
                 join ocena in db.Oceny on klient.KlientId equals ocena.KlientId
                 join status in db.Statusy on ocena.StatusId equals status.StatusId
                 select new OsobyListItem()
@@ -365,7 +376,20 @@ namespace OcenaKlientow.ViewModel
                     
 
                 };
-                return statusyQuery.ToList();
+                var lista = statusyQuery.ToList();
+                var secList = lista;
+                var filtered = statusyQuery.ToList();
+                foreach (OsobyListItem osobyListItem in filtered)
+                {
+                    foreach (OsobyListItem listItem in filtered)
+                    {
+                        if (listItem.KlientId == osobyListItem.KlientId && listItem.OcenaId < osobyListItem.OcenaId)
+                        {
+                            secList = secList.Where(item => item.OcenaId != listItem.OcenaId).ToList();
+                        }
+                    }
+                }
+                return secList.OrderBy(item => item.KlientId).ToList();
             }
 
         }
@@ -392,12 +416,24 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
-        public void GetGradeDetails(int ocenaId)
+        public void GetGradeDetails(OsobyListItem item)
         {
             using (var db = new OcenaKlientowContext())
             {
-                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == ocenaId).ToList();
+                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
                 //joina ładnego z nazwami Parametrów i klientami
+                var detailsQuery =
+               from wyliczenie in db.Wyliczono
+               join ocena in db.Oceny on wyliczenie.OcenaId equals ocena.OcenaId
+               join klient in db.Klienci on ocena.KlientId equals item.KlientId
+               join par in db.Parametry on wyliczenie.ParametrId equals par.ParametrId
+               select new
+               {
+                   SumaPkt = wyliczenie.WartoscWyliczona, Kredyt = klient.KwotaKredytu,
+                   NazwaPar = par.Nazwa, WartoscPar= par.Wartosc, klient.KlientId, ocena.OcenaId
+               };
+                var lista = detailsQuery.ToList();
+                lista =lista.Where(arg => arg.KlientId == item.KlientId && arg.OcenaId == item.OcenaId).ToList();
             }
         }
     }

@@ -272,18 +272,40 @@ namespace OcenaKlientow.View
                 dialog.PrimaryButtonText = "OK";
                 dialog.PrimaryButtonClick += delegate {
                 };
-
+                if (selectedFromBothListItem.CzyFizyczna)
+                {
+                    OsobyFizyczne.ItemsSource = Pu2ViewModel.OsobyFizyczneListQuery();
+                }
+                else
+                {
+                    OsobyPrawne.ItemsSource = Pu2ViewModel.OsobyPrawneListQuery();
+                }
                 var result = await dialog.ShowAsync();
             }
            
 
         }
 
-        private void GradeDetails_OnClick(object sender, RoutedEventArgs e)
+        private async void GradeDetails_OnClick(object sender, RoutedEventArgs e)
         {
             if (selectedFromBothListItem != null)
             {
-                Pu2ViewModel.GetGradeDetails(selectedFromBothListItem.OcenaId);
+                Pu2ViewModel.GetGradeDetails(selectedFromBothListItem);
+
+
+                var dialog = new ContentDialog()
+                {
+                    Title = "Szczegóły",
+                    MaxWidth = this.ActualWidth,
+                    Content = $"Punkty dodatnie:\n Płatność na czas\n10 punktów\nPłatność częściowa\n5 punktóws"
+                };
+
+
+                dialog.PrimaryButtonText = "OK";
+                dialog.PrimaryButtonClick += delegate {
+                };
+
+                var result = await dialog.ShowAsync();
             }
         }
     }
