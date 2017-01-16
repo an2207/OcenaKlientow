@@ -46,21 +46,20 @@ namespace OcenaKlientow.View
             this.InitializeComponent();
           
             Pu1ViewModel = new Pu1ViewModel();
-            using (var db = new OcenaKlientowContext())
-            {
+            
 
                 ListaBenefitow = Pu1ViewModel.BenefitListQuery();
                 //ListaBenefitow = db.Benefity.ToList();
                 BenefitList.ItemsSource = ListaBenefitow;
-                Statuses = db.Statusy.ToList();
-                TypyBenfitowList = db.RodzajeBenefitow.ToList();
+                Statuses = Pu1ViewModel.GetStatuses();
+                TypyBenfitowList = Pu1ViewModel.GetBenefitTypes();
                 typ.ItemsSource = TypyBenfitowList;
                 
                 //PrzypisanyStatuses = db.PrzypisaneStatusy.ToList();
                 //ListaBenefitow = new List<Benefit>();
                 // Statuses = new List<Status>();
                 // PrzypisanyStatuses = new List<PrzypisanyStatus>();
-            }
+            
                 
             //AddData();
           // AddStatuses();
@@ -325,11 +324,8 @@ namespace OcenaKlientow.View
             selDataUaktyw.Text = benefit.DataUaktyw;
             selDataZakon.Text = benefit.DataZakon;
             opis.Text = benefit.Opis ?? "BRAK";
-            List<int> currBenefitStatusy;
-            using (var db = new OcenaKlientowContext())
-            {
-                currBenefitStatusy = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefit.BenefitId).Select(status => status.StatusId).ToList();
-            }
+            List<int> currBenefitStatusy = Pu1ViewModel.GetCurrentBenefitPrzypisaneStatuses(benefit);
+            
             
             if (currBenefitStatusy.Contains(5))
             {
@@ -378,9 +374,7 @@ namespace OcenaKlientow.View
         {
             var curr =(BenefitListItem) BenefitList.SelectedItem;
             Benefit benefit;
-            using (var db = new OcenaKlientowContext())
-            {
-                benefit = db.Benefity.Where(benefit1 => benefit1.BenefitId == curr.BenefitId).FirstOrDefault();
+            benefit= Pu1ViewModel.GetBenefit(curr);
 
                 if (benefit != null)
                 {
@@ -403,50 +397,49 @@ namespace OcenaKlientow.View
                     benefit.DataZakon = selDataZakon.Text;
                     if ((bool)zloty.IsChecked)
                     {
-                        AddStatusToBenefit(benefit, "ZŁOTY");
+                        Pu1ViewModel.AddStatusToBenefit(benefit, "ZŁOTY");
                     }
                     else
                     {
-                        DeleteStatusFromBenefit(benefit, "ZŁOTY");
+                        Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZŁOTY");
                     }
 
                     if ((bool)zolty.IsChecked)
                     {
-                        AddStatusToBenefit(benefit, "ŻÓŁTY");
+                        Pu1ViewModel.AddStatusToBenefit(benefit, "ŻÓŁTY");
                     }
                     else
                     {
-                        DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
+                        Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
                     }
 
                     if ((bool)zielony.IsChecked)
                     {
-                        AddStatusToBenefit(benefit, "ZIELONY");
+                        Pu1ViewModel.AddStatusToBenefit(benefit, "ZIELONY");
                     }
                     else
                     {
-                        DeleteStatusFromBenefit(benefit, "ZIELONY");
+                        Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZIELONY");
                     }
 
                     if ((bool)pomaran.IsChecked)
                     {
-                        AddStatusToBenefit(benefit, "POMARAŃCZOWY");
+                        Pu1ViewModel.AddStatusToBenefit(benefit, "POMARAŃCZOWY");
                     }
                     else
                     {
-                        DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
+                        Pu1ViewModel.DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
                     }
                     if ((bool)czerw.IsChecked)
                     {
-                        AddStatusToBenefit(benefit, "CZERWONY");
+                        Pu1ViewModel.AddStatusToBenefit(benefit, "CZERWONY");
                     }
                     else
                     {
-                        DeleteStatusFromBenefit(benefit, "CZERWONY");
+                        Pu1ViewModel.DeleteStatusFromBenefit(benefit, "CZERWONY");
                     }
 
-                    db.SaveChanges();
-                }
+                    Pu1ViewModel.UpdateBenefit(benefit);
                 BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
                 ChangeLabelsAndInputsOFF();
                 //this.Frame.Navigate(typeof(PU1));
@@ -454,21 +447,7 @@ namespace OcenaKlientow.View
             }
         }
 
-        private void DeleteStatusFromBenefit(Benefit benefit, string name)
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
-                //var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.Benefit.BenefitId == benefit.BenefitId && status.StatusId == status1.Status.StatusId);
-                if (przypisanyStatus == null)
-                {
-                    return;
-                }
-                db.PrzypisaneStatusy.Remove(przypisanyStatus);
-                db.SaveChanges();
-            }
-        }
+       
 
         private void Cancel_OnClick(object sender, RoutedEventArgs e)
         {
@@ -491,24 +470,7 @@ namespace OcenaKlientow.View
             
         }
 
-        void AddStatusToBenefit(Benefit benefit, string name)
-        {
-            using (var db = new OcenaKlientowContext())
-            {
-                var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
-                if (przypisanyStatus==null)
-                {
-                    db.PrzypisaneStatusy.Add(new PrzypisanyStatus()
-                    {
-                        BenefitId = benefit.BenefitId,
-                        StatusId = status.StatusId
-                    });
-                    db.SaveChanges();
-                }
-            }
-
-        }
+       
 
        
 
@@ -563,10 +525,9 @@ namespace OcenaKlientow.View
         {
             var selRodzBen = (RodzajBenefitu)typ.SelectedItem;
 
-            using (var db = new OcenaKlientowContext())
-            {
-                var idRabat = db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Rabat")).FirstOrDefault();
-                var idTermin = db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Wydłużony termin")).FirstOrDefault();
+            
+                var idRabat = Pu1ViewModel.GetRabatId();
+                var idTermin = Pu1ViewModel.GetTerminId();
                 var newBenefit = new Benefit()
                 {
                     Nazwa = selName.Text,
@@ -577,56 +538,56 @@ namespace OcenaKlientow.View
                     LiczbaDni = selRodzBen.Nazwa == "Rabat" ? 0 : Int32.Parse(selWartProc.Text),
                     Opis = opis.Text
                 };
-                db.Benefity.Add(newBenefit);
-                db.SaveChanges();
+                Pu1ViewModel.AddNewBenefit(newBenefit);
+               
                 if ((bool)zloty.IsChecked)
                 {
-                    AddStatusToBenefit(newBenefit, "ZŁOTY");
+                    Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZŁOTY");
                 }
                 else
                 {
-                    DeleteStatusFromBenefit(newBenefit, "ZŁOTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZŁOTY");
                 }
 
                 if ((bool)zolty.IsChecked)
                 {
-                    AddStatusToBenefit(newBenefit, "ŻÓŁTY");
+                    Pu1ViewModel.AddStatusToBenefit(newBenefit, "ŻÓŁTY");
                 }
                 else
                 {
-                    DeleteStatusFromBenefit(newBenefit, "ŻÓŁTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ŻÓŁTY");
                 }
 
                 if ((bool)zielony.IsChecked)
                 {
-                    AddStatusToBenefit(newBenefit, "ZIELONY");
+                    Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZIELONY");
                 }
                 else
                 {
-                    DeleteStatusFromBenefit(newBenefit, "ZIELONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZIELONY");
                 }
 
                 if ((bool)pomaran.IsChecked)
                 {
-                    AddStatusToBenefit(newBenefit, "POMARAŃCZOWY");
+                    Pu1ViewModel.AddStatusToBenefit(newBenefit, "POMARAŃCZOWY");
                 }
                 else
                 {
-                    DeleteStatusFromBenefit(newBenefit, "POMARAŃCZOWY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "POMARAŃCZOWY");
                 }
                 if ((bool)czerw.IsChecked)
                 {
-                    AddStatusToBenefit(newBenefit, "CZERWONY");
+                    Pu1ViewModel.AddStatusToBenefit(newBenefit, "CZERWONY");
                 }
                 else
                 {
-                    DeleteStatusFromBenefit(newBenefit, "CZERWONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "CZERWONY");
                 }
 
                 BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
                 ChangeLabelsAndInputsOFF();
                 Add.Visibility = Visibility.Collapsed;
-            }
+            
         }
 
         private void selName_TextChanged(object sender, TextChangedEventArgs e)

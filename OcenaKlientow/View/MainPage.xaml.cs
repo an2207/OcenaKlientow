@@ -33,10 +33,6 @@ namespace OcenaKlientow.View
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var db = new OcenaKlientowContext())
-            {
-               // Blogs.ItemsSource = db.Platnosci.ToList();
-            }
         }
         
 

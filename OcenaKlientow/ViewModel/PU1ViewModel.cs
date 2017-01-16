@@ -56,5 +56,111 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        public void AddStatusToBenefit(Benefit benefit, string name)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
+                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
+                if (przypisanyStatus == null)
+                {
+                    db.PrzypisaneStatusy.Add(new PrzypisanyStatus()
+                    {
+                        BenefitId = benefit.BenefitId,
+                        StatusId = status.StatusId
+                    });
+                    db.SaveChanges();
+                }
+            }
+
+        }
+
+        public void DeleteStatusFromBenefit(Benefit benefit, string name)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
+                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
+                if (przypisanyStatus == null)
+                {
+                    return;
+                }
+                db.PrzypisaneStatusy.Remove(przypisanyStatus);
+                db.SaveChanges();
+            }
+        }
+
+        public Benefit GetBenefit(BenefitListItem curr)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.Benefity.Where(benefit1 => benefit1.BenefitId == curr.BenefitId).FirstOrDefault();
+            }
+        }
+
+        public void UpdateBenefit(Benefit benefit)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                var toChange = db.Benefity.Where(benefit1 => benefit1.BenefitId == benefit.BenefitId).FirstOrDefault();
+                toChange.Nazwa = benefit.Nazwa;
+                toChange.DataUaktyw = benefit.DataUaktyw;
+                toChange.DataZakon = benefit.DataZakon;
+                toChange.LiczbaDni = benefit.LiczbaDni;
+                toChange.RodzajId = benefit.RodzajId;
+                toChange.Opis = benefit.Opis;
+                toChange.WartoscProc = benefit.WartoscProc;
+                db.SaveChanges();
+            }
+        }
+
+        public RodzajBenefitu GetRabatId()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Rabat")).FirstOrDefault();
+            }
+        }
+
+        public RodzajBenefitu GetTerminId()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.RodzajeBenefitow.Where(benefitu => benefitu.Nazwa.Equals("Wydłużony termin")).FirstOrDefault();
+            }
+        }
+
+        public void AddNewBenefit(Benefit newBenefit)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                db.Benefity.Add(newBenefit);
+                db.SaveChanges();
+            }
+        }
+
+        public List<Status> GetStatuses()
+        {
+            using (var db  = new OcenaKlientowContext())
+            {
+                return db.Statusy.ToList();
+            }
+        }
+
+        public List<RodzajBenefitu> GetBenefitTypes()
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.RodzajeBenefitow.ToList();
+            }
+        }
+
+        public List<int> GetCurrentBenefitPrzypisaneStatuses(BenefitListItem benefit)
+        {
+            using (var db = new OcenaKlientowContext())
+            {
+                return db.PrzypisaneStatusy.Where(status => status.BenefitId == benefit.BenefitId).Select(status => status.StatusId).ToList();
+            }
+        }
     }
 }
