@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore.Extensions.Internal;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
 using OcenaKlientow.View.ListItems;
+using OcenaKlientow.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,13 +38,16 @@ namespace OcenaKlientow.View
 
         private List<RodzajBenefitu> TypyBenfitowList;
 
+        private Pu1ViewModel _viewModel;
+
         public PU1()
         {
             this.InitializeComponent();
+            Pu1ViewModel = new Pu1ViewModel();
             using (var db = new OcenaKlientowContext())
             {
 
-                ListaBenefitow = BenefitListQuery(db);
+                ListaBenefitow = Pu1ViewModel.BenefitListQuery();
                 //ListaBenefitow = db.Benefity.ToList();
                 BenefitList.ItemsSource = ListaBenefitow;
                 Statuses = db.Statusy.ToList();
@@ -94,6 +98,18 @@ namespace OcenaKlientow.View
             set
             {
                 _przypisanyStatuses = value;
+            }
+        }
+
+        public Pu1ViewModel Pu1ViewModel
+        {
+            get
+            {
+                return _viewModel;
+            }
+            set
+            {
+                _viewModel = value;
             }
         }
 
@@ -247,21 +263,10 @@ namespace OcenaKlientow.View
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e)
-        {//zrobić
-            using (var db = new OcenaKlientowContext())
-            {
-                var benToDel =(BenefitListItem) BenefitList.SelectedItem;
-                var przypStat = db.PrzypisaneStatusy.Where(ben => ben.BenefitId.Equals(benToDel.BenefitId)).ToList();
-                foreach (PrzypisanyStatus przypisanyStatuse in przypStat)
-                {
-                    db.Entry(przypisanyStatuse).State = EntityState.Deleted;
-
-                }
-                var currBen = db.Benefity.Where(benefit => benefit.BenefitId.Equals(benToDel.BenefitId)).FirstOrDefault();
-                db.Entry(currBen).State=EntityState.Deleted;
-                db.SaveChanges();
-               BenefitList.ItemsSource = BenefitListQuery(db);
-            }
+        { 
+            var benToDel = (BenefitListItem)BenefitList.SelectedItem;
+            Pu1ViewModel.DeleteFromBenefitList(benToDel);
+            BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
         }
 
         private void AddNew_OnClick(object sender, RoutedEventArgs e)
@@ -270,9 +275,6 @@ namespace OcenaKlientow.View
             ChangeLabelsAndInputsON();
             Save.Visibility = Visibility.Collapsed;
             Add.Visibility = Visibility.Visible;
-          
-
-
         }
 
         private void Search_OnClick(object sender, RoutedEventArgs e)
@@ -368,7 +370,6 @@ namespace OcenaKlientow.View
                 czerw.IsChecked = false;
             }
             ChangeLabelsAndInputsOFF();
-            //opis.Text = benefit.Opis;
         }
 
         private void Save_OnClick(object sender, RoutedEventArgs e)
@@ -444,7 +445,7 @@ namespace OcenaKlientow.View
 
                     db.SaveChanges();
                 }
-                BenefitList.ItemsSource = BenefitListQuery(db);
+                BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
                 ChangeLabelsAndInputsOFF();
                 //this.Frame.Navigate(typeof(PU1));
 
@@ -475,7 +476,17 @@ namespace OcenaKlientow.View
         private void Typ_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selRodzaj = (RodzajBenefitu)typ.SelectedItem;
-            typValueLabel.Text = selRodzaj.Nazwa == "Rabat" ? "Wartość rabatu*" : "Liczba dni*";
+            if (selRodzaj.Nazwa == "Rabat")
+            {
+                typValueLabel.Text = "Wartość rabatu*";
+                procent.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                typValueLabel.Text = "Liczba dni*";
+                procent.Visibility = Visibility.Collapsed;
+            }
+            
         }
 
         void AddStatusToBenefit(Benefit benefit, string name)
@@ -484,7 +495,6 @@ namespace OcenaKlientow.View
             {
                 var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
                 var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
-                //var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.Status == status && status1.Benefit == benefit);
                 if (przypisanyStatus==null)
                 {
                     db.PrzypisaneStatusy.Add(new PrzypisanyStatus()
@@ -498,26 +508,7 @@ namespace OcenaKlientow.View
 
         }
 
-        List<BenefitListItem> BenefitListQuery( OcenaKlientowContext db)
-        {
-            var innerJoinQuery =
-                from benefit in db.Benefity
-                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
-                select new BenefitListItem()
-                {
-                    RodzajId = benefit.RodzajId,
-                    BenefitId = benefit.BenefitId,
-                    DataUaktyw = benefit.DataUaktyw,
-                    DataZakon = benefit.DataZakon,
-                    WartoscProc = benefit.WartoscProc,
-                    LiczbaDni = benefit.LiczbaDni,
-                    NazwaBenefitu = benefit.Nazwa,
-                    NazwaRodzaju = rodzaj.Nazwa,
-                    Opis = benefit.Opis
-
-                };
-            return innerJoinQuery.ToList();
-        }
+       
 
         void ChangeLabelsAndInputsON()
         {
@@ -527,6 +518,10 @@ namespace OcenaKlientow.View
             selDataZakon.IsReadOnly = false;
             opis.IsReadOnly = false;
             zloty.IsEnabled = true;
+            zielony.IsEnabled = true;
+            zolty.IsEnabled = true;
+            pomaran.IsEnabled = true;
+            czerw.IsEnabled = true;
             Save.Visibility = Visibility.Visible;
             Cancel.Visibility = Visibility.Visible;;
         }
@@ -539,6 +534,10 @@ namespace OcenaKlientow.View
             selDataZakon.IsReadOnly = true;
             opis.IsReadOnly = true;
             zloty.IsEnabled = false;
+            zielony.IsEnabled = false;
+            zolty.IsEnabled = false;
+            pomaran.IsEnabled = false;
+            czerw.IsEnabled = false;
             Save.Visibility = Visibility.Collapsed;
             Cancel.Visibility = Visibility.Collapsed;
         }
@@ -622,10 +621,15 @@ namespace OcenaKlientow.View
                     DeleteStatusFromBenefit(newBenefit, "CZERWONY");
                 }
 
-                BenefitList.ItemsSource = BenefitListQuery(db);
+                BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
                 ChangeLabelsAndInputsOFF();
                 Add.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void selName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

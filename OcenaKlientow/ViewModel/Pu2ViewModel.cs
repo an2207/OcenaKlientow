@@ -421,7 +421,6 @@ namespace OcenaKlientow.ViewModel
             using (var db = new OcenaKlientowContext())
             {
                 var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
-                //joina ładnego z nazwami Parametrów i klientami
                 var detailsQuery =
                from wyliczenie in db.Wyliczono
                join ocena in db.Oceny on wyliczenie.OcenaId equals ocena.OcenaId

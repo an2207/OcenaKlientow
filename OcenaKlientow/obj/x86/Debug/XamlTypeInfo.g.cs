@@ -132,7 +132,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[19];
+            _typeNameTable = new string[20];
             _typeNameTable[0] = "OcenaKlientow.View.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -147,13 +147,14 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeNameTable[11] = "OcenaKlientow.Model.Models.Status";
             _typeNameTable[12] = "System.Collections.Generic.List`1<OcenaKlientow.Model.Models.PrzypisanyStatus>";
             _typeNameTable[13] = "OcenaKlientow.Model.Models.PrzypisanyStatus";
-            _typeNameTable[14] = "OcenaKlientow.View.PU2";
-            _typeNameTable[15] = "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>";
-            _typeNameTable[16] = "OcenaKlientow.View.ListItems.OsobyListItem";
-            _typeNameTable[17] = "Boolean";
-            _typeNameTable[18] = "OcenaKlientow.ViewModel.Pu2ViewModel";
+            _typeNameTable[14] = "OcenaKlientow.ViewModel.Pu1ViewModel";
+            _typeNameTable[15] = "OcenaKlientow.View.PU2";
+            _typeNameTable[16] = "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>";
+            _typeNameTable[17] = "OcenaKlientow.View.ListItems.OsobyListItem";
+            _typeNameTable[18] = "Boolean";
+            _typeNameTable[19] = "OcenaKlientow.ViewModel.Pu2ViewModel";
 
-            _typeTable = new global::System.Type[19];
+            _typeTable = new global::System.Type[20];
             _typeTable[0] = typeof(global::OcenaKlientow.View.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -168,11 +169,12 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             _typeTable[11] = typeof(global::OcenaKlientow.Model.Models.Status);
             _typeTable[12] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>);
             _typeTable[13] = typeof(global::OcenaKlientow.Model.Models.PrzypisanyStatus);
-            _typeTable[14] = typeof(global::OcenaKlientow.View.PU2);
-            _typeTable[15] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>);
-            _typeTable[16] = typeof(global::OcenaKlientow.View.ListItems.OsobyListItem);
-            _typeTable[17] = typeof(global::System.Boolean);
-            _typeTable[18] = typeof(global::OcenaKlientow.ViewModel.Pu2ViewModel);
+            _typeTable[14] = typeof(global::OcenaKlientow.ViewModel.Pu1ViewModel);
+            _typeTable[15] = typeof(global::OcenaKlientow.View.PU2);
+            _typeTable[16] = typeof(global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>);
+            _typeTable[17] = typeof(global::OcenaKlientow.View.ListItems.OsobyListItem);
+            _typeTable[18] = typeof(global::System.Boolean);
+            _typeTable[19] = typeof(global::OcenaKlientow.ViewModel.Pu2ViewModel);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -215,10 +217,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private object Activate_11_Status() { return new global::OcenaKlientow.Model.Models.Status(); }
         private object Activate_12_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>(); }
         private object Activate_13_PrzypisanyStatus() { return new global::OcenaKlientow.Model.Models.PrzypisanyStatus(); }
-        private object Activate_14_PU2() { return new global::OcenaKlientow.View.PU2(); }
-        private object Activate_15_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>(); }
-        private object Activate_16_OsobyListItem() { return new global::OcenaKlientow.View.ListItems.OsobyListItem(); }
-        private object Activate_18_Pu2ViewModel() { return new global::OcenaKlientow.ViewModel.Pu2ViewModel(); }
+        private object Activate_14_Pu1ViewModel() { return new global::OcenaKlientow.ViewModel.Pu1ViewModel(); }
+        private object Activate_15_PU2() { return new global::OcenaKlientow.View.PU2(); }
+        private object Activate_16_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>(); }
+        private object Activate_17_OsobyListItem() { return new global::OcenaKlientow.View.ListItems.OsobyListItem(); }
+        private object Activate_19_Pu2ViewModel() { return new global::OcenaKlientow.ViewModel.Pu2ViewModel(); }
         private void VectorAdd_4_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.ListItems.BenefitListItem>)instance;
@@ -237,7 +240,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             var newItem = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_15_List(object instance, object item)
+        private void VectorAdd_16_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.ListItems.OsobyListItem>)instance;
             var newItem = (global::OcenaKlientow.View.ListItems.OsobyListItem)item;
@@ -275,6 +278,7 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 userType.AddMemberName("ListaBenefitow");
                 userType.AddMemberName("Statuses");
                 userType.AddMemberName("PrzypisanyStatuses");
+                userType.AddMemberName("Pu1ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -352,9 +356,16 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  OcenaKlientow.View.PU2
+            case 14:   //  OcenaKlientow.ViewModel.Pu1ViewModel
+                userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 15:   //  OcenaKlientow.View.PU2
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_PU2;
+                userType.Activator = Activate_15_PU2;
                 userType.AddMemberName("PrawneList");
                 userType.AddMemberName("FizyczneList");
                 userType.AddMemberName("Pu2ViewModel");
@@ -362,16 +373,16 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 15:   //  System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>
+            case 16:   //  System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_15_List;
+                userType.CollectionAdd = VectorAdd_16_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 16:   //  OcenaKlientow.View.ListItems.OsobyListItem
+            case 17:   //  OcenaKlientow.View.ListItems.OsobyListItem
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_16_OsobyListItem;
+                userType.Activator = Activate_17_OsobyListItem;
                 userType.AddMemberName("CzyFizyczna");
                 userType.AddMemberName("DrugieImie");
                 userType.AddMemberName("DrugieNazwisko");
@@ -393,11 +404,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 17:   //  Boolean
+            case 18:   //  Boolean
                 xamlType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  OcenaKlientow.ViewModel.Pu2ViewModel
+            case 19:   //  OcenaKlientow.ViewModel.Pu2ViewModel
                 userType = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
@@ -588,202 +599,212 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
             var that = (global::OcenaKlientow.Model.Models.PrzypisanyStatus)instance;
             that.StatusId = (global::System.Int32)Value;
         }
-        private object get_18_PU2_PrawneList(object instance)
+        private object get_18_PU1_Pu1ViewModel(object instance)
+        {
+            var that = (global::OcenaKlientow.View.PU1)instance;
+            return that.Pu1ViewModel;
+        }
+        private void set_18_PU1_Pu1ViewModel(object instance, object Value)
+        {
+            var that = (global::OcenaKlientow.View.PU1)instance;
+            that.Pu1ViewModel = (global::OcenaKlientow.ViewModel.Pu1ViewModel)Value;
+        }
+        private object get_19_PU2_PrawneList(object instance)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             return that.PrawneList;
         }
-        private void set_18_PU2_PrawneList(object instance, object Value)
+        private void set_19_PU2_PrawneList(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             that.PrawneList = (global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>)Value;
         }
-        private object get_19_OsobyListItem_CzyFizyczna(object instance)
+        private object get_20_OsobyListItem_CzyFizyczna(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.CzyFizyczna;
         }
-        private void set_19_OsobyListItem_CzyFizyczna(object instance, object Value)
+        private void set_20_OsobyListItem_CzyFizyczna(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.CzyFizyczna = (global::System.Boolean)Value;
         }
-        private object get_20_OsobyListItem_DrugieImie(object instance)
+        private object get_21_OsobyListItem_DrugieImie(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.DrugieImie;
         }
-        private void set_20_OsobyListItem_DrugieImie(object instance, object Value)
+        private void set_21_OsobyListItem_DrugieImie(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.DrugieImie = (global::System.String)Value;
         }
-        private object get_21_OsobyListItem_DrugieNazwisko(object instance)
+        private object get_22_OsobyListItem_DrugieNazwisko(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.DrugieNazwisko;
         }
-        private void set_21_OsobyListItem_DrugieNazwisko(object instance, object Value)
+        private void set_22_OsobyListItem_DrugieNazwisko(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.DrugieNazwisko = (global::System.String)Value;
         }
-        private object get_22_OsobyListItem_Imie(object instance)
+        private object get_23_OsobyListItem_Imie(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.Imie;
         }
-        private void set_22_OsobyListItem_Imie(object instance, object Value)
+        private void set_23_OsobyListItem_Imie(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.Imie = (global::System.String)Value;
         }
-        private object get_23_OsobyListItem_KlientId(object instance)
+        private object get_24_OsobyListItem_KlientId(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.KlientId;
         }
-        private void set_23_OsobyListItem_KlientId(object instance, object Value)
+        private void set_24_OsobyListItem_KlientId(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.KlientId = (global::System.Int32)Value;
         }
-        private object get_24_OsobyListItem_KwotaKredytu(object instance)
+        private object get_25_OsobyListItem_KwotaKredytu(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.KwotaKredytu;
         }
-        private void set_24_OsobyListItem_KwotaKredytu(object instance, object Value)
+        private void set_25_OsobyListItem_KwotaKredytu(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.KwotaKredytu = (global::System.Double)Value;
         }
-        private object get_25_OsobyListItem_Nazwa(object instance)
+        private object get_26_OsobyListItem_Nazwa(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.Nazwa;
         }
-        private void set_25_OsobyListItem_Nazwa(object instance, object Value)
+        private void set_26_OsobyListItem_Nazwa(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.Nazwa = (global::System.String)Value;
         }
-        private object get_26_OsobyListItem_Nazwisko(object instance)
+        private object get_27_OsobyListItem_Nazwisko(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.Nazwisko;
         }
-        private void set_26_OsobyListItem_Nazwisko(object instance, object Value)
+        private void set_27_OsobyListItem_Nazwisko(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.Nazwisko = (global::System.String)Value;
         }
-        private object get_27_OsobyListItem_NIP(object instance)
+        private object get_28_OsobyListItem_NIP(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.NIP;
         }
-        private void set_27_OsobyListItem_NIP(object instance, object Value)
+        private void set_28_OsobyListItem_NIP(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.NIP = (global::System.String)Value;
         }
-        private object get_28_OsobyListItem_PESEL(object instance)
+        private object get_29_OsobyListItem_PESEL(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.PESEL;
         }
-        private void set_28_OsobyListItem_PESEL(object instance, object Value)
+        private void set_29_OsobyListItem_PESEL(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.PESEL = (global::System.String)Value;
         }
-        private object get_29_OsobyListItem_DataCzas(object instance)
+        private object get_30_OsobyListItem_DataCzas(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.DataCzas;
         }
-        private void set_29_OsobyListItem_DataCzas(object instance, object Value)
+        private void set_30_OsobyListItem_DataCzas(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.DataCzas = (global::System.String)Value;
         }
-        private object get_30_OsobyListItem_OcenaId(object instance)
+        private object get_31_OsobyListItem_OcenaId(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.OcenaId;
         }
-        private void set_30_OsobyListItem_OcenaId(object instance, object Value)
+        private void set_31_OsobyListItem_OcenaId(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.OcenaId = (global::System.Int32)Value;
         }
-        private object get_31_OsobyListItem_SumaPkt(object instance)
+        private object get_32_OsobyListItem_SumaPkt(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.SumaPkt;
         }
-        private void set_31_OsobyListItem_SumaPkt(object instance, object Value)
+        private void set_32_OsobyListItem_SumaPkt(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.SumaPkt = (global::System.Int32)Value;
         }
-        private object get_32_OsobyListItem_NazwaStatusu(object instance)
+        private object get_33_OsobyListItem_NazwaStatusu(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.NazwaStatusu;
         }
-        private void set_32_OsobyListItem_NazwaStatusu(object instance, object Value)
+        private void set_33_OsobyListItem_NazwaStatusu(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.NazwaStatusu = (global::System.String)Value;
         }
-        private object get_33_OsobyListItem_ProgDolny(object instance)
+        private object get_34_OsobyListItem_ProgDolny(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.ProgDolny;
         }
-        private void set_33_OsobyListItem_ProgDolny(object instance, object Value)
+        private void set_34_OsobyListItem_ProgDolny(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.ProgDolny = (global::System.Int32)Value;
         }
-        private object get_34_OsobyListItem_ProgGorny(object instance)
+        private object get_35_OsobyListItem_ProgGorny(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.ProgGorny;
         }
-        private void set_34_OsobyListItem_ProgGorny(object instance, object Value)
+        private void set_35_OsobyListItem_ProgGorny(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.ProgGorny = (global::System.Int32)Value;
         }
-        private object get_35_OsobyListItem_StatusId(object instance)
+        private object get_36_OsobyListItem_StatusId(object instance)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             return that.StatusId;
         }
-        private void set_35_OsobyListItem_StatusId(object instance, object Value)
+        private void set_36_OsobyListItem_StatusId(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.ListItems.OsobyListItem)instance;
             that.StatusId = (global::System.Int32)Value;
         }
-        private object get_36_PU2_FizyczneList(object instance)
+        private object get_37_PU2_FizyczneList(object instance)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             return that.FizyczneList;
         }
-        private void set_36_PU2_FizyczneList(object instance, object Value)
+        private void set_37_PU2_FizyczneList(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             that.FizyczneList = (global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.OsobyListItem>)Value;
         }
-        private object get_37_PU2_Pu2ViewModel(object instance)
+        private object get_38_PU2_Pu2ViewModel(object instance)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             return that.Pu2ViewModel;
         }
-        private void set_37_PU2_Pu2ViewModel(object instance, object Value)
+        private void set_38_PU2_Pu2ViewModel(object instance, object Value)
         {
             var that = (global::OcenaKlientow.View.PU2)instance;
             that.Pu2ViewModel = (global::OcenaKlientow.ViewModel.Pu2ViewModel)Value;
@@ -904,125 +925,131 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
                 xamlMember.Getter = get_17_PrzypisanyStatus_StatusId;
                 xamlMember.Setter = set_17_PrzypisanyStatus_StatusId;
                 break;
+            case "OcenaKlientow.View.PU1.Pu1ViewModel":
+                userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU1");
+                xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Pu1ViewModel", "OcenaKlientow.ViewModel.Pu1ViewModel");
+                xamlMember.Getter = get_18_PU1_Pu1ViewModel;
+                xamlMember.Setter = set_18_PU1_Pu1ViewModel;
+                break;
             case "OcenaKlientow.View.PU2.PrawneList":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU2");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "PrawneList", "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>");
-                xamlMember.Getter = get_18_PU2_PrawneList;
-                xamlMember.Setter = set_18_PU2_PrawneList;
+                xamlMember.Getter = get_19_PU2_PrawneList;
+                xamlMember.Setter = set_19_PU2_PrawneList;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.CzyFizyczna":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "CzyFizyczna", "Boolean");
-                xamlMember.Getter = get_19_OsobyListItem_CzyFizyczna;
-                xamlMember.Setter = set_19_OsobyListItem_CzyFizyczna;
+                xamlMember.Getter = get_20_OsobyListItem_CzyFizyczna;
+                xamlMember.Setter = set_20_OsobyListItem_CzyFizyczna;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.DrugieImie":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "DrugieImie", "String");
-                xamlMember.Getter = get_20_OsobyListItem_DrugieImie;
-                xamlMember.Setter = set_20_OsobyListItem_DrugieImie;
+                xamlMember.Getter = get_21_OsobyListItem_DrugieImie;
+                xamlMember.Setter = set_21_OsobyListItem_DrugieImie;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.DrugieNazwisko":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "DrugieNazwisko", "String");
-                xamlMember.Getter = get_21_OsobyListItem_DrugieNazwisko;
-                xamlMember.Setter = set_21_OsobyListItem_DrugieNazwisko;
+                xamlMember.Getter = get_22_OsobyListItem_DrugieNazwisko;
+                xamlMember.Setter = set_22_OsobyListItem_DrugieNazwisko;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.Imie":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Imie", "String");
-                xamlMember.Getter = get_22_OsobyListItem_Imie;
-                xamlMember.Setter = set_22_OsobyListItem_Imie;
+                xamlMember.Getter = get_23_OsobyListItem_Imie;
+                xamlMember.Setter = set_23_OsobyListItem_Imie;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.KlientId":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "KlientId", "Int32");
-                xamlMember.Getter = get_23_OsobyListItem_KlientId;
-                xamlMember.Setter = set_23_OsobyListItem_KlientId;
+                xamlMember.Getter = get_24_OsobyListItem_KlientId;
+                xamlMember.Setter = set_24_OsobyListItem_KlientId;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.KwotaKredytu":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "KwotaKredytu", "Double");
-                xamlMember.Getter = get_24_OsobyListItem_KwotaKredytu;
-                xamlMember.Setter = set_24_OsobyListItem_KwotaKredytu;
+                xamlMember.Getter = get_25_OsobyListItem_KwotaKredytu;
+                xamlMember.Setter = set_25_OsobyListItem_KwotaKredytu;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.Nazwa":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Nazwa", "String");
-                xamlMember.Getter = get_25_OsobyListItem_Nazwa;
-                xamlMember.Setter = set_25_OsobyListItem_Nazwa;
+                xamlMember.Getter = get_26_OsobyListItem_Nazwa;
+                xamlMember.Setter = set_26_OsobyListItem_Nazwa;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.Nazwisko":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Nazwisko", "String");
-                xamlMember.Getter = get_26_OsobyListItem_Nazwisko;
-                xamlMember.Setter = set_26_OsobyListItem_Nazwisko;
+                xamlMember.Getter = get_27_OsobyListItem_Nazwisko;
+                xamlMember.Setter = set_27_OsobyListItem_Nazwisko;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.NIP":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "NIP", "String");
-                xamlMember.Getter = get_27_OsobyListItem_NIP;
-                xamlMember.Setter = set_27_OsobyListItem_NIP;
+                xamlMember.Getter = get_28_OsobyListItem_NIP;
+                xamlMember.Setter = set_28_OsobyListItem_NIP;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.PESEL":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "PESEL", "String");
-                xamlMember.Getter = get_28_OsobyListItem_PESEL;
-                xamlMember.Setter = set_28_OsobyListItem_PESEL;
+                xamlMember.Getter = get_29_OsobyListItem_PESEL;
+                xamlMember.Setter = set_29_OsobyListItem_PESEL;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.DataCzas":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "DataCzas", "String");
-                xamlMember.Getter = get_29_OsobyListItem_DataCzas;
-                xamlMember.Setter = set_29_OsobyListItem_DataCzas;
+                xamlMember.Getter = get_30_OsobyListItem_DataCzas;
+                xamlMember.Setter = set_30_OsobyListItem_DataCzas;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.OcenaId":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "OcenaId", "Int32");
-                xamlMember.Getter = get_30_OsobyListItem_OcenaId;
-                xamlMember.Setter = set_30_OsobyListItem_OcenaId;
+                xamlMember.Getter = get_31_OsobyListItem_OcenaId;
+                xamlMember.Setter = set_31_OsobyListItem_OcenaId;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.SumaPkt":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "SumaPkt", "Int32");
-                xamlMember.Getter = get_31_OsobyListItem_SumaPkt;
-                xamlMember.Setter = set_31_OsobyListItem_SumaPkt;
+                xamlMember.Getter = get_32_OsobyListItem_SumaPkt;
+                xamlMember.Setter = set_32_OsobyListItem_SumaPkt;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.NazwaStatusu":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "NazwaStatusu", "String");
-                xamlMember.Getter = get_32_OsobyListItem_NazwaStatusu;
-                xamlMember.Setter = set_32_OsobyListItem_NazwaStatusu;
+                xamlMember.Getter = get_33_OsobyListItem_NazwaStatusu;
+                xamlMember.Setter = set_33_OsobyListItem_NazwaStatusu;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.ProgDolny":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgDolny", "Int32");
-                xamlMember.Getter = get_33_OsobyListItem_ProgDolny;
-                xamlMember.Setter = set_33_OsobyListItem_ProgDolny;
+                xamlMember.Getter = get_34_OsobyListItem_ProgDolny;
+                xamlMember.Setter = set_34_OsobyListItem_ProgDolny;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.ProgGorny":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "ProgGorny", "Int32");
-                xamlMember.Getter = get_34_OsobyListItem_ProgGorny;
-                xamlMember.Setter = set_34_OsobyListItem_ProgGorny;
+                xamlMember.Getter = get_35_OsobyListItem_ProgGorny;
+                xamlMember.Setter = set_35_OsobyListItem_ProgGorny;
                 break;
             case "OcenaKlientow.View.ListItems.OsobyListItem.StatusId":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.ListItems.OsobyListItem");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "StatusId", "Int32");
-                xamlMember.Getter = get_35_OsobyListItem_StatusId;
-                xamlMember.Setter = set_35_OsobyListItem_StatusId;
+                xamlMember.Getter = get_36_OsobyListItem_StatusId;
+                xamlMember.Setter = set_36_OsobyListItem_StatusId;
                 break;
             case "OcenaKlientow.View.PU2.FizyczneList":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU2");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "FizyczneList", "System.Collections.Generic.List`1<OcenaKlientow.View.ListItems.OsobyListItem>");
-                xamlMember.Getter = get_36_PU2_FizyczneList;
-                xamlMember.Setter = set_36_PU2_FizyczneList;
+                xamlMember.Getter = get_37_PU2_FizyczneList;
+                xamlMember.Setter = set_37_PU2_FizyczneList;
                 break;
             case "OcenaKlientow.View.PU2.Pu2ViewModel":
                 userType = (global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlUserType)GetXamlTypeByName("OcenaKlientow.View.PU2");
                 xamlMember = new global::OcenaKlientow.OcenaKlientow_XamlTypeInfo.XamlMember(this, "Pu2ViewModel", "OcenaKlientow.ViewModel.Pu2ViewModel");
-                xamlMember.Getter = get_37_PU2_Pu2ViewModel;
-                xamlMember.Setter = set_37_PU2_Pu2ViewModel;
+                xamlMember.Getter = get_38_PU2_Pu2ViewModel;
+                xamlMember.Setter = set_38_PU2_Pu2ViewModel;
                 break;
             }
             return xamlMember;
