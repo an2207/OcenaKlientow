@@ -25,7 +25,8 @@ namespace OcenaKlientow.Model
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.1.REF1.0.0.db");
-            optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.TESTADColumns.db");
+            //optionsBuilder.UseSqlite(@"Filename=OcenaKlientow102.TESTADColumns.db");
+            optionsBuilder.UseSqlite(@"Filename=OcenaKlientowInitial.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

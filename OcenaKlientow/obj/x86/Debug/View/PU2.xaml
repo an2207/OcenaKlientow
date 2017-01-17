@@ -79,9 +79,9 @@
             <TextBlock x:ConnectionId='3' x:Name="textBlock1" HorizontalAlignment="Left" Margin="289,33,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
             <TextBlock x:ConnectionId='4' x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="289,78,0,0" TextWrapping="Wrap" Text="Data nadania" VerticalAlignment="Top"/>
             <TextBlock x:ConnectionId='5' x:Name="textBlock1_Copy1" HorizontalAlignment="Left" Margin="289,123,0,0" TextWrapping="Wrap" Text="Liczba punktów" VerticalAlignment="Top"/>
-            <TextBox x:ConnectionId='6' x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:ConnectionId='7' x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="455,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-            <TextBox x:ConnectionId='8' x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="455,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+            <TextBox x:ConnectionId='6' x:Name="StatusNameBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="450,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
+            <TextBox x:ConnectionId='7' x:Name="StatusDateBox" IsReadOnly="True" HorizontalAlignment="Left" Margin="450,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
+            <TextBox x:ConnectionId='8' x:Name="StatusBoxPkt" IsReadOnly ="True" HorizontalAlignment="Left" Margin="450,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
             <Button x:ConnectionId='9' x:Name="CountStatus"                             Content="Przelicz status" HorizontalAlignment="Left" Margin="674,43,0,0" VerticalAlignment="Top" Width="240"/>
             <Button x:ConnectionId='10' x:Name="GradeDetails"                               Content="Zobacz szczegóły oceny" HorizontalAlignment="Left" Margin="674,101,0,0" VerticalAlignment="Top" Width="240"/>
             <Button x:ConnectionId='11' x:Name="CountAllStatuses"                                  Content="Przelicz wszystkie statusy" HorizontalAlignment="Left" Margin="517,181,0,0" VerticalAlignment="Top" Width="240"/>

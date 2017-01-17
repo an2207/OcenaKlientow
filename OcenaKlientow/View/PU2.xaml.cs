@@ -184,7 +184,7 @@ namespace OcenaKlientow.View
                 {
                     Title = "Przeliczono",
                     MaxWidth = this.ActualWidth,
-                    Content = $"Klient {name} otrzymał nową ocene."
+                    Content = $"Klient {name} otrzymał nową ocenę."
                 };
 
 

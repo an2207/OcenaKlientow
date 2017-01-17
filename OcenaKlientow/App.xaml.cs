@@ -43,22 +43,22 @@ namespace OcenaKlientow
                 //var oc = db.Oceny;
                 //db.Oceny.RemoveRange(oc);
                 db.SaveChanges();
-                var innerJoinQuery =
-                from benefit in db.Benefity
-                join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
-                select new BenefitView()
-                {
-                    RodzajId = benefit.RodzajId,
-                    BenefitId = benefit.BenefitId,
-                    DataUaktyw = benefit.DataUaktyw,
-                    DataZakon = benefit.DataZakon,
-                    WartoscProc = benefit.WartoscProc,
-                    LiczbaDni = benefit.LiczbaDni,
-                    NazwaBenefitu = benefit.Nazwa,
-                    NazwaRodzaju = rodzaj.Nazwa,
-                    Opis = benefit.Opis
+                //var innerJoinQuery =
+                //from benefit in db.Benefity
+                //join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
+                //select new BenefitView()
+                //{
+                //    RodzajId = benefit.RodzajId,
+                //    BenefitId = benefit.BenefitId,
+                //    DataUaktyw = benefit.DataUaktyw,
+                //    DataZakon = benefit.DataZakon,
+                //    WartoscProc = benefit.WartoscProc,
+                //    LiczbaDni = benefit.LiczbaDni,
+                //    NazwaBenefitu = benefit.Nazwa,
+                //    NazwaRodzaju = rodzaj.Nazwa,
+                //    Opis = benefit.Opis
                         
-                };
+                //};
                 CultureInfo culture = new CultureInfo("pt-BR");
                 var a = DateTime.Now.ToString("d", culture);
                 string b = "12/01/2015";
@@ -152,51 +152,7 @@ namespace OcenaKlientow
             deferral.Complete();
         }
 
-        private void InitData(OcenaKlientowContext db)
-        {
-
-            db.Klienci.Add(new Klient()
-            {
-                CzyFizyczna = false,
-                Nazwa = "Leffler Group",
-                NIP = "721-46-77-8810",
-                KwotaKredytu = 36645
-            }); db.SaveChanges();
-            db.Klienci.Add(new Klient()
-            {
-                CzyFizyczna = true,
-                Nazwa = "Leffler Group",
-                Imie = "Laurencja",
-                DrugieImie = "Marta",
-                Nazwisko = "Gazdowska",
-                DrugieNazwisko = "Litkowska",
-                PESEL = "70090509716"
-            }); db.SaveChanges();
-
-            //db.Statusy.Add(new Status()
-            //{
-            //    Nazwa = "Zielony",
-            //    ProgDolny = 40,
-            //    ProgGorny = 59
-            //});
-
-            db.Oceny.Add(new Ocena()
-                             {
-                                 KlientId = 2,
-                                 DataCzas = "2016/11/21",
-                                 StatusId = 1
-                             }); db.SaveChanges();
-
-
-                db.SaveChanges();
-
-                var client = db.Klienci.Where(klient => klient.DrugieImie == "Marta");
-                var status = db.Statusy.Where(status1 => status1.Nazwa == "Zielony");
-                db.Oceny.Where(ocena => ocena.KlientId == client.FirstOrDefault().KlientId && ocena.StatusId == status.FirstOrDefault().StatusId).FirstOrDefault().SumaPkt=200;
-                
-
-            
-        }
+      
 
         //void SeedData(OcenaKlientowContext db)
         //{
@@ -261,7 +217,7 @@ namespace OcenaKlientow
         //        CzyFizyczna = true,
         //        Imie = "Amanda",
         //        DrugieImie = "Krystyna",
-        //        Nazwisko = "Zak�lski",
+        //        Nazwisko = "Zakólski",
         //        DrugieNazwisko = "Pryszczepko",
         //        PESEL = "70090509716"
         //    }); db.SaveChanges();
@@ -285,7 +241,7 @@ namespace OcenaKlientow
         //    db.Klienci.Add(new Klient()
         //    {
         //        CzyFizyczna = true,
-        //        Imie = "Radomi�a",
+        //        Imie = "Radomiła",
         //        DrugieImie = "Erazma",
         //        Nazwisko = "Karsa",
         //        DrugieNazwisko = "Sartowicz",
@@ -306,7 +262,7 @@ namespace OcenaKlientow
         //        Imie = "Kamila",
         //        DrugieImie = "Madlena",
         //        Nazwisko = "Huncia",
-        //        DrugieNazwisko = "Czu�daniuk",
+        //        DrugieNazwisko = "Czułdaniuk",
         //        PESEL = "68082410021"
         //    }); db.SaveChanges();
 
@@ -315,7 +271,7 @@ namespace OcenaKlientow
         //        CzyFizyczna = true,
         //        Imie = "Ligia",
         //        DrugieImie = "Bazylissa",
-        //        Nazwisko = "�odygo",
+        //        Nazwisko = "Łodygo",
         //        DrugieNazwisko = "Seraczyk",
         //        PESEL = "74042822755"
         //    }); db.SaveChanges();
@@ -340,7 +296,7 @@ namespace OcenaKlientow
         //    {
         //        CzyFizyczna = true,
         //        Imie = "Tadeusz",
-        //        Nazwisko = "Wojcielo�",
+        //        Nazwisko = "Wojcieloł",
         //        PESEL = "53020202097"
         //    }); db.SaveChanges();
 
@@ -372,7 +328,7 @@ namespace OcenaKlientow
         //    {
         //        CzyFizyczna = true,
         //        Imie = "Gaudenty",
-        //        Nazwisko = "Pastro�ny",
+        //        Nazwisko = "Pastrożny",
         //        PESEL = "55061216336"
         //    }); db.SaveChanges();
         //    db.SaveChanges();
@@ -1994,31 +1950,31 @@ namespace OcenaKlientow
         //    db.Parametry.Add(new Parametr()
         //    {
         //        Nazwa = "PLATN_NA_CZAS",
-        //        Wartosc = 15
+        //        Wartosc = 50
         //    }); db.SaveChanges();
 
         //    db.Parametry.Add(new Parametr()
         //    {
         //        Nazwa = "PLATN_CZESC",
-        //        Wartosc = 5
+        //        Wartosc = 100
         //    }); db.SaveChanges();
 
         //    db.Parametry.Add(new Parametr()
         //    {
         //        Nazwa = "PLATN_CALK",
-        //        Wartosc = 10
+        //        Wartosc = 400
         //    }); db.SaveChanges();
 
         //    db.Parametry.Add(new Parametr()
         //    {
         //        Nazwa = "REGUL_ZAM",
-        //        Wartosc = 15
+        //        Wartosc = 400
         //    }); db.SaveChanges();
 
         //    db.Parametry.Add(new Parametr()
         //    {
         //        Nazwa = "PRZEK_TERM",
-        //        Wartosc = -2
+        //        Wartosc = -1
         //    }); db.SaveChanges();
 
         //    db.Parametry.Add(new Parametr()
@@ -2031,13 +1987,13 @@ namespace OcenaKlientow
         //    {
         //        Nazwa = "CZERWONY",
         //        ProgDolny = -2147483648,
-        //        ProgGorny = -19
+        //        ProgGorny = -100
         //    }); db.SaveChanges();
 
         //    db.Statusy.Add(new Status()
         //    {
         //        Nazwa = "POMARAŃCZOWY",
-        //        ProgDolny = -20,
+        //        ProgDolny = -99,
         //        ProgGorny = -1
         //    }); db.SaveChanges();
 
@@ -2052,13 +2008,13 @@ namespace OcenaKlientow
         //    {
         //        Nazwa = "ZIELONY",
         //        ProgDolny = 40,
-        //        ProgGorny = 59
+        //        ProgGorny = 100
         //    }); db.SaveChanges();
 
         //    db.Statusy.Add(new Status()
         //    {
         //        Nazwa = "ZŁOTY",
-        //        ProgDolny = 60,
+        //        ProgDolny = 100,
         //        ProgGorny = 2147483647
         //    }); db.SaveChanges();
 
@@ -2066,3 +2022,4 @@ namespace OcenaKlientow
         //}
     }
 }
+

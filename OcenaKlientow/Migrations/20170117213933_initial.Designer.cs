@@ -8,8 +8,8 @@ using OcenaKlientow.Model;
 namespace OcenaKlientow.Migrations
 {
     [DbContext(typeof(OcenaKlientowContext))]
-    [Migration("20170109143358_temp")]
-    partial class temp
+    [Migration("20170117213933_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
