@@ -14,28 +14,58 @@ namespace OcenaKlientow.ViewModel
     {
         CultureInfo culture = new CultureInfo("pt-BR");
 
+        private bool _saving;
 
-        public void GetGradeDetails(KlientView item)
+        public OcenaViewModel(bool saving)
+        {
+            Saving = saving;
+        }
+
+        public bool Saving
+        {
+            get
+            {
+                return _saving;
+            }
+            set
+            {
+                _saving = value;
+            }
+        }
+
+        public List<GradeDetails> GetGradeDetails(KlientView item)
         {
             using (var db = new OcenaKlientowContext())
             {
-                var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
+                //var details = db.Wyliczono.Where(ocena => ocena.OcenaId == item.OcenaId).ToList();
                 var detailsQuery =
                from wyliczenie in db.Wyliczono
                join ocena in db.Oceny on wyliczenie.OcenaId equals ocena.OcenaId
                join klient in db.Klienci on ocena.KlientId equals item.KlientId
                join par in db.Parametry on wyliczenie.ParametrId equals par.ParametrId
-               select new
+               select new GradeDetails()
                {
-                   SumaPkt = wyliczenie.WartoscWyliczona,
-                   Kredyt = klient.KwotaKredytu,
-                   NazwaPar = par.Nazwa,
-                   WartoscPar = par.Wartosc,
-                   klient.KlientId,
-                   ocena.OcenaId
+                   Klient = new Klient()
+                   {
+                       KlientId = klient.KlientId,
+                       
+                   },
+                   Parametr = new Parametr()
+                   {
+                       Nazwa = par.Nazwa,
+                       ParametrId = par.ParametrId,
+                       Wartosc = par.Wartosc
+                   },
+                   Ocena = new Ocena()
+                   {
+                       KlientId = klient.KlientId,
+                       OcenaId = ocena.OcenaId
+                   },
+                   SumaPkt = wyliczenie.WartoscWyliczona
                };
                 var lista = detailsQuery.ToList();
-                lista = lista.Where(arg => arg.KlientId == item.KlientId && arg.OcenaId == item.OcenaId).ToList();
+                lista = lista.Where(grDet => grDet.Klient.KlientId == item.KlientId && grDet.Ocena.OcenaId == item.OcenaId).ToList();
+                return lista;
             }
         }
         int PartialPayment(Klient klient)
@@ -247,7 +277,10 @@ namespace OcenaKlientow.ViewModel
                     StatusId = statusId,
                     SumaPkt = sum
                 });
-                db.SaveChanges();
+                if (Saving)
+                {
+                    db.SaveChanges();
+                }
                 var currKlientOcenyList = db.Oceny.Where(ocena => ocena.KlientId.Equals(klient.KlientId)).OrderByDescending(ocena => ocena.OcenaId).ToList();
                 lastOcena = currKlientOcenyList[0];
 
@@ -264,7 +297,10 @@ namespace OcenaKlientow.ViewModel
                         WartoscWyliczona = keyValuePair.Value
                     };
                     db.Wyliczono.Add(wyliczenie);
-                    db.SaveChanges();
+                    if (Saving)
+                    {
+                        db.SaveChanges();
+                    }
                 }
 
 
@@ -331,5 +367,18 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+    }
+
+    public class GradeDetails
+    {
+        public Klient Klient { get; set; }
+
+        public Ocena Ocena { get; set; }
+
+        public Parametr Parametr { get; set; }
+
+        public Wyliczenie Wyliczenie { get; set; }
+
+        public double SumaPkt { get; set; }
     }
 }

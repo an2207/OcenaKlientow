@@ -12,7 +12,7 @@
         <StackPanel>
           
             <Grid Height="200">
-                <Button x:ConnectionId='3' x:Name="pu1" Content="Przeglądaj benefity"                     HorizontalAlignment="Left" Height="122" Margin="438,0,0,0" Width="404"/>
+                <Button x:ConnectionId='3' x:Name="pu1" Content="Przeglądanie benefitów"                     HorizontalAlignment="Left" Height="122" Margin="438,0,0,0" Width="404"/>
             </Grid>
             <Grid Height="200">
                 <Button x:ConnectionId='2' x:Name="pu2" Content="Przeglądanie klientów"                     HorizontalAlignment="Left" Height="126" Margin="438,0,0,0" Width="404"/>

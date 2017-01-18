@@ -13,20 +13,27 @@ namespace OcenaKlientow.ViewModel
 {
     public class KlientViewModel
     {
-        CultureInfo culture = new CultureInfo("pt-BR");
-
-        private List<Klient> Klients;
-
-
-        public KlientViewModel()
+        private bool _saving;
+        public KlientViewModel(bool saving)
         {
-            using (var db = new OcenaKlientowContext())
+            Saving = saving;
+        }
+        CultureInfo culture = new CultureInfo("pt-BR");
+        
+
+
+
+        public bool Saving
+        {
+            get
             {
-                Klients = db.Klienci.ToList();
+                return _saving;
+            }
+            set
+            {
+                _saving = value;
             }
         }
-
-     
 
         public List<KlientView> OsobyPrawneListQuery()
         {

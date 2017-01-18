@@ -44,7 +44,7 @@ namespace OcenaKlientow.View
         {
             InitializeComponent();
 
-            Pu1ViewModel = new BenefitViewModel();
+            Pu1ViewModel = new BenefitViewModel(true);
             ListaBenefitow = Pu1ViewModel.BenefitListQuery();
             //ListaBenefitow = db.Benefity.ToList();
             BenefitList.ItemsSource = ListaBenefitow;
@@ -85,28 +85,28 @@ namespace OcenaKlientow.View
             Pu1ViewModel.AddNewBenefit(newBenefit);
 
             if ((bool)zloty.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZŁOTY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ZŁOTY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZŁOTY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ZŁOTY");
 
             if ((bool)zolty.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ŻÓŁTY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ŻÓŁTY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ŻÓŁTY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ŻÓŁTY");
 
             if ((bool)zielony.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZIELONY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ZIELONY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZIELONY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ZIELONY");
 
             if ((bool)pomaran.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit, "POMARAŃCZOWY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "POMARAŃCZOWY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "POMARAŃCZOWY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "POMARAŃCZOWY");
             if ((bool)czerw.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit, "CZERWONY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "CZERWONY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "CZERWONY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "CZERWONY");
 
             BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
             ChangeLabelsAndInputsOFF();
@@ -137,6 +137,8 @@ namespace OcenaKlientow.View
 
         private void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ResetLabels();
+            AddNew.Visibility = Visibility.Collapsed;
             var benefit = (BenefitView)BenefitList.SelectedItem;
             if (benefit == null) return;
             _currentBenefitView = benefit;
@@ -218,21 +220,27 @@ namespace OcenaKlientow.View
 
         private async void Delete_OnClick(object sender, RoutedEventArgs e)
         {
-            var benToDel = (BenefitView)BenefitList.SelectedItem;
-            Pu1ViewModel.DeleteFromBenefitList(benToDel);
-            BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
-            var dialog = new ContentDialog()
+            var dialog1 = new ContentDialog()
             {
                 MaxWidth = this.ActualWidth,
-                Content = $"Benefit {benToDel.NazwaBenefitu} został usunięty."
+                Content = $"Czy na pewno chcesz usunąć benefit?"
             };
 
 
-            dialog.PrimaryButtonText = "OK";
-            dialog.PrimaryButtonClick += delegate {
+            dialog1.PrimaryButtonText = "Tak";
+            dialog1.SecondaryButtonText = "Nie";
+            dialog1.PrimaryButtonClick += delegate
+            {
+                var benToDel = (BenefitView)BenefitList.SelectedItem;
+                Pu1ViewModel.DeleteFromBenefitList(benToDel);
+                BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
+                ClearLabels();
             };
-
-            var result = await dialog.ShowAsync();
+            dialog1.SecondaryButtonClick += delegate
+            {
+                return;
+            };
+            var result1 = await dialog1.ShowAsync();
         }
 
         //void AddData()
@@ -390,7 +398,7 @@ namespace OcenaKlientow.View
                 return;
             var curr = (BenefitView)BenefitList.SelectedItem;
             Benefit benefit;
-            benefit = Pu1ViewModel.GetBenefit(curr);
+            benefit = Pu1ViewModel.GetBenefit(curr.BenefitId);
 
             if (benefit != null)
             {
@@ -412,28 +420,28 @@ namespace OcenaKlientow.View
                 benefit.DataUaktyw = selDataUaktyw.Text;
                 benefit.DataZakon = selDataZakon.Text;
                 if ((bool)zloty.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit, "ZŁOTY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ZŁOTY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZŁOTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ZŁOTY");
 
                 if ((bool)zolty.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit, "ŻÓŁTY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ŻÓŁTY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ŻÓŁTY");
 
                 if ((bool)zielony.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit, "ZIELONY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ZIELONY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZIELONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ZIELONY");
 
                 if ((bool)pomaran.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit, "POMARAŃCZOWY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "POMARAŃCZOWY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "POMARAŃCZOWY");
                 if ((bool)czerw.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit, "CZERWONY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "CZERWONY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "CZERWONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "CZERWONY");
 
                 Pu1ViewModel.UpdateBenefit(benefit);
                 BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
@@ -511,7 +519,7 @@ namespace OcenaKlientow.View
                 error = true;
             }
 
-            if ((selWartProc.Text == "") || (int.Parse(selWartProc?.Text) < 0))
+            if ((selWartProc.Text == "") || (int.Parse(selWartProc?.Text) < 0) || (int.Parse(selWartProc?.Text) >100))
             {
                 selWartProc.BorderBrush = new SolidColorBrush(Colors.Red);
                 error = true;
@@ -612,12 +620,17 @@ namespace OcenaKlientow.View
         private void SelWartProc_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var regex = new Regex("^[0-9]*$");
-            if (!regex.IsMatch(selWartProc.Text))
+            if (!regex.IsMatch(selWartProc.Text) )
             {
                 selWartProc.BorderBrush = new SolidColorBrush(Colors.Red);
             }
             else
-            { 
+            {
+                if (selWartProc.Text=="" ||(int.Parse(selWartProc?.Text) < 0) || (int.Parse(selWartProc?.Text) > 100))
+                {
+                    selWartProc.BorderBrush = new SolidColorBrush(Colors.Red);
+                    return;
+                }
                 selWartProc.BorderBrush = opis.BorderBrush;
             }
         }

@@ -40,8 +40,8 @@ namespace OcenaKlientow.View
         private OcenaViewModel _ocenaViewModel;
         public PU2()
         {
-            KlientViewModel = new KlientViewModel();
-            OcenaVM = new OcenaViewModel();
+            KlientViewModel = new KlientViewModel(true);
+            OcenaVM = new OcenaViewModel(true);
             KlientViewModel.OsobyPrawneListQuery();
             
             this.InitializeComponent();
@@ -209,14 +209,24 @@ namespace OcenaKlientow.View
         {
             if (selectedFromBothListItem != null)
             {
-                OcenaVM.GetGradeDetails(selectedFromBothListItem);
-
+                var lista =OcenaVM.GetGradeDetails(selectedFromBothListItem);
+                var platnCzas = lista.Where(details => details.Parametr.Nazwa.Equals("PLATN_NA_CZAS")).FirstOrDefault();
+                var platnCalk = lista.Where(details => details.Parametr.Nazwa.Equals("PLATN_CALK")).FirstOrDefault();
+                var platnCzes = lista.Where(details => details.Parametr.Nazwa.Equals("PLATN_CZESC")).FirstOrDefault();
+                var regZam = lista.Where(details => details.Parametr.Nazwa.Equals("REGUL_ZAM")).FirstOrDefault();
+                var przekTerm = lista.Where(details => details.Parametr.Nazwa.Equals("PRZEK_TERM")).FirstOrDefault();
+                var limitKred = lista.Where(details => details.Parametr.Nazwa.Equals("LIMIT KREDYTU")).FirstOrDefault();
+                double suma = 0;
+                foreach (GradeDetails gradeDetailse in lista)
+                {
+                    suma += gradeDetailse.SumaPkt;
+                }
 
                 var dialog = new ContentDialog()
                 {
-                    Title = "Szczegóły",
+                    Title = "Szczegóły oceny",
                     MaxWidth = this.ActualWidth,
-                    Content = $"Punkty dodatnie:\n Płatność na czas\n10 punktów\nPłatność częściowa\n5 punktóws"
+                    Content = $"Płatność na czas: {platnCzas.SumaPkt} pkt\nPłatność częściowa: {platnCzes.SumaPkt} pkt\nPłatność całkowita: {platnCalk.SumaPkt} pkt\nRegularne zamówienie: {regZam.SumaPkt} pkt\nPrzekroczenie terminu płatności: {przekTerm.SumaPkt} pkt\nLimit kredytu: {limitKred.SumaPkt} pkt\nSuma punktów: {suma} pkt"
                 };
 
 

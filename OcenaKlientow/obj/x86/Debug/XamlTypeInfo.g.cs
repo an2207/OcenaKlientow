@@ -220,14 +220,11 @@ namespace OcenaKlientow.OcenaKlientow_XamlTypeInfo
         private object Activate_7_BenefitView() { return new global::OcenaKlientow.View.ListItems.BenefitView(); }
         private object Activate_11_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.PrzypisanyStatus>(); }
         private object Activate_12_PrzypisanyStatus() { return new global::OcenaKlientow.Model.Models.PrzypisanyStatus(); }
-        private object Activate_13_BenefitViewModel() { return new global::OcenaKlientow.ViewModel.BenefitViewModel(); }
         private object Activate_14_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.Model.Models.Status>(); }
         private object Activate_15_Status() { return new global::OcenaKlientow.Model.Models.Status(); }
         private object Activate_16_PU2() { return new global::OcenaKlientow.View.PU2(); }
         private object Activate_17_List() { return new global::System.Collections.Generic.List<global::OcenaKlientow.View.ListItems.KlientView>(); }
         private object Activate_18_KlientView() { return new global::OcenaKlientow.View.ListItems.KlientView(); }
-        private object Activate_20_KlientViewModel() { return new global::OcenaKlientow.ViewModel.KlientViewModel(); }
-        private object Activate_21_OcenaViewModel() { return new global::OcenaKlientow.ViewModel.OcenaViewModel(); }
         private void VectorAdd_5_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::OcenaKlientow.View.ListItems.BenefitView>)instance;

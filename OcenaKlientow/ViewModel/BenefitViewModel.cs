@@ -12,7 +12,24 @@ namespace OcenaKlientow.ViewModel
 {
     public class BenefitViewModel
     {
+        private bool _saving;
 
+        public BenefitViewModel(bool saving)
+        {
+            Saving = saving;
+        }
+
+        public bool Saving
+        {
+            get
+            {
+                return _saving;
+            }
+            set
+            {
+                _saving = value;
+            }
+        }
 
         public List<BenefitView> BenefitListQuery()
         {
@@ -59,50 +76,59 @@ namespace OcenaKlientow.ViewModel
                 }
                 var currBen = db.Benefity.Where(benefit => benefit.BenefitId.Equals(benToDel.BenefitId)).FirstOrDefault();
                 db.Entry(currBen).State = EntityState.Deleted;
-                db.SaveChanges();
+                if (Saving)
+                {
+                    db.SaveChanges();
+                }
 
             }
         }
 
-        public void AddStatusToBenefit(Benefit benefit, string name)
+        public void AddStatusToBenefit(int benefitId, string name)
         {
             using (var db = new OcenaKlientowContext())
             {
                 var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
+                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefitId && status1.StatusId == status.StatusId).FirstOrDefault();
                 if (przypisanyStatus == null)
                 {
                     db.PrzypisaneStatusy.Add(new PrzypisanyStatus()
                     {
-                        BenefitId = benefit.BenefitId,
+                        BenefitId = benefitId,
                         StatusId = status.StatusId
                     });
-                    db.SaveChanges();
+                    if (Saving)
+                    {
+                        db.SaveChanges();
+                    }
                 }
             }
 
         }
 
-        public void DeleteStatusFromBenefit(Benefit benefit, string name)
+        public void DeleteStatusFromBenefit(int benefitId, string name)
         {
             using (var db = new OcenaKlientowContext())
             {
                 var status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefit.BenefitId && status1.StatusId == status.StatusId).FirstOrDefault();
+                var przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => status1.BenefitId == benefitId && status1.StatusId == status.StatusId).FirstOrDefault();
                 if (przypisanyStatus == null)
                 {
                     return;
                 }
                 db.PrzypisaneStatusy.Remove(przypisanyStatus);
-                db.SaveChanges();
+                if (Saving)
+                {
+                    db.SaveChanges();
+                }
             }
         }
 
-        public Benefit GetBenefit(BenefitView curr)
+        public Benefit GetBenefit(int benefitId)
         {
             using (var db = new OcenaKlientowContext())
             {
-                return db.Benefity.Where(benefit1 => benefit1.BenefitId == curr.BenefitId).FirstOrDefault();
+                return db.Benefity.Where(benefit1 => benefit1.BenefitId == benefitId).FirstOrDefault();
             }
         }
 
@@ -118,7 +144,10 @@ namespace OcenaKlientow.ViewModel
                 toChange.RodzajId = benefit.RodzajId;
                 toChange.Opis = benefit.Opis;
                 toChange.WartoscProc = benefit.WartoscProc;
-                db.SaveChanges();
+                if (Saving)
+                {
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -143,7 +172,10 @@ namespace OcenaKlientow.ViewModel
             using (var db = new OcenaKlientowContext())
             {
                 db.Benefity.Add(newBenefit);
-                db.SaveChanges();
+                if (Saving)
+                {
+                    db.SaveChanges();
+                }
             }
         }
 
