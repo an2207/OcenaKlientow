@@ -245,7 +245,7 @@ namespace OcenaKlientow.View
 
         private async void CountAllStatuses_OnClick(object sender, RoutedEventArgs e)
         {
-            OcenaVM.CoundAllGrades();
+            OcenaVM.CountAllGrades();
             OsobyFizyczne.ItemsSource = KlientViewModel.OsobyFizyczneListQuery();
             OsobyPrawne.ItemsSource = KlientViewModel.OsobyPrawneListQuery();
 

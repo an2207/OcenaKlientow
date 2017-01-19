@@ -1,46 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
-using OcenaKlientow.ViewModel;
 
 namespace OcenaKlientow.Tests
 {
     [TestClass]
     public class KlientTest
     {
+        #region Constants
 
         public const string ImieTest = "TestImie";
 
         public const string NazwiskoTest = "TestNazwisko";
 
+        #endregion
+        #region Public methods
+
         [TestMethod]
         public void DbAddsProperKlientWhenTableExists()
         {
-
             using (var db = new OcenaKlientowContext())
             {
                 db.Database.Migrate();
-                var asd = db.Klienci.ToList();
-                using (var transaction = db.Database.BeginTransaction())
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
                     {
-                        var klient = new Klient()
+                        var klient = new Klient
                         {
                             Imie = ImieTest,
                             Nazwisko = NazwiskoTest
                         };
 
-
                         db.Klienci.Add(klient);
                         db.SaveChanges();
-                        var fromDbKlient = db.Klienci.Where(klient1 => klient1.Nazwisko.Equals("TestNazwisko")).FirstOrDefault();
+                        Klient fromDbKlient = db.Klienci.Where(klient1 => klient1.Nazwisko.Equals("TestNazwisko")).FirstOrDefault();
 
                         Assert.IsTrue(klient.KlientId > 0);
                         Assert.AreEqual(fromDbKlient.Nazwisko, NazwiskoTest);
@@ -54,9 +52,9 @@ namespace OcenaKlientow.Tests
                         throw;
                     }
                 }
-
             }
         }
-            
+
+        #endregion
     }
 }

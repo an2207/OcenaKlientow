@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
@@ -14,33 +14,30 @@ namespace OcenaKlientow.Tests
     [TestClass]
     public class OcenaViewModelTest
     {
+        #region Public methods
+
         [TestMethod]
-        public void DbAddsProperKlientWhenTableExists()
+        public void ViewModelCountAllGradesForKlientsWhenTablesExists()
         {
-            OcenaViewModel ocenaViewModel = GetOcenaViewModel();
-            
+            var ocenaViewModel = new OcenaViewModel(true);
+
             using (var db = new OcenaKlientowContext())
             {
                 db.Database.Migrate();
-                var asd = db.Klienci.ToList();
-                using (var transaction = db.Database.BeginTransaction())
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
                     {
-                        var klient = new Klient()
-                        {
-                            Imie = ImieTest,
-                            Nazwisko = NazwiskoTest
-                        };
-
-
-                        db.Klienci.Add(klient);
+                        Klient klient = db.Klienci.FirstOrDefault();
+                        var culture = new CultureInfo("pt-BR");
+                        //includes test for OcenaViewModelStatus.CountStatus()
+                        ocenaViewModel.CountAllGrades();
                         db.SaveChanges();
-                        var fromDbKlient = db.Klienci.Where(klient1 => klient1.Nazwisko.Equals("TestNazwisko")).FirstOrDefault();
+                        string date = DateTime.Now.ToString("d", culture);
+                        List<Klient> fromDbKlients = db.Klienci.ToList();
+                        List<Ocena> fromDbOcenas = db.Oceny.Where(oc => oc.DataCzas.Equals(date)).ToList();
 
-                        Assert.IsTrue(klient.KlientId > 0);
-                        Assert.AreEqual(fromDbKlient.Nazwisko, NazwiskoTest);
-                        Assert.AreEqual(fromDbKlient.Imie, ImieTest);
+                        Assert.IsTrue(fromDbOcenas.Count >= fromDbKlients.Count);
 
                         transaction.Rollback();
                     }
@@ -50,18 +47,9 @@ namespace OcenaKlientow.Tests
                         throw;
                     }
                 }
-
             }
         }
 
-
-        public const string ImieTest = "TestImie";
-
-        public const string NazwiskoTest = "TestNazwisko";
-
-        public OcenaViewModel GetOcenaViewModel()
-        {
-            return new OcenaViewModel(false);
-        }
+        #endregion
     }
 }

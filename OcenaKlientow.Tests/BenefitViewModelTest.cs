@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using OcenaKlientow.Model;
 using OcenaKlientow.Model.Models;
@@ -10,25 +12,27 @@ namespace OcenaKlientow.Tests
     [TestClass]
     public class BenefitViewModelsTests
     {
+        #region Public methods
+
         [TestMethod]
         public void ViemModelAddsPrzypisanyStatusWhenBenefitIdAndStatusNazwaAreGiven()
         {
-            BenefitViewModel viewModel = new BenefitViewModel(true);
+            var viewModel = new BenefitViewModel(true);
             int benefitId;
             string statusName;
 
             using (var db = new OcenaKlientowContext())
             {
-                using (var transaction = db.Database.BeginTransaction())
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
                     {
                         benefitId = db.Benefity.Select(benefit => benefit.BenefitId).FirstOrDefault();
                         statusName = db.Statusy.Select(status => status.Nazwa).FirstOrDefault();
                         viewModel.AddStatusToBenefit(benefitId, statusName);
-                        var fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
+                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
 
-                        Assert.IsTrue(fromDbPrzypisanyStatus.Count>0);
+                        Assert.IsTrue(fromDbPrzypisanyStatus.Count > 0);
                         Assert.IsNotNull(fromDbPrzypisanyStatus.FirstOrDefault());
                         transaction.Rollback();
                     }
@@ -43,13 +47,13 @@ namespace OcenaKlientow.Tests
         [TestMethod]
         public void ViemModelDeletesPrzypisanyStatusWhenBenefitIdAndStatusNazwaAreGiven()
         {
-            BenefitViewModel viewModel = new BenefitViewModel(true);
+            var viewModel = new BenefitViewModel(true);
             int benefitId;
             string statusName;
 
             using (var db = new OcenaKlientowContext())
             {
-                using (var transaction = db.Database.BeginTransaction())
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
                     {
@@ -58,10 +62,10 @@ namespace OcenaKlientow.Tests
                         viewModel.AddStatusToBenefit(benefitId, statusName);
 
                         viewModel.DeleteStatusFromBenefit(benefitId, statusName);
-                        var fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
-                        var oneStatus = fromDbPrzypisanyStatus.FirstOrDefault();
+                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
+                        PrzypisanyStatus oneStatus = fromDbPrzypisanyStatus.FirstOrDefault();
 
-                        Assert.IsTrue(fromDbPrzypisanyStatus.Count==0);
+                        Assert.IsTrue(fromDbPrzypisanyStatus.Count == 0);
                         Assert.IsNull(oneStatus);
                         transaction.Rollback();
                     }
@@ -76,22 +80,21 @@ namespace OcenaKlientow.Tests
         [TestMethod]
         public void ViewModelUpdatesBenefitWhenTableIsCreatedAndBenefitExists()
         {
-            BenefitViewModel viewModel = new BenefitViewModel(false);
+            var viewModel = new BenefitViewModel(false);
             Benefit benefitCurr;
-            string statusName;
 
             using (var db = new OcenaKlientowContext())
             {
-                using (var transaction = db.Database.BeginTransaction())
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
                     {
                         benefitCurr = db.Benefity.FirstOrDefault();
-                        string newBenefitName = "TestBenefit";
+                        var newBenefitName = "TestBenefit";
                         benefitCurr.Nazwa = newBenefitName;
                         viewModel.UpdateBenefit(benefitCurr);
-                        var fromDbBenefit = db.Benefity.Where(benefit => benefit.BenefitId == benefitCurr.BenefitId).FirstOrDefault();
-                        
+                        Benefit fromDbBenefit = db.Benefity.Where(benefit => benefit.BenefitId == benefitCurr.BenefitId).FirstOrDefault();
+
                         Assert.AreEqual(fromDbBenefit.Nazwa, benefitCurr.Nazwa);
                         transaction.Rollback();
                     }
@@ -102,5 +105,7 @@ namespace OcenaKlientow.Tests
                 }
             }
         }
+
+        #endregion
     }
 }

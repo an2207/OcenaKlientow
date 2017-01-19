@@ -32,6 +32,7 @@ namespace OcenaKlientow
             using (var db = new OcenaKlientowContext())
             {
                 db.Database.Migrate();
+                var klient = db.Klienci.FirstOrDefault();
                 //var a = RegularOrders();
                 //SeedData(db);
                 // InitData(db);
@@ -42,7 +43,7 @@ namespace OcenaKlientow
                 //db.SaveChanges();
                 //var oc = db.Oceny;
                 //db.Oceny.RemoveRange(oc);
-                db.SaveChanges();
+                //db.SaveChanges();
                 //var innerJoinQuery =
                 //from benefit in db.Benefity
                 //join rodzaj in db.RodzajeBenefitow on benefit.RodzajId equals rodzaj.RodzajId
@@ -57,9 +58,12 @@ namespace OcenaKlientow
                 //    NazwaBenefitu = benefit.Nazwa,
                 //    NazwaRodzaju = rodzaj.Nazwa,
                 //    Opis = benefit.Opis
-                        
+
                 //};
                 CultureInfo culture = new CultureInfo("pt-BR");
+                var date = DateTime.Now.ToString("d",culture);
+                var fromDbOcenas = db.Oceny.Where(oc => oc.DataCzas.Equals(date)).ToList();
+
                 var a = DateTime.Now.ToString("d", culture);
                 string b = "12/01/2015";
                 var c = DateTime.Parse(b, culture);

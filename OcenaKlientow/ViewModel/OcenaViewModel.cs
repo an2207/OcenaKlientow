@@ -12,7 +12,7 @@ namespace OcenaKlientow.ViewModel
 {
     public class OcenaViewModel
     {
-        CultureInfo culture = new CultureInfo("pt-BR");
+        private readonly CultureInfo culture = new CultureInfo("pt-BR");
 
         private bool _saving;
 
@@ -229,20 +229,19 @@ namespace OcenaKlientow.ViewModel
         }
 
 
-        void AssignGrade(Klient klient)
+        private void AssignGrade(Klient klient)
         {
             Dictionary<int, int> parameters = new Dictionary<int, int>();
             int sum = 0;
             Ocena lastOcena;
             using (var db = new OcenaKlientowContext())
             {
-
-                var parId = db.Parametry.Where(parametr => parametr.Nazwa == "REGUL_ZAM").Select(parametr => parametr.ParametrId).FirstOrDefault();
-                var points = RegularOrders(klient);
+                var parId = db.Parametry.Where(parametr => parametr.Nazwa == "LIMIT KREDYTU").Select(parametr => parametr.ParametrId).FirstOrDefault();
+                var points = LoanLimit(klient);
                 parameters.Add(parId, points);
                 sum += points;
-                parId = db.Parametry.Where(parametr => parametr.Nazwa == "LIMIT KREDYTU").Select(parametr => parametr.ParametrId).FirstOrDefault();
-                points = LoanLimit(klient);
+                parId = db.Parametry.Where(parametr => parametr.Nazwa == "REGUL_ZAM").Select(parametr => parametr.ParametrId).FirstOrDefault();
+                points = RegularOrders(klient);
                 parameters.Add(parId, points);
                 sum += points;
                 parId = db.Parametry.Where(parametr => parametr.Nazwa == "PLATN_CZESC").Select(parametr => parametr.ParametrId).FirstOrDefault();
@@ -350,10 +349,9 @@ namespace OcenaKlientow.ViewModel
         public void CountStatus(Klient klient)
         {
             AssignGrade(klient);
-
         }
 
-        public void CoundAllGrades()
+        public void CountAllGrades()
         {
             List<Klient> listaKlients;
 
