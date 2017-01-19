@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using OcenaKlientow.Model;
@@ -23,6 +24,7 @@ namespace OcenaKlientow.Tests
 
             using (var db = new OcenaKlientowContext())
             {
+                db.Database.Migrate();
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
@@ -53,6 +55,7 @@ namespace OcenaKlientow.Tests
 
             using (var db = new OcenaKlientowContext())
             {
+                db.Database.Migrate();
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
@@ -85,6 +88,7 @@ namespace OcenaKlientow.Tests
 
             using (var db = new OcenaKlientowContext())
             {
+                db.Database.Migrate();
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction())
                 {
                     try
