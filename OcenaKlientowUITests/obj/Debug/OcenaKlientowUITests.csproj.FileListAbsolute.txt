@@ -1,0 +1,17 @@
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\OcenaKlientowUITests.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\OcenaKlientowUITests.pdb
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\nunit.framework.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\WebDriver.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\nunit.framework.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\WebDriver.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\obj\Debug\OcenaKlientowUITests.csprojResolveAssemblyReference.cache
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\obj\Debug\OcenaKlientowUITests.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\obj\Debug\OcenaKlientowUITests.pdb
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\appium-dotnet-driver.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\Castle.Core.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\WebDriver.Support.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\appium-dotnet-driver.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\Castle.Core.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Debug\WebDriver.Support.xml

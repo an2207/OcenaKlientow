@@ -3,3 +3,7 @@
 ################################################################################
 
 /OcenaKlientow.Tests/bin/x86/Debug
+/OcenaKlientow/obj/x86/Release
+/packages
+/OcenaKlientowUITests/bin/Debug
+/OcenaKlientow/bin/x86/Release
