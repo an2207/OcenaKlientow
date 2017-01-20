@@ -28,6 +28,7 @@ namespace OcenaKlientow.Tests
                 {
                     try
                     {
+                        var a = db.Klienci;
                         Klient klient = db.Klienci.FirstOrDefault();
                         var culture = new CultureInfo("pt-BR");
                         //includes test for OcenaViewModelStatus.CountStatus()

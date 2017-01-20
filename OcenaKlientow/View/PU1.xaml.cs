@@ -138,7 +138,7 @@ namespace OcenaKlientow.View
         private void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ResetLabels();
-            AddNew.Visibility = Visibility.Collapsed;
+            Add.Visibility = Visibility.Collapsed;
             var benefit = (BenefitView)BenefitList.SelectedItem;
             if (benefit == null) return;
             _currentBenefitView = benefit;

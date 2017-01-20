@@ -1,0 +1,16 @@
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\OcenaKlientowUITests.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\OcenaKlientowUITests.pdb
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\appium-dotnet-driver.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\Castle.Core.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\Newtonsoft.Json.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\nunit.framework.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\WebDriver.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\WebDriver.Support.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\appium-dotnet-driver.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\Castle.Core.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\Newtonsoft.Json.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\nunit.framework.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\WebDriver.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\bin\Release\WebDriver.Support.xml
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\obj\Release\OcenaKlientowUITests.dll
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientowUITests\obj\Release\OcenaKlientowUITests.pdb

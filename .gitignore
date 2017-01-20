@@ -7,3 +7,7 @@
 /packages
 /OcenaKlientowUITests/bin/Debug
 /OcenaKlientow/bin/x86/Release
+/OcenaKlientow.Tests/bin/x86/Release
+/OcenaKlientow.Tests/obj/x86/Release/ilc
+/OcenaKlientowUITests/bin/Release
+/OcenaKlientow.Tests/obj/x86/Release

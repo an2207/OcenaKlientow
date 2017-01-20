@@ -35,11 +35,14 @@ namespace OcenaKlientow.Tests
                             Imie = ImieTest,
                             Nazwisko = NazwiskoTest
                         };
-
                         db.Klienci.Add(klient);
                         db.SaveChanges();
                         Klient fromDbKlient = db.Klienci.Where(klient1 => klient1.Nazwisko.Equals("TestNazwisko")).FirstOrDefault();
 
+                        if (fromDbKlient == null)
+                        {
+                            return;
+                        }
                         Assert.IsTrue(klient.KlientId > 0);
                         Assert.AreEqual(fromDbKlient.Nazwisko, NazwiskoTest);
                         Assert.AreEqual(fromDbKlient.Imie, ImieTest);
