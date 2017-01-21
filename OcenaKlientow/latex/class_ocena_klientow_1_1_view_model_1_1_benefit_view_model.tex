@@ -1,0 +1,176 @@
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model}{}\section{Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model Class Reference}
+\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model}\index{Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model@{Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a11bcfa34fbadef40b5bce5aae3e4f92f}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a11bcfa34fbadef40b5bce5aae3e4f92f} 
+{\bfseries Benefit\+View\+Model} (bool saving)
+\item 
+void \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ad8a6a78aa63e7cbd0bc677627b8c34b9}{Add\+New\+Benefit} (Benefit new\+Benefit)
+\begin{DoxyCompactList}\small\item\em Metoda dodająca nowy rekord (benefit) do bazy danych. \end{DoxyCompactList}\item 
+void \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a67b27437f2c0a3a9ced48dc1fb1f8658}{Add\+Status\+To\+Benefit} (Benefit benefit, string name)
+\begin{DoxyCompactList}\small\item\em Metoda przypisująca status do istniejącego w bazie danych rekordu benefitu. \end{DoxyCompactList}\item 
+List$<$ Benefit\+View $>$ \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a384e8afb520c3255a8e0ae76a6f56b0d}{Benefit\+List\+Query} ()
+\begin{DoxyCompactList}\small\item\em Metoda tworząca listę benefitów i ich atrybutów. \end{DoxyCompactList}\item 
+void \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2da1cc3a788a6f592199b90410159abe}{Delete\+From\+Benefit\+List} (Benefit\+View ben\+To\+Del)
+\begin{DoxyCompactList}\small\item\em Metoda usuwająca podany benefit z bazy danych. \end{DoxyCompactList}\item 
+void \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ab5199fb111e34d97534ad2d188610b93}{Delete\+Status\+From\+Benefit} (Benefit benefit, string name)
+\begin{DoxyCompactList}\small\item\em Metoda usuwająca istniejące przypisanie statusu do benefitu. \end{DoxyCompactList}\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_af95e425d6e9d53fb21b4f8c7f882625e}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_af95e425d6e9d53fb21b4f8c7f882625e} 
+Benefit {\bfseries Get\+Benefit} (int benefit\+Id)
+\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a95c1f64e592691b91f93c3acc82f0fc4}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a95c1f64e592691b91f93c3acc82f0fc4} 
+List$<$ Rodzaj\+Benefitu $>$ {\bfseries Get\+Benefit\+Types} ()
+\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a85df459d3333a2821e96865f08bc86e1}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a85df459d3333a2821e96865f08bc86e1} 
+List$<$ int $>$ {\bfseries Get\+Current\+Benefit\+Przypisane\+Statuses} (Benefit\+View benefit)
+\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a76395131def2dfafd898c51c11a6be3a}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a76395131def2dfafd898c51c11a6be3a} 
+Rodzaj\+Benefitu {\bfseries Get\+Rabat\+Id} ()
+\item 
+List$<$ Status $>$ \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_aaab199bf68bdb87b910fdfe2cd45c1c6}{Get\+Statuses} ()
+\begin{DoxyCompactList}\small\item\em Metoda pobierająca listę statusów. \end{DoxyCompactList}\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a4d7ffaae92dc6c789239ff10188596a4}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a4d7ffaae92dc6c789239ff10188596a4} 
+Rodzaj\+Benefitu {\bfseries Get\+Termin\+Id} ()
+\item 
+Benefit \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a820c19c8b1ca13a158ee775b325d8d44}{Read\+Benefit} (int benefit\+Id)
+\begin{DoxyCompactList}\small\item\em Metoda wyszukująca benefit w bazie danych po jego ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2b803d785c29c965b8c120064a10d903}{Update\+Benefit} (Benefit benefit)
+\begin{DoxyCompactList}\small\item\em Metoda aktualizująca istniejący w bazie danych benefit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ad33c0198a2f7a4e8342505e57eba0ec5}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ad33c0198a2f7a4e8342505e57eba0ec5} 
+bool {\bfseries Saving}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ad8a6a78aa63e7cbd0bc677627b8c34b9}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ad8a6a78aa63e7cbd0bc677627b8c34b9} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Add\+New\+Benefit@{Add\+New\+Benefit}}
+\index{Add\+New\+Benefit@{Add\+New\+Benefit}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Add\+New\+Benefit()}{AddNewBenefit()}}
+{\footnotesize\ttfamily void Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Add\+New\+Benefit (\begin{DoxyParamCaption}\item[{Benefit}]{new\+Benefit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda dodająca nowy rekord (benefit) do bazy danych. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Benefit} & Instancja obiektu typu Benefit\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a67b27437f2c0a3a9ced48dc1fb1f8658}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a67b27437f2c0a3a9ced48dc1fb1f8658} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Add\+Status\+To\+Benefit@{Add\+Status\+To\+Benefit}}
+\index{Add\+Status\+To\+Benefit@{Add\+Status\+To\+Benefit}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Add\+Status\+To\+Benefit()}{AddStatusToBenefit()}}
+{\footnotesize\ttfamily void Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Add\+Status\+To\+Benefit (\begin{DoxyParamCaption}\item[{Benefit}]{benefit,  }\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda przypisująca status do istniejącego w bazie danych rekordu benefitu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benefit} & Instancja obiektu typu Benefit, do którego ma być dodany status\\
+\hline
+{\em name} & Nazwa dodawanego statusu\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a384e8afb520c3255a8e0ae76a6f56b0d}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a384e8afb520c3255a8e0ae76a6f56b0d} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Benefit\+List\+Query@{Benefit\+List\+Query}}
+\index{Benefit\+List\+Query@{Benefit\+List\+Query}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Benefit\+List\+Query()}{BenefitListQuery()}}
+{\footnotesize\ttfamily List$<$Benefit\+View$>$ Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Benefit\+List\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda tworząca listę benefitów i ich atrybutów. 
+
+\begin{DoxyReturn}{Returns}
+Lista benefitów
+\end{DoxyReturn}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2da1cc3a788a6f592199b90410159abe}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2da1cc3a788a6f592199b90410159abe} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Delete\+From\+Benefit\+List@{Delete\+From\+Benefit\+List}}
+\index{Delete\+From\+Benefit\+List@{Delete\+From\+Benefit\+List}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Delete\+From\+Benefit\+List()}{DeleteFromBenefitList()}}
+{\footnotesize\ttfamily void Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Delete\+From\+Benefit\+List (\begin{DoxyParamCaption}\item[{Benefit\+View}]{ben\+To\+Del }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda usuwająca podany benefit z bazy danych. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ben\+To\+Del} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ab5199fb111e34d97534ad2d188610b93}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_ab5199fb111e34d97534ad2d188610b93} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Delete\+Status\+From\+Benefit@{Delete\+Status\+From\+Benefit}}
+\index{Delete\+Status\+From\+Benefit@{Delete\+Status\+From\+Benefit}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Delete\+Status\+From\+Benefit()}{DeleteStatusFromBenefit()}}
+{\footnotesize\ttfamily void Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Delete\+Status\+From\+Benefit (\begin{DoxyParamCaption}\item[{Benefit}]{benefit,  }\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda usuwająca istniejące przypisanie statusu do benefitu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benefit} & Instancja obiektu typu Benefit\\
+\hline
+{\em name} & Nazwa statusu\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_aaab199bf68bdb87b910fdfe2cd45c1c6}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_aaab199bf68bdb87b910fdfe2cd45c1c6} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Get\+Statuses@{Get\+Statuses}}
+\index{Get\+Statuses@{Get\+Statuses}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Get\+Statuses()}{GetStatuses()}}
+{\footnotesize\ttfamily List$<$Status$>$ Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Get\+Statuses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda pobierająca listę statusów. 
+
+\begin{DoxyReturn}{Returns}
+Lista statusów
+\end{DoxyReturn}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a820c19c8b1ca13a158ee775b325d8d44}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a820c19c8b1ca13a158ee775b325d8d44} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Read\+Benefit@{Read\+Benefit}}
+\index{Read\+Benefit@{Read\+Benefit}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Read\+Benefit()}{ReadBenefit()}}
+{\footnotesize\ttfamily Benefit Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Read\+Benefit (\begin{DoxyParamCaption}\item[{int}]{benefit\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda wyszukująca benefit w bazie danych po jego ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benefit\+Id} & ID szukanego benefitu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Benefit
+\end{DoxyReturn}
+\hypertarget{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2b803d785c29c965b8c120064a10d903}{}\label{class_ocena_klientow_1_1_view_model_1_1_benefit_view_model_a2b803d785c29c965b8c120064a10d903} 
+\index{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}!Update\+Benefit@{Update\+Benefit}}
+\index{Update\+Benefit@{Update\+Benefit}!Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model@{Ocena\+Klientow\+::\+View\+Model\+::\+Benefit\+View\+Model}}
+\subsubsection{\texorpdfstring{Update\+Benefit()}{UpdateBenefit()}}
+{\footnotesize\ttfamily void Ocena\+Klientow.\+View\+Model.\+Benefit\+View\+Model.\+Update\+Benefit (\begin{DoxyParamCaption}\item[{Benefit}]{benefit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metoda aktualizująca istniejący w bazie danych benefit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benefit} & Instancja obiektu typu Benefit\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Benefit\+View\+Model.\+cs\end{DoxyCompactItemize}
