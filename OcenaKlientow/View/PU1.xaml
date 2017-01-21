@@ -73,7 +73,7 @@
                 <Grid Height="100" Width="100"/>
             </ListView>
         </Grid>
-        <Grid Background="White" HorizontalAlignment="Left" Height="120" Margin="0,600,0,0" VerticalAlignment="Top" Width="614">
+        <Grid Background="White"  Name ="TestGrid" HorizontalAlignment="Left" Height="120" Margin="0,600,0,0" VerticalAlignment="Top" Width="614">
             <Button x:Name="Edit" Click="Edit_OnClick" Content="Edytuj" HorizontalAlignment="Left" Margin="104,44,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
             <Button x:Name="Delete" Click="Delete_OnClick" Content="Usuń" HorizontalAlignment="Left" Margin="244,44,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
             <Button x:Name="AddNew" Click="AddNew_OnClick" Content="Utwórz nowy" HorizontalAlignment="Left" Margin="386,44,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
@@ -101,13 +101,13 @@
                 </ComboBox>
                 <TextBox x:Name="selWartProc" TextChanged="SelWartProc_OnTextChanged" InputScope="Number" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209"/>
                 <TextBlock x:Name="procent" HorizontalAlignment="Left" Margin="228,83,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Width="36" FontSize="25" Height="28" RenderTransformOrigin="0.972,0.679"/>
-                <TextBox x:Name="selDataUaktyw" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
-                <TextBox x:Name="selDataZakon" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
-                <CheckBox x:Name="zloty" IsEnabled="False" Content="złoty" Background="LightBlue"  HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="zielony" IsEnabled="False" Content="zielony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,227,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="zolty" IsEnabled="False" Content="żółty" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,259,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="pomaran" IsEnabled="False" Content="pomarańczowy" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,291,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="czerw"  IsEnabled="False" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
+                <TextBox x:Name="selDataUaktyw" PlaceholderText="yyyy/mm/dd" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
+                <TextBox x:Name="selDataZakon" PlaceholderText="yyyy/mm/dd" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
+                <CheckBox x:Name="zloty"  IsEnabled="False" Content="złoty" Background="LightBlue"  HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="zielony" BorderThickness="2" IsEnabled="False" Content="zielony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,227,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="zolty" BorderThickness="2" IsEnabled="False" Content="żółty" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,259,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="pomaran" BorderThickness="2" IsEnabled="False" Content="pomarańczowy" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,291,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="czerw"  BorderThickness="2" IsEnabled="False" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
 
             </Grid>
             <Button x:Name="Save" Click="Save_OnClick" Visibility="Collapsed" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>

@@ -87,7 +87,9 @@ namespace OcenaKlientowUITests
             
             var list = OcenaKlientowSession.FindElements(By.XPath("//label/input"));
             var list1 = OcenaKlientowSession.FindElements(By.XPath("OcenaKlientow.View.ListItems.BenefitView//IdBen"));
-            
+
+            var list2 = OcenaKlientowSession.FindElements(By.XPath(".//TextBlock//IdBen"));
+            var listGrid = OcenaKlientowSession.FindElements(By.XPath("//Grid"));
 
 
             Assert.AreEqual(1,1);

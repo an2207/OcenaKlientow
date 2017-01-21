@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace OcenaKlientow.View
 
         private readonly List<RodzajBenefitu> TypyBenfitowList;
         private BenefitView _currentBenefitView;
-        
+        CultureInfo culture = new CultureInfo("pt-BR");
 
         #endregion
         #region Properties
@@ -114,9 +115,8 @@ namespace OcenaKlientow.View
             ResetLabels();
             var dialog = new ContentDialog()
             {
-                Title = "Dodano",
                 MaxWidth = this.ActualWidth,
-                Content = "ASDASD"
+                Content = "Benefit został pomyślnie zapisany."
             };
 
 
@@ -135,8 +135,22 @@ namespace OcenaKlientow.View
             Add.Visibility = Visibility.Visible;
         }
 
-        private void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (Cancel.Visibility == Visibility.Visible)
+            {
+                if (BenefitList.SelectedItem == _currentBenefitView)
+                {
+                    return;
+                }
+
+                if (await RejectChanges())
+                {
+                    
+                    BenefitList.SelectedItem = _currentBenefitView;
+                    return;
+                }
+            }
             ResetLabels();
             Add.Visibility = Visibility.Collapsed;
             var benefit = (BenefitView)BenefitList.SelectedItem;
@@ -184,6 +198,30 @@ namespace OcenaKlientow.View
                 czerw.IsChecked = false;
             ChangeLabelsAndInputsOFF();
 
+        }
+
+        private async Task<bool> RejectChanges()
+        {
+            var dialog = new ContentDialog()
+            {
+                MaxWidth = this.ActualWidth,
+                Content = $"Czy na pewno chcesz odrzucić wprowadzone zmiany?"
+            };
+            bool stay = false;
+
+            dialog.PrimaryButtonText = "Tak";
+            dialog.SecondaryButtonText = "Nie";
+            dialog.PrimaryButtonClick += delegate {
+                                                 stay = false;
+
+            };
+            dialog.SecondaryButtonClick += delegate
+                                               {
+                                                   stay = true;
+            };
+
+            var result = await dialog.ShowAsync();
+            return stay;
         }
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
@@ -531,11 +569,20 @@ namespace OcenaKlientow.View
             }
             if (!(bool)zloty.IsChecked && !(bool)zielony.IsChecked && !(bool)zolty.IsChecked && !(bool)pomaran.IsChecked && !(bool)czerw.IsChecked)
             {
+                zloty.BorderThickness = new Thickness(2);
                 zloty.BorderBrush = new SolidColorBrush(Colors.Red);
                 zolty.BorderBrush = new SolidColorBrush(Colors.Red);
                 zielony.BorderBrush = new SolidColorBrush(Colors.Red);
                 czerw.BorderBrush = new SolidColorBrush(Colors.Red);
                 pomaran.BorderBrush = new SolidColorBrush(Colors.Red);
+                error = true;
+            }
+            var dataU = DateTime.Parse(selDataUaktyw.Text, culture);
+            var dataZ = DateTime.Parse(selDataZakon.Text, culture);
+            if (dataU > dataZ)
+            {
+                selDataZakon.BorderBrush = new SolidColorBrush(Colors.Red);
+                selDataUaktyw.BorderBrush = new SolidColorBrush(Colors.Red);
                 error = true;
             }
             var regex = new Regex("^[0-9]*$");

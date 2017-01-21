@@ -31,6 +31,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Name" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="ColumnDefinitions" />
@@ -63,6 +64,7 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="OcenaKlientow.CustomContentDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
@@ -101,6 +103,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="BorderThickness" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
