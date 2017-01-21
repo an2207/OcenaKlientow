@@ -104,10 +104,10 @@
                 <TextBox x:Name="selDataUaktyw" PlaceholderText="yyyy/mm/dd" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
                 <TextBox x:Name="selDataZakon" PlaceholderText="yyyy/mm/dd" IsReadOnly="True" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="209" Height="25"/>
                 <CheckBox x:Name="zloty"  IsEnabled="False" Content="złoty" Background="LightBlue"  HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="zielony" BorderThickness="2" IsEnabled="False" Content="zielony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,227,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="zolty" BorderThickness="2" IsEnabled="False" Content="żółty" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,259,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="pomaran" BorderThickness="2" IsEnabled="False" Content="pomarańczowy" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,291,0,0" VerticalAlignment="Top" Width="362" />
-                <CheckBox x:Name="czerw"  BorderThickness="2" IsEnabled="False" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="zielony" IsEnabled="False" Content="zielony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,227,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="zolty" IsEnabled="False" Content="żółty" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,259,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="pomaran"  IsEnabled="False" Content="pomarańczowy" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,291,0,0" VerticalAlignment="Top" Width="362" />
+                <CheckBox x:Name="czerw"   IsEnabled="False" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
 
             </Grid>
             <Button x:Name="Save" Click="Save_OnClick" Visibility="Collapsed" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>

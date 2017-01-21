@@ -245,7 +245,7 @@ namespace OcenaKlientow.View
                                                  {
                                                         Frame.Navigate(typeof(PU1));
                                                  }
-                                                 BenefitList_OnSelectionChanged(null, null);
+                                                 ChangeLabelsAndInputsOFF();
                                                  
             };
             dialog.SecondaryButtonClick += delegate
@@ -570,6 +570,10 @@ namespace OcenaKlientow.View
             if (!(bool)zloty.IsChecked && !(bool)zielony.IsChecked && !(bool)zolty.IsChecked && !(bool)pomaran.IsChecked && !(bool)czerw.IsChecked)
             {
                 zloty.BorderThickness = new Thickness(2);
+                zielony.BorderThickness = new Thickness(2);
+                zolty.BorderThickness = new Thickness(2);
+                pomaran.BorderThickness = new Thickness(2);
+                czerw.BorderThickness = new Thickness(2);
                 zloty.BorderBrush = new SolidColorBrush(Colors.Red);
                 zolty.BorderBrush = new SolidColorBrush(Colors.Red);
                 zielony.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -577,14 +581,25 @@ namespace OcenaKlientow.View
                 pomaran.BorderBrush = new SolidColorBrush(Colors.Red);
                 error = true;
             }
-            var dataU = DateTime.Parse(selDataUaktyw.Text, culture);
-            var dataZ = DateTime.Parse(selDataZakon.Text, culture);
-            if (dataU > dataZ)
+            var dataRegex = new Regex("^(19|20)\\d{2}\\/(0[1-9]|1[0-2])\\/(0[1-9]|1\\d|2\\d|3[01])$");
+            if (!dataRegex.IsMatch(selDataUaktyw.Text) && !dataRegex.IsMatch(selDataZakon.Text))
             {
                 selDataZakon.BorderBrush = new SolidColorBrush(Colors.Red);
                 selDataUaktyw.BorderBrush = new SolidColorBrush(Colors.Red);
                 error = true;
             }
+            else
+            {
+                var dataU = DateTime.Parse(selDataUaktyw.Text, culture);
+                var dataZ = DateTime.Parse(selDataZakon.Text, culture);
+                if (dataU > dataZ)
+                {
+                    selDataZakon.BorderBrush = new SolidColorBrush(Colors.Red);
+                    selDataUaktyw.BorderBrush = new SolidColorBrush(Colors.Red);
+                    error = true;
+                }
+            }
+            
             var regex = new Regex("^[0-9]*$");
             if (!regex.IsMatch(selWartProc.Text))
             {
@@ -606,6 +621,12 @@ namespace OcenaKlientow.View
 
             selDataUaktyw.BorderBrush = color;
 
+
+            zloty.BorderThickness = new Thickness(0);
+            zielony.BorderThickness = new Thickness(0);
+            zolty.BorderThickness = new Thickness(0);
+            pomaran.BorderThickness = new Thickness(0);
+            czerw.BorderThickness = new Thickness(0);
             zloty.BorderBrush = color;
             zolty.BorderBrush = color;
             zielony.BorderBrush = color;
@@ -666,6 +687,10 @@ namespace OcenaKlientow.View
         #endregion
         private void SelWartProc_OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            if (selWartProc.Text == "")
+            {
+                selWartProc.BorderBrush = opis.BorderBrush;
+            }
             var regex = new Regex("^[0-9]*$");
             if (!regex.IsMatch(selWartProc.Text) )
             {
