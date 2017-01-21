@@ -101,6 +101,11 @@ namespace OcenaKlientow.View
             }
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiedzialny za wyszukiwanie klientów (osób fizycznych) z listy na podstawie danych wpisanych przez użytkownika. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchFizyczna_OnClick(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(IdFizyczna.Text) && string.IsNullOrEmpty(NazwaFizyczna.Text))
@@ -124,6 +129,11 @@ namespace OcenaKlientow.View
             OsobyFizyczne.ItemsSource = listTmpF;
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiedzialny za wyszukiwanie klientów (osób prawnych) z listy na podstawie danych wpisanych przez użytkownika. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchPrawna_OnClick(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(IdPrawna.Text) && string.IsNullOrEmpty(NazwaPrawna.Text))
@@ -147,6 +157,11 @@ namespace OcenaKlientow.View
             OsobyPrawne.ItemsSource = listTmpF;
         }
 
+        /// <summary>
+        /// Metoda wyświetlająca szczegóły oceny i statusu wybranego klienta (osoby prawnej).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OsobyPrawne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currPrawna = (KlientView)OsobyPrawne.SelectedItem;
@@ -160,6 +175,11 @@ namespace OcenaKlientow.View
             
         }
 
+        /// <summary>
+        /// Metoda wyświetlająca szczegóły oceny i statusu wybranego klienta (osoby fizycznej).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OsobyFizyczne_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currPrawna = (KlientView)OsobyFizyczne.SelectedItem;
@@ -173,6 +193,12 @@ namespace OcenaKlientow.View
            
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk przeliczający ocenę klienta. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <see cref="OcenaViewModel.CountStatus(Klient)"></see>
         private async void CountStatus_OnClick(object sender, RoutedEventArgs e)
         {
             if (selectedFromBothListItem != null)
@@ -205,6 +231,11 @@ namespace OcenaKlientow.View
 
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk "Zobacz szczegóły oceny" i wyświetlająca pop-up ze szczegółami aktualnej oceny klienta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void GradeDetails_OnClick(object sender, RoutedEventArgs e)
         {
             if (selectedFromBothListItem != null)
@@ -243,6 +274,12 @@ namespace OcenaKlientow.View
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk "Przelicz wszystkie statusy"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <see cref="OcenaViewModel.CoundAllGrades"/> 
         private async void CountAllStatuses_OnClick(object sender, RoutedEventArgs e)
         {
             OcenaVM.CountAllGrades();

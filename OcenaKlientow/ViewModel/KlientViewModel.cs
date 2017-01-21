@@ -29,6 +29,10 @@ namespace OcenaKlientow.ViewModel
         #endregion
         #region Public methods
 
+        /// <summary>
+        /// Metoda tworząca listę klientów (osób fizycznych) wraz z ich atrybutami i statusami.
+        /// </summary>
+        /// <returns>Lista klientów</returns>
         public List<KlientView> OsobyFizyczneListQuery()
         {
             using (var db = new OcenaKlientowContext())
@@ -66,6 +70,10 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda tworząca listę klientów (osób prawnych) wraz z ich atrybutami i statusami.
+        /// </summary>
+        /// <returns>Lista klientów</returns>
         public List<KlientView> OsobyPrawneListQuery()
         {
             using (var db = new OcenaKlientowContext())
@@ -101,6 +109,11 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda wyszukująca klienta w bazie danych po jego ID.
+        /// </summary>
+        /// <param name="klientId">ID szukanego klienta</param>
+        /// <returns></returns>
         public Klient ReadKlient(int klientId)
         {
             using (var db = new OcenaKlientowContext())

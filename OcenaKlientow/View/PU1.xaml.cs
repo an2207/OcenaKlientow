@@ -47,24 +47,20 @@ namespace OcenaKlientow.View
 
             Pu1ViewModel = new BenefitViewModel(true);
             ListaBenefitow = Pu1ViewModel.BenefitListQuery();
-            //ListaBenefitow = db.Benefity.ToList();
             BenefitList.ItemsSource = ListaBenefitow;
             Statuses = Pu1ViewModel.GetStatuses();
             TypyBenfitowList = Pu1ViewModel.GetBenefitTypes();
             typ.ItemsSource = TypyBenfitowList;
-            //PrzypisanyStatuses = db.PrzypisaneStatusy.ToList();
-            //ListaBenefitow = new List<Benefit>();
-            // Statuses = new List<Status>();
-            // PrzypisanyStatuses = new List<PrzypisanyStatus>();
-
-            //AddData();
-            // AddStatuses();
-            // AddPrzypisaneStatusy();
         }
 
         #endregion
         #region Event handlers
 
+        /// <summary>
+        /// Metoda obsługująca przycisk dodający nowy benefit i tworząca nowy rekord w bazie danych.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Add_OnClick(object sender, RoutedEventArgs e)
         {
             var selRodzBen = (RodzajBenefitu)typ.SelectedItem;
@@ -86,28 +82,28 @@ namespace OcenaKlientow.View
             Pu1ViewModel.AddNewBenefit(newBenefit);
 
             if ((bool)zloty.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ZŁOTY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZŁOTY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ZŁOTY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZŁOTY");
 
             if ((bool)zolty.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ŻÓŁTY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ŻÓŁTY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ŻÓŁTY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ŻÓŁTY");
 
             if ((bool)zielony.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "ZIELONY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit, "ZIELONY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "ZIELONY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "ZIELONY");
 
             if ((bool)pomaran.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "POMARAŃCZOWY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit, "POMARAŃCZOWY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "POMARAŃCZOWY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "POMARAŃCZOWY");
             if ((bool)czerw.IsChecked)
-                Pu1ViewModel.AddStatusToBenefit(newBenefit.BenefitId, "CZERWONY");
+                Pu1ViewModel.AddStatusToBenefit(newBenefit, "CZERWONY");
             else
-                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit.BenefitId, "CZERWONY");
+                Pu1ViewModel.DeleteStatusFromBenefit(newBenefit, "CZERWONY");
 
             BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
             ChangeLabelsAndInputsOFF();
@@ -135,6 +131,11 @@ namespace OcenaKlientow.View
             Add.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Metoda obsługująca wybór benefitu z listy i wyświetlająca jego szczegóły w polach tekstowych.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BenefitList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Cancel.Visibility == Visibility.Visible)
@@ -229,6 +230,11 @@ namespace OcenaKlientow.View
             Frame.Navigate(typeof(MainPage));
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiadający za odrzucenie zmian wprowadzonych w szczegółach benefitu oraz za wyświetlenie alertu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Cancel_OnClick(object sender, RoutedEventArgs e)
         {
             var dialog = new ContentDialog()
@@ -256,6 +262,12 @@ namespace OcenaKlientow.View
             var result = await dialog.ShowAsync();
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiadający za usunięcie benefitu. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <see cref="BenefitViewModel.DeleteFromBenefitList(BenefitView)"/>
         private async void Delete_OnClick(object sender, RoutedEventArgs e)
         {
             var dialog1 = new ContentDialog()
@@ -282,11 +294,21 @@ namespace OcenaKlientow.View
         }
 
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiadający za udostępnienie pól tekstowych do edycji.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Edit_OnClick(object sender, RoutedEventArgs e)
         {
             ChangeLabelsAndInputsON();
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiadający za zapisanie danych edytowanego benefitu. Aktualizuje rekord w bazie.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Save_OnClick(object sender, RoutedEventArgs e)
         {
             if (CheckValues())
@@ -315,28 +337,28 @@ namespace OcenaKlientow.View
                 benefit.DataUaktyw = selDataUaktyw.Text;
                 benefit.DataZakon = selDataZakon.Text;
                 if ((bool)zloty.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ZŁOTY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit, "ZŁOTY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ZŁOTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZŁOTY");
 
                 if ((bool)zolty.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ŻÓŁTY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit, "ŻÓŁTY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ŻÓŁTY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ŻÓŁTY");
 
                 if ((bool)zielony.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "ZIELONY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit, "ZIELONY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "ZIELONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "ZIELONY");
 
                 if ((bool)pomaran.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "POMARAŃCZOWY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit, "POMARAŃCZOWY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "POMARAŃCZOWY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "POMARAŃCZOWY");
                 if ((bool)czerw.IsChecked)
-                    Pu1ViewModel.AddStatusToBenefit(benefit.BenefitId, "CZERWONY");
+                    Pu1ViewModel.AddStatusToBenefit(benefit, "CZERWONY");
                 else
-                    Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "CZERWONY");
+                    Pu1ViewModel.DeleteStatusFromBenefit(benefit, "CZERWONY");
 
                 Pu1ViewModel.UpdateBenefit(benefit);
                 
@@ -359,6 +381,11 @@ namespace OcenaKlientow.View
             }
         }
 
+        /// <summary>
+        /// Metoda obsługująca przycisk odpowiedzialny za wyszukiwanie benefitów z listy na podstawie danych wpisanych przez użytkownika. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Search_OnClick(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(IdBenefitu.Text) && string.IsNullOrEmpty(NazwaBenefitu.Text))
@@ -382,6 +409,11 @@ namespace OcenaKlientow.View
             BenefitList.ItemsSource = listTmpF;
         }
 
+        /// <summary>
+        /// Metoda zmieniająca wygląd ekranu w zależności od typu wybranego benefitu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Typ_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selRodzaj = (RodzajBenefitu)typ.SelectedItem;

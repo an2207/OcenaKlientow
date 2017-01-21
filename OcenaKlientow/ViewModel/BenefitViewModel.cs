@@ -27,6 +27,10 @@ namespace OcenaKlientow.ViewModel
         #endregion
         #region Public methods
 
+        /// <summary>
+        /// Metoda dodająca nowy rekord (benefit) do bazy danych.
+        /// </summary>
+        /// <param name="newBenefit">Instancja obiektu typu Benefit</param>
         public void AddNewBenefit(Benefit newBenefit)
         {
             using (var db = new OcenaKlientowContext())
@@ -37,17 +41,22 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
-        public void AddStatusToBenefit(int benefitId, string name)
+        /// <summary>
+        /// Metoda przypisująca status do istniejącego w bazie danych rekordu benefitu.
+        /// </summary>
+        /// <param name="benefit">Instancja obiektu typu Benefit, do którego ma być dodany status</param>
+        /// <param name="name">Nazwa dodawanego statusu</param>
+        public void AddStatusToBenefit(Benefit benefit, string name)
         {
             using (var db = new OcenaKlientowContext())
             {
                 Status status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                PrzypisanyStatus przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => (status1.BenefitId == benefitId) && (status1.StatusId == status.StatusId)).FirstOrDefault();
+                PrzypisanyStatus przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => (status1.BenefitId == benefit.BenefitId) && (status1.StatusId == status.StatusId)).FirstOrDefault();
                 if (przypisanyStatus == null)
                 {
                     db.PrzypisaneStatusy.Add(new PrzypisanyStatus
                                              {
-                                                 BenefitId = benefitId,
+                                                 BenefitId = benefit.BenefitId,
                                                  StatusId = status.StatusId
                                              });
                     if (Saving)
@@ -55,7 +64,10 @@ namespace OcenaKlientow.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda tworząca listę benefitów i ich atrybutów.
+        /// </summary>
+        /// <returns>Lista benefitów</returns>
         public List<BenefitView> BenefitListQuery()
         {
             using (var db = new OcenaKlientowContext())
@@ -79,6 +91,10 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda usuwająca podany benefit z bazy danych.
+        /// </summary>
+        /// <param name="benToDel"></param>
         public void DeleteFromBenefitList(BenefitView benToDel)
         {
             using (var db = new OcenaKlientowContext())
@@ -93,12 +109,17 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
-        public void DeleteStatusFromBenefit(int benefitId, string name)
+        /// <summary>
+        /// Metoda usuwająca istniejące przypisanie statusu do benefitu.
+        /// </summary>
+        /// <param name="benefit">Instancja obiektu typu Benefit</param>
+        /// <param name="name">Nazwa statusu</param>
+        public void DeleteStatusFromBenefit(Benefit benefit, string name)
         {
             using (var db = new OcenaKlientowContext())
             {
                 Status status = db.Statusy.Where(status1 => status1.Nazwa == name).FirstOrDefault();
-                PrzypisanyStatus przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => (status1.BenefitId == benefitId) && (status1.StatusId == status.StatusId)).FirstOrDefault();
+                PrzypisanyStatus przypisanyStatus = db.PrzypisaneStatusy.Where(status1 => (status1.BenefitId == benefit.BenefitId) && (status1.StatusId == status.StatusId)).FirstOrDefault();
                 if (przypisanyStatus == null)
                     return;
                 db.PrzypisaneStatusy.Remove(przypisanyStatus);
@@ -139,6 +160,10 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda pobierająca listę statusów.
+        /// </summary>
+        /// <returns>Lista statusów</returns>
         public List<Status> GetStatuses()
         {
             using (var db = new OcenaKlientowContext())
@@ -155,6 +180,11 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda wyszukująca benefit w bazie danych po jego ID.
+        /// </summary>
+        /// <param name="benefitId">ID szukanego benefitu</param>
+        /// <returns>Benefit</returns>
         public Benefit ReadBenefit(int benefitId)
         {
             using (var db = new OcenaKlientowContext())
@@ -163,6 +193,10 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda aktualizująca istniejący w bazie danych benefit.
+        /// </summary>
+        /// <param name="benefit">Instancja obiektu typu Benefit</param>
         public void UpdateBenefit(Benefit benefit)
         {
             using (var db = new OcenaKlientowContext())

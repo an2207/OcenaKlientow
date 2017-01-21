@@ -85,6 +85,12 @@ namespace OcenaKlientow.ViewModel
         #endregion
         #region Private methods
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Przekroczenie terminu płatności" dla danego klienta. Oblicza liczbę dni, o które zostały przekroczone terminy płatności i mnoży je o wartość parametru.</summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name="listaZamowien"> Lista zamówień danego klienta</param>
+        /// <param name ="listaPlatnosci"> Lista płatności powiązanych z zamówieniami danego klienta </param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int AfterDeadline(Klient klient, List<Zamowienie> listaZamowien, List<Platnosc> listaPlatnosci)
         {
 
@@ -124,6 +130,16 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda wywołująca metody obliczające oceny częściowe klienta, przypisująca ocenę do klienta oraz tworząca nowe rekordy w bazie danych (nowa Ocena, nowy PrzypisanyStatus oraz nowe Wyliczenia).
+        /// </summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <seealso cref="PartialPayment(Klient)"/>
+        /// <seealso cref="FullPayment(Klient)"/>
+        /// <seealso cref="LoanLimit(Klient)"/>
+        /// <seealso cref="AfterDeadline(Klient)"/>
+        /// <seealso cref="RegularOrders(Klient)"/>
+        /// <seealso cref="PaymentOnTime(Klient)"/>
         void AssignGrade(Klient klient)
         {
             Dictionary<int, int> parameters = new Dictionary<int, int>();
@@ -219,6 +235,12 @@ namespace OcenaKlientow.ViewModel
             return 0;
         }
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Płatność całkowita" dla danego klienta. Wyszukuje wśród zamówień te, których wszystkie płatności zostały uiszczone na czas. 
+        /// Gdy znajdzie takie zamówienie, dodaje wartość tego parametru do wyliczonej oceny częściowej.        /// </summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name="listaZamowien"> Lista zamówień danego klienta</param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int FullPayment(Klient klient, List<Zamowienie> listaZamowien)
         {
 
@@ -247,6 +269,13 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Przekroczenie limitu kredytu" dla danego klienta. Oblicza sumę nieuiszczonych płatności i sprawdza, czy suma jest większa lub równa limitowi kredytu klienta.
+        /// Jeśli tak jest, zwraca wartość parametru.</summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name=”listaZamowien”> Lista zamówień danego klienta</param>
+        /// <param name =”listaPlatnosci”> Lista płatności powiązanych z zamówieniami danego klienta </param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int LoanLimit(Klient klient, List<Zamowienie> listaZamowien, List<Platnosc> listaPlatnosci)
         {
             double sumOfPayments = 0;
@@ -278,6 +307,14 @@ namespace OcenaKlientow.ViewModel
             return 0;
         }
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Płatność częściowa" dla danego klienta. Wyszukuje wśród zamówień te, których chociaż jedna płatność została uiszczona na czas. 
+        /// Gdy znajdzie takie zamówienie, dodaje wartość tego parametru do wyliczonej oceny częściowej.
+        /// </summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name="listaZamowien"> Lista zamówień danego klienta</param>
+        /// <param name ="listaPlatnosci"> Lista płatności powiązanych z zamówieniami danego klienta </param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int PartialPayment(Klient klient, List<Zamowienie> listaZamowien, List<Platnosc> listaPlatnosci)
         {
 
@@ -302,6 +339,12 @@ namespace OcenaKlientow.ViewModel
 
         }
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Płatność na czas" dla danego klienta. Wyszukuje zamówienia, które zostały opłacone na czas i za każde takie zamówienie dodaje wartość parametru do wyliczonej oceny częściowej.</summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name=”listaZamowien”> Lista zamówień danego klienta</param>
+        /// <param name =”listaPlatnosci”> Lista płatności powiązanych z zamówieniami danego klienta </param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int PaymentOnTime(Klient klient, List<Zamowienie> listaZamowien, List<Platnosc> listaPlatnosci)
         {
 
@@ -326,6 +369,12 @@ namespace OcenaKlientow.ViewModel
             }
         }
 
+        /// <summary>
+        /// Metoda obliczająca częściową ocenę za parametr "Regularne zamówienie" dla danego klienta. Sprawdza, czy co najmniej raz w miesiącu (od pierwszego zamówienia do daty obecnej) klient składa zamówienie.
+        /// Jeżeli tak jest, dodaje do oceny częściowej wartość parametru</summary>
+        /// <param name="klient">Instancja obiektu Klient, dla którego ma być przeliczona ocena</param>
+        /// <param name="listaZamowien"> Lista zamówień danego klienta</param>
+        /// <returns>Wyliczona ocena częściowa</returns>
         int RegularOrders(Klient klient, List<Zamowienie> listaZamowien)
         {
 

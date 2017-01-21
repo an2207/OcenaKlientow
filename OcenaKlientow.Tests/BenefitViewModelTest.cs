@@ -19,7 +19,7 @@ namespace OcenaKlientow.Tests
         public void ViemModelAddsPrzypisanyStatusWhenBenefitIdAndStatusNazwaAreGiven()
         {
             var viewModel = new BenefitViewModel(true);
-            int benefitId;
+            Benefit benefit;
             string statusName;
 
             using (var db = new OcenaKlientowContext())
@@ -29,10 +29,10 @@ namespace OcenaKlientow.Tests
                 {
                     try
                     {
-                        benefitId = db.Benefity.Select(benefit => benefit.BenefitId).FirstOrDefault();
+                        benefit = db.Benefity.FirstOrDefault();
                         statusName = db.Statusy.Select(status => status.Nazwa).FirstOrDefault();
-                        viewModel.AddStatusToBenefit(benefitId, statusName);
-                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
+                        viewModel.AddStatusToBenefit(benefit, statusName);
+                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefit.BenefitId).ToList();
 
                         Assert.IsTrue(fromDbPrzypisanyStatus.Count > 0);
                         Assert.IsNotNull(fromDbPrzypisanyStatus.FirstOrDefault());
@@ -50,7 +50,7 @@ namespace OcenaKlientow.Tests
         public void ViemModelDeletesPrzypisanyStatusWhenBenefitIdAndStatusNazwaAreGiven()
         {
             var viewModel = new BenefitViewModel(true);
-            int benefitId;
+            Benefit benefit;
             string statusName;
 
             using (var db = new OcenaKlientowContext())
@@ -60,12 +60,12 @@ namespace OcenaKlientow.Tests
                 {
                     try
                     {
-                        benefitId = db.Benefity.Select(benefit => benefit.BenefitId).FirstOrDefault();
+                        benefit = db.Benefity.FirstOrDefault();
                         statusName = db.Statusy.Select(status => status.Nazwa).FirstOrDefault();
-                        viewModel.AddStatusToBenefit(benefitId, statusName);
+                        viewModel.AddStatusToBenefit(benefit, statusName);
 
-                        viewModel.DeleteStatusFromBenefit(benefitId, statusName);
-                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefitId).ToList();
+                        viewModel.DeleteStatusFromBenefit(benefit, statusName);
+                        List<PrzypisanyStatus> fromDbPrzypisanyStatus = db.PrzypisaneStatusy.Where(status => status.BenefitId == benefit.BenefitId).ToList();
                         PrzypisanyStatus oneStatus = fromDbPrzypisanyStatus.FirstOrDefault();
 
                         Assert.IsTrue(fromDbPrzypisanyStatus.Count == 0);
