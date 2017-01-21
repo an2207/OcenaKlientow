@@ -24,14 +24,14 @@
       <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
       <RootProperty Name="Background" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="ColumnDefinitions" />
@@ -39,34 +39,6 @@
       <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="IsReadOnly" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="InputScope" />
-      <RootProperty Name="PlaceholderText" />
-      <RootProperty Name="RenderTransformOrigin" />
-      <RootEvent Name="TextChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="Name" />
-    </RootType>
-    <RootType FullName="OcenaKlientow.CustomContentDialog" />
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
     </RootType>
@@ -85,6 +57,33 @@
       <RootEvent Name="GotFocus" />
     </RootType>
     <RootType FullName="OcenaKlientow.View.MainPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="Name" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="IsReadOnly" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="InputScope" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootEvent Name="TextChanged" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="HorizontalAlignment" />

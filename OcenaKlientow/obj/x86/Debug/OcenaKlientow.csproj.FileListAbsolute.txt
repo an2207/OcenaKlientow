@@ -1288,7 +1288,6 @@ C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2\OcenaKlientow\Oc
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\PU2.g.cs
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\PU2.xaml
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\PU2.xbf
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\OcenaKlientow.csprojResolveAssemblyReference.cache
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\App.g.i.cs
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\App.g.cs
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\MainPage.g.i.cs
@@ -1542,11 +1541,6 @@ C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKli
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\ProjectArchitectures.txt
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\bin\x86\Debug\View\Custom\CustomContentDialog.xbf
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.g.i.cs
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.g.cs
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.xaml
-C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\View\Custom\CustomContentDialog.xbf
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.AspNetCore.Http.Abstractions\en-us\Microsoft.AspNetCore.Http.Abstractions.Resources.resw
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.Data.Sqlite\en-US\Microsoft.Data.Sqlite.Strings.resw
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.EntityFrameworkCore\en-US\Microsoft.EntityFrameworkCore.Properties.CoreStrings.resw
@@ -1559,3 +1553,4 @@ C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKli
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.Extensions.Logging.Abstractions\en-us\Microsoft.Extensions.Logging.Abstractions.Resource.resw
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.Extensions.Options\en-us\Microsoft.Extensions.Options.Resources.resw
 C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\Microsoft.Extensions.Primitives\en-us\Microsoft.Extensions.Primitives.Resources.resw
+C:\Users\Mateusz Łopusiński\Desktop\Studia\Semestr 5\PO\1.0.2.1\1.0.2\OcenaKlientow\OcenaKlientow\obj\x86\Debug\OcenaKlientow.csprojResolveAssemblyReference.cache

@@ -281,149 +281,6 @@ namespace OcenaKlientow.View
             var result1 = await dialog1.ShowAsync();
         }
 
-        //void AddData()
-        //{
-
-        //    Benefit b1 = new Benefit()
-        //    {
-        //        BenefitId = 1,
-        //        DataUaktyw = "22/10/2015",
-        //        DataZakon = "22/11/2016",
-        //        Nazwa = "Oferta letnia",
-        //        Opis = "Okej"
-        //    };
-        //    Benefit b2 = new Benefit()
-        //    {
-        //        BenefitId = 1,
-        //        DataUaktyw = "22/10/2015",
-        //        DataZakon = "22/11/2016",
-        //        Nazwa = "Oferta wiosna",
-        //        Opis = "Dziala"
-        //    };
-        //    Benefit b3 = new Benefit()
-        //    {
-        //        BenefitId = 1,
-        //        DataUaktyw = "22/10/2015",
-        //        DataZakon = "22/11/2016",
-        //        Nazwa = "Oferta zimowa",
-        //        Opis = "Dziala"
-        //    };
-        //     Benefit b4 = new Benefit()
-        //     {
-        //         BenefitId = 1,
-        //         DataUaktyw = "22/10/2015",
-        //         DataZakon = "22/11/2016",
-        //         Nazwa = "Oferta zimowa",
-        //         Opis = "Dziala"
-        //     }; Benefit b5 = new Benefit()
-        //     {
-        //         BenefitId = 1,
-        //         DataUaktyw = "22/10/2015",
-        //         DataZakon = "22/11/2016",
-        //         Nazwa = "Oferta zimowa",
-        //         Opis = "Dziala"
-        //     }; Benefit b6 = new Benefit()
-        //     {
-        //         BenefitId = 1,
-        //         DataUaktyw = "22/10/2015",
-        //         DataZakon = "22/11/2016",
-        //         Nazwa = "Oferta zimowa",
-        //         Opis = "Dziala"
-        //     }; Benefit b7 = new Benefit()
-        //     {
-        //         BenefitId = 2,
-        //         DataUaktyw = "22/10/2015",
-        //         DataZakon = "22/11/2016",
-        //         Nazwa = "Oferta zimowaadsfasdfadfasdfasdfdas",
-        //         Opis = "Dziala"
-        //     }; Benefit b8 = new Benefit()
-        //     {
-        //         BenefitId = 2,
-        //         DataUaktyw = "22/10/2015",
-        //         DataZakon = "22/11/2016",
-        //         Nazwa = "Oferta zimowa",
-        //         Opis = "Dziala dasfasdfasdfasdfasdfadsf"
-        //     };
-        //    ListaBenefitow.Add(b1);
-        //    ListaBenefitow.Add(b2);
-        //    ListaBenefitow.Add(b3);
-        //    ListaBenefitow.Add(b4);
-        //    ListaBenefitow.Add(b5);
-        //    ListaBenefitow.Add(b6);
-        //    ListaBenefitow.Add(b7);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    ListaBenefitow.Add(b8);
-        //    BenefitList.ItemsSource = ListaBenefitow;
-        //}
-
-        //void AddStatuses()
-        //{
-        //    Status zloty = new Status()
-        //    {
-        //        Nazwa = "złoty"
-        //    };
-        //    Status zie = new Status()
-        //    {
-        //        Nazwa = "zielony"
-        //    };
-        //    Status zolty = new Status()
-        //    {
-        //        Nazwa = "żółty"
-        //    };
-        //    Status pom = new Status()
-        //    {
-        //        Nazwa = "pomarańczowy"
-        //    };
-        //    Status czerw = new Status()
-        //    {
-        //        Nazwa = "czerwony"
-        //    };
-        //    Statuses.Add(zloty);
-        //    Statuses.Add(zie);
-        //    Statuses.Add(zolty);
-        //    Statuses.Add(pom);
-        //    Statuses.Add(czerw);
-
-        //}
-
-        //void AddPrzypisaneStatusy()
-        //{
-        //    var p1 = new PrzypisanyStatus()
-        //    {
-        //        BenefitId = 1,
-        //        StatusId = 1
-        //    };
-        //    var p2 = new PrzypisanyStatus()
-        //    {
-        //        BenefitId = 1,
-        //        StatusId = 1
-        //    }; var p3 = new PrzypisanyStatus()
-        //    {
-        //        BenefitId = 2,
-        //        StatusId = 1
-        //    }; var p4 = new PrzypisanyStatus()
-        //    {
-        //        BenefitId = 2,
-        //        StatusId = 2
-        //    };
-
-        //    PrzypisanyStatuses.Add(p1);
-        //    PrzypisanyStatuses.Add(p2);
-        //    PrzypisanyStatuses.Add(p3);
-        //    PrzypisanyStatuses.Add(p4);
-
-        //}
 
         private void Edit_OnClick(object sender, RoutedEventArgs e)
         {
@@ -482,9 +339,8 @@ namespace OcenaKlientow.View
                     Pu1ViewModel.DeleteStatusFromBenefit(benefit.BenefitId, "CZERWONY");
 
                 Pu1ViewModel.UpdateBenefit(benefit);
-                BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
+                
                 ChangeLabelsAndInputsOFF();
-                //this.Frame.Navigate(typeof(PU1));
                 ResetLabels();
                 var dialog = new ContentDialog()
                 {
@@ -499,6 +355,7 @@ namespace OcenaKlientow.View
                 };
 
                 var result = await dialog.ShowAsync();
+                BenefitList.ItemsSource = Pu1ViewModel.BenefitListQuery();
             }
         }
 

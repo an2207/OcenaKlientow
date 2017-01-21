@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OcenaKlientow.Model.Models
 {
     public class RodzajBenefitu
     {
+        #region Properties
+
         [Required]
         //unique
         public string Nazwa { get; set; }
 
-        [Required, Key]
+        [Required]
+        [Key]
         public int RodzajId { get; set; }
+
+        #endregion
     }
 }

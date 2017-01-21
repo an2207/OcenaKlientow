@@ -110,7 +110,7 @@
                 <CheckBox x:Name="czerw"   IsEnabled="False" Content="czerwony" Background="LightBlue" HorizontalAlignment="Left" Height="28" Margin="10,323,0,0" VerticalAlignment="Top" Width="362" />
 
             </Grid>
-            <Button x:Name="Save" Click="Save_OnClick" Visibility="Collapsed" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
+            <Button x:Name="Save"   Click="Save_OnClick" Visibility="Collapsed" Content="Zapisz" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
             <Button x:Name="Add" Click="Add_OnClick" Visibility="Collapsed"  Content="Dodaj" HorizontalAlignment="Left" Margin="184,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
             <Button x:Name="Cancel" Click="Cancel_OnClick" Visibility="Collapsed"  Content="Odrzuć" HorizontalAlignment="Left" Margin="362,593,0,0" VerticalAlignment="Top" Height="31" Width="118"/>
 

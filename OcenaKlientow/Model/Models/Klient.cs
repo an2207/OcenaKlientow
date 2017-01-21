@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OcenaKlientow.Model.Models
 {
     public class Klient
     {
+        #region Properties
+
         [Required]
         public bool CzyFizyczna { get; set; }
 
@@ -21,8 +18,8 @@ namespace OcenaKlientow.Model.Models
         [Key]
         [Required]
         public int KlientId { get; set; }
-        
-        [Range(0.0, Double.MaxValue)]
+
+        [Range(0.0, double.MaxValue)]
         public double KwotaKredytu { get; set; }
 
         public string Nazwa { get; set; }
@@ -34,5 +31,7 @@ namespace OcenaKlientow.Model.Models
 
         //[Unique]
         public string PESEL { get; set; }
+
+        #endregion
     }
 }

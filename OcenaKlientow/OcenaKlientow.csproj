@@ -104,7 +104,6 @@
     <Compile Include="ViewModel\BenefitViewModel.cs" />
     <Compile Include="ViewModel\KlientViewModel.cs" />
     <Compile Include="ViewModel\OcenaViewModel.cs" />
-    <Compile Include="View\Custom\CustomContentDialog.cs" />
     <Compile Include="View\ListItems\BenefitView.cs" />
     <Compile Include="View\ListItems\OcenaView.cs" />
     <Compile Include="View\MainPage.xaml.cs">
@@ -151,10 +150,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\Custom\CustomContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

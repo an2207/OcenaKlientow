@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OcenaKlientow.Model.Models
 {
     public class Ocena
     {
+        #region Properties
+
         [Required]
         public string DataCzas { get; set; }
 
@@ -29,5 +25,7 @@ namespace OcenaKlientow.Model.Models
 
         [Required]
         public int SumaPkt { get; set; }
+
+        #endregion
     }
 }

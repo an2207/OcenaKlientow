@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OcenaKlientow.Model.Models
 {
     public class Zamowienie
     {
+        #region Properties
+
         public bool CzyZweryfikowano { get; set; }
 
         [Required]
@@ -18,15 +13,17 @@ namespace OcenaKlientow.Model.Models
 
         [Required]
         public int KlientId { get; set; }
-    
+
         //public virtual Klient Klient { get; set; }
 
         [Required]
-        [Range(0.0, Double.MaxValue)]
+        [Range(0.0, double.MaxValue)]
         public double Kwota { get; set; }
 
         [Key]
         [Required]
         public int ZamowienieId { get; set; }
+
+        #endregion
     }
 }

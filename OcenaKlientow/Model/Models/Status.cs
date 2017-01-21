@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OcenaKlientow.Model.Models
 {
     public class Status
     {
+        #region Properties
+
         [Required]
         //Unique
         public string Nazwa { get; set; }
@@ -23,5 +19,7 @@ namespace OcenaKlientow.Model.Models
         [Key]
         [Required]
         public int StatusId { get; set; }
+
+        #endregion
     }
 }
