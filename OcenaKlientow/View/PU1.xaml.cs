@@ -690,6 +690,7 @@ namespace OcenaKlientow.View
             if (selWartProc.Text == "")
             {
                 selWartProc.BorderBrush = opis.BorderBrush;
+                return;
             }
             var regex = new Regex("^[0-9]*$");
             if (!regex.IsMatch(selWartProc.Text) )

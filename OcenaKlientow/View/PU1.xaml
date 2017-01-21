@@ -16,7 +16,7 @@
             </RichTextBlock>
             <Button x:Name="button" GotFocus="Button_OnGotFocus" Background="GhostWhite" Content="x" HorizontalAlignment="Left" Margin="1192,0,0,0" VerticalAlignment="Top" Height="50" Width="78" Click="Button_OnClick" FontSize="28"/>
         </Grid>
-        <Grid Background="White" HorizontalAlignment="Left" Height="570" Margin="0,140,0,0" VerticalAlignment="Top" Width="614">
+        <Grid Background="White" Name="GridWithList" HorizontalAlignment="Left" Height="570" Margin="0,140,0,0" VerticalAlignment="Top" Width="614">
             <Grid Background="White" Height="92" VerticalAlignment="Top" Margin="0,-92,0,0" HorizontalAlignment="Left" Width="614">
                 <TextBox x:Name="IdBenefitu" PlaceholderText="ID" HorizontalAlignment="Left" Margin="38,29,0,0" Text="{Binding IdBenefit}" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="118" RenderTransformOrigin="0.092,0.641"/>
                 <TextBox x:Name="NazwaBenefitu" PlaceholderText="Nazwa" HorizontalAlignment="Left" Margin="185,29,0,0" Text="{Binding NameBenefit}" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="207"/>
@@ -53,7 +53,7 @@
                 </ListView.HeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Height="30" Background="GhostWhite">
+                        <Grid Name="ListItems"  Height="30" Background="GhostWhite">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition />
