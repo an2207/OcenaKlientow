@@ -11,7 +11,7 @@
         <Grid HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1280" Background="GhostWhite">
             <RichTextBlock HorizontalAlignment="Left" Height="40" Margin="41,0,0,0" VerticalAlignment="Top"  FontSize="25" Width="405" >
                 <Paragraph>
-                    <Run Text="Przeglądanie klientów"/>
+                    <Run Text="Przeglądaj statusy klientów"/>
                 </Paragraph>
             </RichTextBlock>
         </Grid>

@@ -62,5 +62,42 @@ namespace OcenaKlientowUITests
             
             OcenaKlientowSession.Close();
         }
+
+
+        [Test]
+        public void CountAllStatusesIsCalledAndDateEqualsToToday()
+        {
+            SetupApp();
+
+            OcenaKlientowSession.FindElementByName("Przeglądanie klientów").Click();
+            Thread.Sleep(1000);            
+            var buttons = OcenaKlientowSession.FindElementsByClassName("Button");
+            var countButton = buttons.Where(elem => elem.Text.Equals("Przelicz wszystkie statusy")).FirstOrDefault();
+            countButton.Click();
+            Thread.Sleep(40000);
+            buttons = OcenaKlientowSession.FindElementsByClassName("Button");
+            var okButton = buttons.Where(elem => elem.Text.Equals("OK")).FirstOrDefault();
+            okButton.Click();
+            Thread.Sleep(2000);
+            var listItemsAfter = OcenaKlientowSession.FindElementsByClassName("ListViewItem");
+            var listItem = listItemsAfter[5];
+            listItem.Click();
+            Thread.Sleep(1000);
+            var textBoxes = OcenaKlientowSession.FindElementsByClassName("TextBox");
+            bool found = false;
+            var cultureInfo = new CultureInfo("pt-BR");
+            var todayDate = DateTime.Today.ToString("d", cultureInfo);
+            foreach (IWebElement webElement in textBoxes)
+            {
+                if (todayDate.Equals(webElement.Text))
+                {
+                    found = true;
+                }
+            }
+
+            Assert.AreEqual(found, true);
+            
+            OcenaKlientowSession.Close();
+        }
     }
 }
